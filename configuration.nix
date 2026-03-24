@@ -101,6 +101,17 @@
     shell = pkgs.zsh;
   };
 
+  security.sudo.enable = false;
+  security.doas = {
+    enable = true;
+
+    extraRules = [{
+      groups = [ "wheel" ];
+      keepEnv = true;
+      persist = true;
+    }];
+  };
+
   programs.firefox = {
     enable = true;
     languagePacks = [ "en-US" "ja" ];
@@ -112,6 +123,7 @@
     git
     vim
     wget
+    doas-sudo-shim
   ];
 
   fonts.packages = with pkgs; [
