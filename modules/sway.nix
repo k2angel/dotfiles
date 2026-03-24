@@ -69,4 +69,16 @@
       }];
     };
   };
+
+  services.swayidle = {
+    enable = true;
+
+    events = {
+      before-sleep = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+      lock = "lock";
+    };
+    timeouts = [
+      { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -f -c 000000"; }
+    ];
+  };
 }
