@@ -5,6 +5,8 @@
     ./modules/zsh/config.nix
     ./modules/nvim/config.nix
     ./modules/git.nix
+    ./modules/sway.nix
+    ./modules/foot.nix
   ];
 
   home.username = "k2angel";
@@ -23,6 +25,8 @@
   # environment.
   home.packages = with pkgs; [
     hello
+    duf
+    tealdeer
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./modules/soroemono.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -48,26 +49,43 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  # Enable greetd
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
 
+    settings = {
+      default_session = {
+        # command = "${pkgs.greetd}/bin/tuigreet -r -t --cmd sway";
+        command = "${pkgs.greetd}/bin/agreety --cmd sway";
+      };
+    };
+  };
 
-  
+  # Enable sway
+  programs.sway = {
+    enable = true;
 
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+    extraPackages = with pkgs; [
+      # i3blocks
+      i3status
+      foot
+      grim
+      swayidle
+      swaylock
+      swaybg
+      wmenu
+      autotiling
+    ];
+  };
 
   # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  services.pipewire = {
+    enable = true;
+    alsa.enable= true;
+    jack.enable = true;
+    # pulse.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -83,7 +101,10 @@
     shell = pkgs.zsh;
   };
 
-  # programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    languagePacks = [ "en-US" "ja" ];
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -91,6 +112,15 @@
     git
     vim
     wget
+  ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-color-emoji
+    jetbrains-mono
+    nerd-fonts.symbols-only
+    udev-gothic
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
