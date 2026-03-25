@@ -4,6 +4,7 @@
   imports = [
     ./modules/zsh/config.nix
     ./modules/nvim/config.nix
+    ./modules/firefox/config.nix
     ./modules/git.nix
     ./modules/sway.nix
     ./modules/foot.nix
