@@ -3,7 +3,7 @@
 {
   wayland.windowManager.sway = {
     enable = true;
-
+    wrapperFeatures.gtk = true;
     config = {
       modifier = "Mod4";
       terminal = "footclient";
@@ -72,7 +72,6 @@
 
   services.swayidle = {
     enable = true;
-
     events = {
       before-sleep = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
       lock = "lock";
