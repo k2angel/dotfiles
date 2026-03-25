@@ -1,0 +1,96 @@
+/* Font change */
+:root:lang(ja) {
+    --font: SF Pro, Hiragino Sans, Noto Sans CJK JP;
+    --font-primary: var(--font);
+    --font-display: var(--font);
+    --font-header:  var(--font);
+    --font-code: UDEVGothic35DZLG Nerd Font;
+    --webkit-font-smoothing: antialiased;
+    --moz-os-x-font-smoothing: grayscale;
+}
+
+/* Fix SF Pro */
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Ultralight);
+    font-weight: 100;
+}
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Thin);
+    font-weight: 200;
+}
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Light);
+    font-weight: 300;
+}
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Regular);
+    font-weight: 400;
+}
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Medium);
+    font-weight: 500;
+}
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Semibold);
+    font-weight: 600;
+}
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Bold);
+    font-weight: 700;
+}
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Heavy);
+    font-weight: 800;
+}
+@font-face {
+    font-family: SF Pro;
+    src: local(SFPro-Black);
+    font-weight: 900;
+}
+
+/* MODIFICATIONS */
+
+/* Hides Store and Shop button */
+[href="/store"],
+[href='/shop'] {
+    display: none;
+}
+
+/* Hide Nitro Gift button */
+div[aria-label="ギフトを贈る"] {
+    display: none;
+}
+
+/* Hide GIF picker button */
+div[aria-label="GIFピッカーを開く"] {
+    display: none !important;
+}
+
+/* Hide sticker picker button */
+div[aria-label="スタンプピッカーを開く"] {
+    display: none;
+}
+
+/* Hide add media button */
+div[aria-label="メディアを追加"] {
+    display: none;
+}
+
+/* Remove annoying gaps between buttons (vc, text inputs, etc) */
+div[class*="buttons_"] {
+    gap: 0 !important;
+}
+
+/* Hide app launcher */
+[class*=channelAppLauncher_] {
+    display: none !important;
+}
+
