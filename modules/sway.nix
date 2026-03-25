@@ -31,7 +31,6 @@
       startup = [
         { command = "autotiling -l 2"; }
         { command = "swaymsg workspace number 1"; }
-        { command = "footclient"; }
       ];
       input = {
         "type:keyboard" = {
