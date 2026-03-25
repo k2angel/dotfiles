@@ -36,7 +36,6 @@
   };
 
   home.sessionVariables = {
-    LANG = "ja_JP.UTF-8";
   };
 
   i18n.inputMethod = {
@@ -64,6 +63,10 @@
       waylandFrontend = true;
     };
   };
+
+  xdg.configFile."uwsm/env".text = ''
+    export LANG=ja_JP.UTF-8
+  '';
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

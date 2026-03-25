@@ -42,7 +42,11 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [ "en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" ];
+  };
+
   console = {
   #   font = "Lat2-Terminus16";
     keyMap = "jp106";
@@ -57,7 +61,19 @@
     useTextGreeter = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd \"uwsm start sway-uwsm.desktop\"";
+      };
+    };
+  };
+
+  services.dbus.implementation = lib.mkForce "dbus";
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      sway = {
+        prettyName = "Sway";
+        comment = "Sway compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/sway";
       };
     };
   };
@@ -101,7 +117,6 @@
   };
 
   security.polkit.enable = true;
-
   security.sudo.enable = false;
   security.doas = {
     enable = true;
@@ -112,10 +127,7 @@
     }];
   };
 
-  programs.firefox = {
-    enable = true;
-    languagePacks = [ "en-US" "ja" ];
-  };
+  programs.firefox.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
