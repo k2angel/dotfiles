@@ -7,6 +7,7 @@
     ./modules/git.nix
     ./modules/sway.nix
     ./modules/foot.nix
+    ./modules/beets.nix
   ];
 
   home.username = "k2angel";
