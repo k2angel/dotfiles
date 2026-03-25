@@ -49,15 +49,15 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   };
 
+  # services.xserver.desktopManager.runXdgAutostartIfNone = true;
+
   # Enable greetd
   services.greetd = {
     enable = true;
     useTextGreeter = true;
-
     settings = {
       default_session = {
-        # command = "${pkgs.greetd}/bin/tuigreet -r -t --cmd sway";
-        command = "${pkgs.greetd}/bin/agreety --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd sway";
       };
     };
   };
@@ -65,7 +65,6 @@
   # Enable sway
   programs.sway = {
     enable = true;
-
     extraPackages = with pkgs; [
       # i3blocks
       i3status
@@ -101,10 +100,11 @@
     shell = pkgs.zsh;
   };
 
+  security.polkit.enable = true;
+
   security.sudo.enable = false;
   security.doas = {
     enable = true;
-
     extraRules = [{
       groups = [ "wheel" ];
       keepEnv = true;
@@ -124,15 +124,19 @@
     vim
     wget
     doas-sudo-shim
+    wl-clipboard
+    mako
   ];
 
   fonts.packages = with pkgs; [
+    noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
+    font-awesome
     jetbrains-mono
-    nerd-fonts.symbols-only
     udev-gothic
+    nerd-fonts.symbols-only
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -154,31 +158,8 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
 
