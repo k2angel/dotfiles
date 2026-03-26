@@ -1,12 +1,22 @@
-{ config, pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.betterfox.homeModules.betterfox ];
+
   programs.firefox = {
     enable = true;
     languagePacks = [ "ja" "en-US" ];
 
     policies = {
       DisableTelemetry = true;
+    };
+
+    betterfox = {
+      enable = true;
+      profiles.default = {
+        enable = true;
+        enableAllSections = true;
+      };
     };
 
     profiles.default = {
