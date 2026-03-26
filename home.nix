@@ -10,6 +10,7 @@
     ./modules/sway.nix
     ./modules/foot.nix
     ./modules/beets.nix
+    ./modules/themes.nix
   ];
 
   home.username = "k2angel";
