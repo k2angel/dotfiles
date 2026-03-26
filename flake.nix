@@ -7,17 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixvim = {
-    #   url = "github:nix-community/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     betterfox = {
       url = "github:HeitorAugustoLN/betterfox-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, betterfox, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, betterfox, ... }: {
     nixosConfigurations = {
       nixos-vm = nixpkgs.lib.nixosSystem {
         # specialArgs = { inherit inputs; };

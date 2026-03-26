@@ -1,18 +1,229 @@
-{ config, pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  programs.neovim = {
+  imports = [ inputs.nixvim.homeModules.nixvim ];
+
+  programs.nixvim = {
     enable = true;
-
     defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-
-    plugins = with pkgs.vimPlugins; [
-      nvim-autopairs
-      onedarkpro-nvim
+    extraPackages = with pkgs; [
+      alejandra
     ];
-    initLua = builtins.readFile ./init.lua;
+    extraPlugins = with pkgs.vimPlugins; [
+      onedarkpro-nvim
+      plenary-nvim
+    ];
+    extraConfigLua = builtins.readFile ./init.lua;
+    globals.mapleader = " ";
+    diagnostic.settings.virtual_text = true;
+    keymaps = [
+      { mode = "n"; key = "<leader>e"; action = ":NvimTreeToggle<CR>"; }
+      { mode = "n"; key = "<A-,>"; action = "<Cmd>BufferLineCyclePrev<CR>"; }
+      { mode = "n"; key = "<A-.>"; action = "<Cmd>BufferLineCycleNext<CR>"; }
+      { mode = "n"; key = "<A-<>"; action = "<Cmd>BufferLineCyclePrev<CR>"; }
+      { mode = "n"; key = "<A->>"; action = "<Cmd>BufferLineCycleNext<CR>"; }
+    ] ++ (
+      map (i: {
+        mode = "n"; key = "<A-${toString i}>"; action = "<Cmd>BufferLineGoTo ${toString i}<CR>";
+      }) [ 1 2 3 4 5 6 7 8 9 ]
+    );
+    plugins = {
+      bufferline = {
+        enable = true;
+        settings = {
+          options = {
+            diagnostics = "nvim_lsp";
+            disgnostics_indicator = ''
+              function(count, level, diagnostics_dict, countext)
+                local icon = level:match("error")
+                return " " .. icon .. count
+              end
+            '';
+            offsets = [
+              {
+                filetype = "NvimTree";
+                text = "File Explorer";
+                highlight = "Directory";
+                separator = true;
+              }
+            ];
+          };
+        };
+      };
+      cmp = {
+        enable = true;
+        autoEnableSources = true;
+        settings = {
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; }
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+          snippet.expand = ''
+            function(args)
+              require('luasnip').lsp_expand(args.body)
+            end
+          '';
+          mapping = {
+            "<C-b>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-e>" = "cmp.mapping.abort()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<Tab>" = ''
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                elseif require('luasnip').expand_or_jumpable() then
+                  require('luasnip').expand_or_jump()
+                else
+                  fallback()
+                end
+              end
+            '';
+            "<S-Tab>" = ''
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_prev_item()
+                elseif require('luasnip').expand_or_jumpable(-1) then
+                  require('luasnip').jump(-1)
+                else
+                  fallback()
+                end
+              end
+            '';
+          };
+        };
+        cmdline = {
+          "/" = {
+            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
+            sources = [{ name = "buffer"; }];
+          };
+          ":" = {
+            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
+            sources = [
+              { name = "path"; }
+              {
+                name = "cmdline";
+                option = { ignore_cmds = [ "Man" "!"]; };
+              }
+            ];
+          };
+        };
+      };
+      conform-nvim = {
+        enable = true;
+        format_on_save = {
+          lsp_fallback = true;
+          timeout_ms = 500;
+        };
+        formatters_by_ft = {
+          nix = [ "alejandra" ];
+        };
+      };
+      dropbar.enable = true;
+      friendly-snippets.enable = true;
+      fidget.enable = true;
+      gitsigns.enable = true;
+      lsp.enable = true;
+      lspkind = {
+        enable = true;
+        cmp.enable = true;
+      };
+      lualine = {
+        enable = true;
+        settings = {
+          options = {
+            component_separators = { right = "::"; };
+            section_separators = { right = ""; };
+          };
+          sections = {
+            lualine_x = [
+              "encoding"
+              { __unkeyed-1 = "fileformat"; icons_enabled = false; }
+              { __unkeyed-2 = "filetype"; icons_enabled = false; }
+            ];
+          };
+          extensions = [
+            "fzf"
+            "nvim-tree"
+            "toggleterm"
+            "trouble"
+          ];
+        };
+      };
+      luasnip = {
+        enable = true;
+        fromVscode = [ {} ];
+      };
+      nvim-autopairs.enable = true;
+      nvim-tree = {
+        enable = true;
+        settings = {
+          hijack_cursor = true;
+          view.width = "20%";
+          update_focused_file = {
+            enable = true;
+            update_root.enable = true;
+          };
+        };
+      };
+      telescope = {
+        enable = true;
+        keymaps = {
+          "<leader>ff" = {
+            action = "find_files";
+            options = { desc = "Telescope find files"; };
+          };
+          "<leader>fg" = {
+            action = "live_grep";
+            options = { desc = "Telescope live grep"; };
+          };
+          "<leader>fb" = {
+            action = "buffers";
+            options = { desc = "Telescope buffers"; };
+          };
+          "<leader>fh" = {
+            action = "help_tags";
+            options = { desc = "Telescope help tags"; };
+          };
+          "<leader>fr" = {
+            action = "registers";
+            options = { desc = "Telescope registers"; };
+          };
+        };
+      };
+      toggleterm = {
+        enable = true;
+        settings = {
+          open_mapping = "[[<c-\>]]";
+          direction = "horizontal";
+        };
+      };
+      treesitter = {
+        enable = true;
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          bash
+          json
+          lua
+          make
+          markdown
+          nix
+          regex
+          toml
+          vim
+          vimdoc
+          xml
+          yaml
+        ];
+      };
+      treesj.enable = true;
+      trouble.enable = true;
+      web-devicons.enable = true;
+    };
+    lsp.servers = {
+      nil_ls.enable = true;
+    };
   };
 }
