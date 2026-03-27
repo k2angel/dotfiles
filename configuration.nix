@@ -5,11 +5,13 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-      ./modules/soroemono.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    /etc/nixos/hardware-configuration.nix
+    ./modules/soroemono.nix
+  ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -34,49 +36,25 @@
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Asia/Tokyo";
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # Set your time zone.
+  time.timeZone = "Asia/Tokyo";
 
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
     supportedLocales = [ "en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" ];
   };
-
-  console = {
-  #   font = "Lat2-Terminus16";
-    keyMap = "jp106";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  };
-
-  # services.xserver.desktopManager.runXdgAutostartIfNone = true;
-
-  # Enable greetd
-  services.greetd = {
-    enable = true;
-    useTextGreeter = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd \"uwsm start sway-uwsm.desktop\"";
-      };
-    };
-  };
-
-  services.dbus.implementation = lib.mkForce "dbus";
-  programs.uwsm = {
-    enable = true;
-    waylandCompositors = {
-      sway = {
-        prettyName = "Sway";
-        comment = "Sway compositor managed by UWSM";
-        binPath = "/run/current-system/sw/bin/sway";
-      };
-    };
-  };
+  console.keyMap = "jp106";
 
   # Enable sway
   programs.sway = {
@@ -91,15 +69,9 @@
       swaybg
       wmenu
       autotiling
+      wl-clipboard
+      mako
     ];
-  };
-
-  # Enable sound.
-  services.pipewire = {
-    enable = true;
-    alsa.enable= true;
-    jack.enable = true;
-    # pulse.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -134,8 +106,6 @@
     vim
     wget
     doas-sudo-shim
-    wl-clipboard
-    mako
   ];
 
   fonts.packages = with pkgs; [
@@ -162,13 +132,25 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # Enable greetd
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd sway";
+        user = "greeter";
+      };
+    };
+  };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Enable sound.
+  services.pipewire = {
+    enable = true;
+    alsa.enable= true;
+    jack.enable = true;
+    # pulse.enable = true;
+  };
 
   system.stateVersion = "25.11"; # Did you read the comment?
 }

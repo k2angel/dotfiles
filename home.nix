@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./modules/zsh/config.nix
-    ./modules/nvim/config.nix
-    ./modules/firefox/config.nix
-    ./modules/vesktop/config.nix
+    ./modules/zsh
+    ./modules/nvim
+    ./modules/firefox
+    ./modules/vesktop
     ./modules/git.nix
     ./modules/sway.nix
     ./modules/foot.nix
@@ -47,9 +47,8 @@
     enable = true;
     type = "fcitx5";
     fcitx5 = {
-      addons = with pkgs; [
-        fcitx5-mozc-ut
-      ];
+      addons = with pkgs; [ fcitx5-mozc-ut ];
+      waylandFrontend = true;
       settings = {
         inputMethod = {
           GroupOrder."0" = "Default";
@@ -61,17 +60,10 @@
           "Groups/0/Items/0".Name = "keyboard-jp";
           "Groups/0/Items/1".Name = "mozc";
         };
-        addons = {
-          classicui.globalSection.Theme = "default-dark";
-        };
+        addons.classicui.globalSection.Theme = "default-dark";
       };
-      waylandFrontend = true;
     };
   };
-
-  xdg.configFile."uwsm/env".text = ''
-    export LANG=ja_JP.UTF-8
-  '';
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

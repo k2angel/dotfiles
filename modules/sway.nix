@@ -3,7 +3,17 @@
 {
   wayland.windowManager.sway = {
     enable = true;
+    extraSessionCommands = ''
+      export LANG=ja_JP.UTF-8
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export GTK_USE_PORTAL=1
+    '';
     wrapperFeatures.gtk = true;
+    systemd = {
+      variables = [ "--all" ];
+      xdgAutostart = true;
+    };
     config = {
       modifier = "Mod4";
       terminal = "footclient";
@@ -14,13 +24,8 @@
         style = "Regular";
         size = 11.0;
       };
-      window = {
-        titlebar = false;
-      };
-      gaps = {
-        inner = 4;
-        outer = 2;
-      };
+      window.titlebar = false;
+      gaps = { inner = 4; outer = 2; };
       colors.focused = {
         border = "#61afef";
         background = "#61afef";
@@ -28,6 +33,7 @@
         indicator = "#2e9ef4";
         childBorder = "#61afef";
       };
+      output."*".bg = "${../image/wallpaper01.png} fill";
       startup = [
         { command = "autotiling -l 2"; }
         { command = "swaymsg workspace number 1"; }
@@ -78,5 +84,25 @@
     timeouts = [
       { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -f -c 000000"; }
     ];
+  };
+
+  services.cliphist = {
+    enable = true;
+    extraOptions = [
+      "max-items 1000"
+    ];
+  };
+
+  services.mako ={
+    enable = true;
+    settings = {
+      background-color = "#282c34";
+      text-color = "#abb2bf";
+      border-color = "#abb2bf";
+      default-timeout = 5000;
+      "urgency=low" = { border-color = "#abb2bf"; };
+      "urgency=normal" = { border-color = "#abb2bf"; };
+      "urgency=high" = { border-color = "#abb2bf"; };
+    };
   };
 }
