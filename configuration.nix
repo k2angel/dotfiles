@@ -15,6 +15,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
@@ -50,10 +51,8 @@
   time.timeZone = "Asia/Tokyo";
 
   # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" ];
-  };
+  i18n.defaultLocale = "ja_JP.UTF-8";
+  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" ];
   console.keyMap = "jp106";
 
   # Enable sway
@@ -78,7 +77,14 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    interactiveShellInit = ''
+      if [ "$TERM" = "linux" ]; then
+        export LANG=en_US.UTF-8
+      fi
+    '';
+  };
   users.users.k2angel = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
