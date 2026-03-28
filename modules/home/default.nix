@@ -8,6 +8,7 @@
     ./nvim.nix
     ./sway.nix
     ./themes.nix
+    ./userDir.nix
     ./vesktop.nix
     ./zsh.nix
   ];
