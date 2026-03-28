@@ -49,8 +49,8 @@
       keybindings = let
         mod = config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
-        "Mod4+Shift+q" = null;
-        "Mod4+q" = "kill";
+        "${mod}+Shift+q" = null;
+        "${mod}+q" = "kill";
       };
       bars = [{
         fonts = {
