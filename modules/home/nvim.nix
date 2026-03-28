@@ -6,6 +6,23 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
+    globals.mapleader = " ";
+    opts = {
+      number = true;
+      cursorline = true;
+      relativenumber = true;
+      signcolumn = "yes";
+      expandtab = true;
+      shiftwidth = 4;
+      tabstop = 2;
+      list = true;
+      listchars = {
+        space = "･";
+        tab = "» ";
+        trail = "_";
+      };
+    };
+    diagnostic.settings.virtual_text = true;
     extraPackages = with pkgs; [
       alejandra
     ];
@@ -13,9 +30,8 @@
       onedarkpro-nvim
       plenary-nvim
     ];
-    extraConfigLua = builtins.readFile ./init.lua;
-    globals.mapleader = " ";
-    diagnostic.settings.virtual_text = true;
+    extraConfigLuaPre = builtins.readFile ../../config/colors.lua;
+    extraConfigLua = builtins.readFile ../../config/init.lua;
     keymaps = [
       { mode = "n"; key = "<leader>e"; action = ":NvimTreeToggle<CR>"; }
       { mode = "n"; key = "<A-,>"; action = "<Cmd>BufferLineCyclePrev<CR>"; }

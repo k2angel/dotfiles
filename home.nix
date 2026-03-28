@@ -1,17 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./modules/zsh
-    ./modules/nvim
-    ./modules/firefox
-    ./modules/vesktop
-    ./modules/git.nix
-    ./modules/sway.nix
-    ./modules/foot.nix
-    ./modules/beets.nix
-    ./modules/themes.nix
-  ];
+  imports = [ ./modules/home ];
 
   home.username = "k2angel";
   home.homeDirectory = "/home/k2angel";
@@ -37,33 +27,9 @@
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
-  };
+  home.file = {};
 
-  home.sessionVariables = {
-  };
-
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5 = {
-      addons = with pkgs; [ fcitx5-mozc-ut ];
-      waylandFrontend = true;
-      settings = {
-        inputMethod = {
-          GroupOrder."0" = "Default";
-          "Groups/0" = {
-            Name = "Default";
-            "Default Layout" = "jp";
-            DefaultIM = "mozc";
-          };
-          "Groups/0/Items/0".Name = "keyboard-jp";
-          "Groups/0/Items/1".Name = "mozc";
-        };
-        addons.classicui.globalSection.Theme = "default-dark";
-      };
-    };
-  };
+  home.sessionVariables = {};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

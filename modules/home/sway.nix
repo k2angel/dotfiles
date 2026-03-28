@@ -32,7 +32,7 @@
         indicator = "#2e9ef4";
         childBorder = "#61afef";
       };
-      output."*".bg = "${../image/wallpaper01.png} fill";
+      output."*".bg = "${../../image/wallpaper01.png} fill";
       startup = [
         { command = "autotiling -l 2"; }
         { command = "swaymsg workspace number 1"; }

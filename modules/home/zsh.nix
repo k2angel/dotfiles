@@ -15,7 +15,7 @@
         src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
       }
     ];
-    initContent = builtins.readFile ./init.zsh;
+    initContent = builtins.readFile ../../config/init.zsh;
   };
 
   programs.bat = {

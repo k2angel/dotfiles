@@ -20,5 +20,6 @@
     };
   };
 
-  xdg.configFile."vesktop/settings".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/vesktop/settings";
+  xdg.configFile."vesktop/settings/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${../../config/vesktop.settings.json}";
+  xdg.configFile."vesktop/settings/quickCss.css".source = config.lib.file.mkOutOfStoreSymlink "${../../config/vesktop.quickCss.css}";
 }
