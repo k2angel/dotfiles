@@ -3,19 +3,17 @@
 {
   programs.zsh = {
     enable = true;
-
     enableCompletion = true;
+    initContent = builtins.readFile ../../config/init.zsh;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     history.ignoreAllDups = true;
-
     plugins = [
       {
         name = "fzf-tab";
         src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
       }
     ];
-    initContent = builtins.readFile ../../config/init.zsh;
   };
 
   programs.bat = {
@@ -32,7 +30,6 @@
   programs.lsd = {
     enable = true;
     enableZshIntegration = true;
-
     settings = {
       size = "short";
       date = "+%y-%m-%d %T";
