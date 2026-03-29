@@ -4,11 +4,12 @@
   gtk = {
     enable = true;
     colorScheme = "dark";
+    gtk4.theme = null;
+
     theme = {
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;
     };
-    gtk4.theme = null;
   };
 
   qt = {

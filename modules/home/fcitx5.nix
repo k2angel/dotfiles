@@ -4,10 +4,14 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
+
     fcitx5 = {
       addons = with pkgs; [ fcitx5-mozc-ut ];
       waylandFrontend = true;
+
       settings = {
+        addons.classicui.globalSection.Theme = "default-dark";
+
         inputMethod = {
           GroupOrder."0" = "Default";
           "Groups/0" = {
@@ -18,7 +22,6 @@
           "Groups/0/Items/0".Name = "keyboard-jp";
           "Groups/0/Items/1".Name = "mozc";
         };
-        addons.classicui.globalSection.Theme = "default-dark";
       };
     };
   };
