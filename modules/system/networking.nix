@@ -2,8 +2,8 @@
 
 {
   networking = {
-    hostName = "nixos-vm"; # Define your hostname.
-    nftables = true;
+    hostName = "nixos-vm";
+    nftables.enable = true;
     networkmanager.enable = true;
 
     firewall = {
