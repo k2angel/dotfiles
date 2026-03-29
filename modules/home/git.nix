@@ -1,4 +1,4 @@
-{ ... }:
+{ username, ... }:
 
 {
   programs.git = {
@@ -6,7 +6,7 @@
 
     settings = {
       user = {
-        name = "k2angel";
+        name = "${username}";
         email = "90847045+k2angel@users.noreply.github.com";
       };
     };
