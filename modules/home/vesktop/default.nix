@@ -19,8 +19,8 @@
     };
   };
 
-  xdg.configFile."vesktop/settings/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/vesktop/settings.json";
-  xdg.configFile."vesktop/settings/quickCss.css".source =
-   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/vesktop/quickCss.css";
+#   xdg.configFile."vesktop/settings/settings.json".source =
+#     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/vesktop/settings.json";
+#   xdg.configFile."vesktop/settings/quickCss.css".source =
+#    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/vesktop/quickCss.css";
 }
