@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, ... }:
 
 {
   programs.vesktop = {
@@ -19,6 +19,8 @@
     };
   };
 
-  xdg.configFile."vesktop/settings/settings.json".source = lib.file.mkOutOfStoreSymlink "${./settings.json}";
-  xdg.configFile."vesktop/settings/quickCss.css".source = lib.file.mkOutOfStoreSymlink "${./quickCss.css}";
+  xdg.configFile."vesktop/settings/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/vesktop/settings.json";
+  xdg.configFile."vesktop/settings/quickCss.css".source =
+   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/vesktop/quickCss.css";
 }
