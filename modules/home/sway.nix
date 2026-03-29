@@ -56,7 +56,7 @@
       keybindings = lib.mkOptionDefault {
         "${modifier}+Shift+q" = null;
         "${modifier}+q" = "kill";
-        "${modifier}+e" = "${terminal} yazi";
+        "${modifier}+e" = "exec ${terminal} ${pkgs.yazi}/bin/yazi";
       };
 
       window = {
@@ -64,8 +64,38 @@
 
         commands = [
           {
-            command = "floating enable, sticky enable, border pixel none, resize set 77ppt 77ppt, move position center";
             criteria.app_id = "termfilechooser";
+            command = builtins.concatStringsSep ", " [
+              "floating enable"
+              "sticky enable"
+              "border pixel none"
+              "resize set 77ppt 77ppt"
+              "move position center"
+            ];
+          }
+          {
+            criteria.app_id = "bemenu_cliphist";
+            command = builtins.concatStringsSep ", " [
+              "floating enable"
+              "sticky enable"
+              "border pixel none"
+              "resize set 800px 600px"
+              "move position center"
+              # "resize set 100ppt 100px"
+              # "move window to position 0 100ppt"
+              # "move up 100px"
+            ];
+          }
+          {
+            criteria = {
+              app_id = "firefox";
+              title = "^ピクチャーインピクチャー$";
+            };
+            command = builtins.concatStringsSep ", " [
+              "floating enable"
+              "sticky enable"
+              "border none"
+            ];
           }
         ];
       };
