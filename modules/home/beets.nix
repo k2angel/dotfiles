@@ -3,11 +3,11 @@
 {
   programs.beets = {
     enable = true;
-    color = true;
-    library = "~/Music/library.db";
-    directory = "/media/pirate/Music/Library";
 
     settings = {
+      color = true;
+      library = "~/Music/library.db";
+      directory = "/media/pirate/Music/Library";
       plugins = "musicbrainz mbsync fetchart inline info replaygain";
 
       item_fields = {
