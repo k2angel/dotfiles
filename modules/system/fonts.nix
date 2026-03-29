@@ -27,7 +27,7 @@ in
     noto-fonts-color-emoji
     font-awesome
     jetbrains-mono
-    # udev-gothic
+    udev-gothic
     soroemono
     nerd-fonts.symbols-only
   ];
