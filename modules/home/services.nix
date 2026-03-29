@@ -2,6 +2,8 @@
 
 {
   services = {
+    kdeconnect.enable = true;
+
     swayidle = {
       enable = true;
 
