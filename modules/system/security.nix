@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   security.sudo.enable = false;
@@ -10,4 +10,5 @@
       persist = true;
     }];
   };
+  environment.systemPackages = [ pkgs.doas-sudo-shim ];
 }
