@@ -35,6 +35,7 @@
     vim
     wget
     ripgrep
+    yazi
     nix-output-monitor
     nvd
   ];
