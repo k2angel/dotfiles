@@ -27,8 +27,14 @@ in
     noto-fonts-color-emoji
     font-awesome
     jetbrains-mono
-    udev-gothic
+    # udev-gothic
     soroemono
     nerd-fonts.symbols-only
   ];
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = [ "Noto Sans CJK JP" ];
+    serif = [ "Noto Serif CJK JP" ];
+    monospace = [ "JetBrains Mono" "SOROEMONO" "Symbols Nerd Font" ];
+    emoji = [ "Noto Color Emoji" ];
+  };
 }
