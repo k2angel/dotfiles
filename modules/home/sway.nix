@@ -9,22 +9,26 @@
     #   export GTK_USE_PORTAL=1
     # '';
     wrapperFeatures.gtk = true;
+
     systemd = {
       # variables = [ "--all" ];
       xdgAutostart = true;
     };
+
     config = {
       modifier = "Mod4";
       terminal = "footclient";
       # menu = 'wmenu-run "JetBrains Mono NL Regular 11" -N "#282c34" -n "#abb2bf" -M "#61afef" -m "#1e2127" -S "#61afef" -s "#1e2127"';
       menu = "wmenu-run";
+      gaps = { inner = 4; outer = 2; };
+      output."*".bg = "${../../image/wallpaper01.png} fill";
+
       fonts = {
         names = [ "JetBrains Mono NL" "UDEV Gothic 35" ];
         style = "Regular";
         size = 11.0;
       };
-      window.titlebar = false;
-      gaps = { inner = 4; outer = 2; };
+
       colors.focused = {
         border = "#61afef";
         background = "#61afef";
@@ -32,11 +36,12 @@
         indicator = "#2e9ef4";
         childBorder = "#61afef";
       };
-      output."*".bg = "${../../image/wallpaper01.png} fill";
+
       startup = [
         { command = "autotiling -l 2"; }
         { command = "swaymsg workspace number 1"; }
       ];
+
       input = {
         "type:keyboard" = {
           xkb_layout = "jp";
@@ -46,20 +51,34 @@
           accel_profile = "\"flat\"";
         };
       };
+
       keybindings = let
         mod = config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
         "${mod}+Shift+q" = null;
         "${mod}+q" = "kill";
       };
+
+      window = {
+        titlebar = false;
+
+        commands = [
+          {
+            command = "floating enable, sticky enable, border pixel none, resize set 77ppt 77ppt, move position center";
+            criteria.app_id = "termfilechooser";
+          }
+        ];
+      };
+
       bars = [{
+        position = "top";
+        statusCommand = "${pkgs.i3status}/bin/i3status";
+
         fonts = {
           names = [ "JetBrains Mono NL" "UDEV Gothic 35" ];
           style = "Regular";
           size = 11.0;
         };
-        position = "top";
-        statusCommand = "${pkgs.i3status}/bin/i3status";
         extraConfig = ''
           height 22
           separator_symbol "｜"
