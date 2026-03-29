@@ -7,6 +7,8 @@
     enable = true;
     defaultEditor = true;
     globals.mapleader = " ";
+    diagnostic.settings.virtual_text = true;
+
     opts = {
       number = true;
       cursorline = true;
@@ -22,16 +24,7 @@
         trail = "_";
       };
     };
-    diagnostic.settings.virtual_text = true;
-    extraPackages = with pkgs; [
-      alejandra
-    ];
-    extraPlugins = with pkgs.vimPlugins; [
-      onedarkpro-nvim
-      plenary-nvim
-    ];
-    extraConfigLuaPre = builtins.readFile ../../config/colors.lua;
-    extraConfigLua = builtins.readFile ../../config/init.lua;
+
     keymaps = [
       { mode = "n"; key = "<leader>e"; action = ":NvimTreeToggle<CR>"; }
       { mode = "n"; key = "<A-,>"; action = "<Cmd>BufferLineCyclePrev<CR>"; }
@@ -43,6 +36,17 @@
         mode = "n"; key = "<A-${toString i}>"; action = "<Cmd>BufferLineGoTo ${toString i}<CR>";
       }) [ 1 2 3 4 5 6 7 8 9 ]
     );
+
+    extraPackages = with pkgs; [
+      alejandra
+    ];
+    extraPlugins = with pkgs.vimPlugins; [
+      onedarkpro-nvim
+      plenary-nvim
+    ];
+    extraConfigLuaPre = builtins.readFile ./init_pre.lua;
+    extraConfigLua = builtins.readFile ./init.lua;
+
     plugins = {
       bufferline = {
         enable = true;
@@ -55,14 +59,12 @@
                 return " " .. icon .. count
               end
             '';
-            offsets = [
-              {
-                filetype = "NvimTree";
-                text = "File Explorer";
-                highlight = "Directory";
-                separator = true;
-              }
-            ];
+            offsets = [{
+              filetype = "NvimTree";
+              text = "File Explorer";
+              highlight = "Directory";
+              separator = true;
+            }];
           };
         };
       };

@@ -107,6 +107,7 @@
         "intl.locale.requested" = "ja,en-US";
         "extension.activeTehemeID" = "{d148819b-332d-4519-bfc3-679e49d27112}";
       };
+
       search = {
         force = true;
         default = "ddg";
