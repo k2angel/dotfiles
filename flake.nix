@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       nixos-vm = nixpkgs.lib.nixosSystem {
         # specialArgs = { inherit inputs; };
