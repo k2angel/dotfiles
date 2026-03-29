@@ -15,11 +15,12 @@
       xdgAutostart = true;
     };
 
-    config = {
+    config = rec {
       modifier = "Mod4";
       terminal = "footclient";
-      # menu = 'wmenu-run "JetBrains Mono NL Regular 11" -N "#282c34" -n "#abb2bf" -M "#61afef" -m "#1e2127" -S "#61afef" -s "#1e2127"';
-      menu = "wmenu-run";
+      menu = ''
+        wmenu-run -f "JetBrains Mono NL Regular 11" -N "#282c34" -n "#abb2bf" -M "#61afef" -m "#1e2127" -S "#61afef" -s "#1e2127"
+      '';
       gaps = { inner = 4; outer = 2; };
       output."*".bg = "${../../image/wallpaper01.png} fill";
 
@@ -52,11 +53,10 @@
         };
       };
 
-      keybindings = let
-        mod = config.wayland.windowManager.sway.config.modifier;
-      in lib.mkOptionDefault {
-        "${mod}+Shift+q" = null;
-        "${mod}+q" = "kill";
+      keybindings = lib.mkOptionDefault {
+        "${modifier}+Shift+q" = null;
+        "${modifier}+q" = "kill";
+        "${modifier}+e" = "${terminal} yazi";
       };
 
       window = {
