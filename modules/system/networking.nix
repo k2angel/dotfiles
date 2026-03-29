@@ -1,8 +1,8 @@
-{ ... }:
+{ host, ... }:
 
 {
   networking = {
-    hostName = "nixos-vm";
+    hostName = "${host}";
     nftables.enable = true;
     networkmanager.enable = true;
 

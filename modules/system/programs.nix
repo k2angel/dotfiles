@@ -1,9 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   programs = {
     kdeconnect.enable = true;
     zsh.enable = true;
+
+    nh = {
+      enable = true;
+      clean.enable = true;
+      flake = "/home/${username}/nixos";
+    };
 
     sway = {
       enable = true;
@@ -23,4 +29,13 @@
       ];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    wget
+    ripgrep
+    nix-output-monitor
+    nvd
+  ];
 }

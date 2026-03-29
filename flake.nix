@@ -3,35 +3,35 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
-      nixos-vm = nixpkgs.lib.nixosSystem {
-        # specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.k2angel = ./home.nix;
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
+    username = "k2angel";
+  in {
+    nixosConfigurations.nixos-vm = let
+      host = "nixos-vm";
+    in nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs self username host; };
+      system = "x86_64-linux";
+      modules = [ ./hosts/${host} ];
+    };
 
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-            home-manager.extraSpecialArgs = { inherit inputs; };
-          }
-        ];
-      };
+    nixosConfigurations.visterhv = let
+      host = "visterhv";
+    in nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs self username host; };
+      system = "x86_64-linux";
+      modules = [ ./hosts/${host} ];
     };
   };
 }

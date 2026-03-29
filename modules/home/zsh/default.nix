@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, host, ... }:
 
 {
   programs = {
@@ -13,6 +13,10 @@
       plugins = [
         { name = "fzf-tab"; src = "${pkgs.zsh-fzf-tab}/share/fzf-tab"; }
       ];
+
+      shellAliases = {
+        nrl = "nh os switch --hostname ${host}";
+      };
     };
 
     bat = {

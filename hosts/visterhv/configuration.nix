@@ -1,0 +1,19 @@
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/system
+  ];
+
+  fileSystems = {
+    "/".options = [ "noatime" "compress=zstd" ];
+    "/home".options = [ "noatime" "compress=zstd" ];
+    "/nix".options = [ "noatime" "compress=zstd" ];
+  };
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 4*1024;
+  }];
+}
+
