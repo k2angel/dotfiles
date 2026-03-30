@@ -22,7 +22,7 @@
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@nixos_home" ];
     };
 
   fileSystems."/nix" =
@@ -35,6 +35,24 @@
     { device = "/dev/disk/by-uuid/6496-9B32";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  fileSystems."/mnt/arcade" =
+    { device = "/dev/disk/by-uuid/4ED8B1B8D8B19EA1";
+      fsType = "ntfs3";
+      options = [ "defaults" "uid=1000" "gid=1000" "umask=0022" "prealloc" "nofail" ];
+    };
+
+  fileSystems."/mnt/game" =
+    { device = "/dev/disk/by-uuid/ee1440b5-2673-893e-b116-50befc960c6c";
+      fsType = "btrfs";
+      options = [ ];
+    };
+
+  fileSystems."/mnt/pirate" =
+    { device = "/dev/disk/by-uuid/787EAE207EADD762";
+      fsType = "ntfs3";
+      options = [ "defaults" "uid=1000" "gid=1000" "umask=0022" "prealloc" "nofail" ];
     };
 
   swapDevices = [ ];
