@@ -52,8 +52,10 @@
       friendly-snippets.enable = true;
       fidget.enable = true;
       gitsigns.enable = true;
+      highlight-colors.enable = true;
       lsp.enable = true;
       nvim-autopairs.enable = true;
+      sleuth.enable = true;
       treesj.enable = true;
       trouble.enable = true;
       web-devicons.enable = true;
