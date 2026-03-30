@@ -48,6 +48,16 @@
     extraConfigLua = builtins.readFile ./init.lua;
 
     plugins = {
+      dropbar.enable = true;
+      friendly-snippets.enable = true;
+      fidget.enable = true;
+      gitsigns.enable = true;
+      lsp.enable = true;
+      nvim-autopairs.enable = true;
+      treesj.enable = true;
+      trouble.enable = true;
+      web-devicons.enable = true;
+
       bufferline = {
         enable = true;
         settings = {
@@ -68,6 +78,7 @@
           };
         };
       };
+
       cmp = {
         enable = true;
         autoEnableSources = true;
@@ -130,6 +141,7 @@
           };
         };
       };
+
       conform-nvim = {
         enable = true;
         format_on_save = {
@@ -140,15 +152,12 @@
           nix = [ "alejandra" ];
         };
       };
-      dropbar.enable = true;
-      friendly-snippets.enable = true;
-      fidget.enable = true;
-      gitsigns.enable = true;
-      lsp.enable = true;
+
       lspkind = {
         enable = true;
         cmp.enable = true;
       };
+
       lualine = {
         enable = true;
         settings = {
@@ -171,11 +180,12 @@
           ];
         };
       };
+
       luasnip = {
         enable = true;
         fromVscode = [ {} ];
       };
-      nvim-autopairs.enable = true;
+
       nvim-tree = {
         enable = true;
         settings = {
@@ -187,6 +197,7 @@
           };
         };
       };
+
       telescope = {
         enable = true;
         keymaps = {
@@ -212,6 +223,7 @@
           };
         };
       };
+
       toggleterm = {
         enable = true;
         settings = {
@@ -219,6 +231,7 @@
           direction = "horizontal";
         };
       };
+
       treesitter = {
         enable = true;
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
@@ -236,10 +249,8 @@
           yaml
         ];
       };
-      treesj.enable = true;
-      trouble.enable = true;
-      web-devicons.enable = true;
     };
+
     lsp.servers = {
       nixd.enable = true;
     };
