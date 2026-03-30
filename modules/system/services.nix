@@ -10,7 +10,7 @@
       useTextGreeter = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd sway";
+          command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd \"sway --unsupported-gpu\"";
           user = "greeter";
         };
       };

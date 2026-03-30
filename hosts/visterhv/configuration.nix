@@ -7,11 +7,21 @@
     ../../modules/system
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.kernelParams = [
+    "video=DP-2:d"
+    "video=HDMI-A-1:e"
+  ];
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
+
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true;
 
   fileSystems = {
     "/".options = [ "noatime" "compress=zstd" ];
