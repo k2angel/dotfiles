@@ -7,7 +7,7 @@
     settings = {
       color = true;
       library = "~/Music/library.db";
-      directory = "/mnt/pirate/Music/Library";
+      directory = "~/Music/Library";
       plugins = "musicbrainz mbsync fetchart inline info replaygain";
 
       item_fields = {

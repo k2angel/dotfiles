@@ -17,6 +17,8 @@
       };
 
       programs = {
+        beets.settings.directory = lib.mkForce "/mnt/pirate/Music/Library"
+
         sway.output = {
           "HDMI-A-1" = "enable resolution 1920x1080 position 0,0";
           "DP-2" = "disable resolution 1920x1080@119.993Hz position 1920,0";
