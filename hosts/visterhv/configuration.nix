@@ -11,7 +11,6 @@
 
   boot = {
     loader.systemd-boot.enable = lib.mkForce false;
-    initrd.extraFiles."/lib/firmware/edid/lg.bin".source = ./edid/lg.bin;
 
     kernelParams = [
       "drm.edid_firmware=DP-2:edid/lg.bin"
@@ -25,9 +24,19 @@
     };
   }
 
-  hardware.graphics.enable = true;
+  hardware = {
+    graphics.enable = true;
+    nvidia.open = true;
+
+    display.edid.packages = [(
+      pkgs.runCommand "lg-edid" {} ''
+        mkdir -p $out/lib/firmware/edid
+        cp "${./edid/lg.bin}" $out/lib/firmware/edid/lg.bin
+      ''
+    )];
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;
 
   fileSystems = {
     "/".options = [ "noatime" "compress=zstd" ];
