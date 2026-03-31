@@ -23,7 +23,7 @@
         wmenu-run -f "JetBrains Mono NL Regular 11" -N "#282c34" -n "#abb2bf" -M "#61afef" -m "#1e2127" -S "#61afef" -s "#1e2127"
       '';
       gaps = { inner = 4; outer = 2; };
-      output."*".bg = "${../../image/wallpaper01.png} fill";
+      output."*".bg = "${../../image/large_ev50.png} fill";
 
       fonts = {
         names = [ "JetBrains Mono NL" "UDEV Gothic 35" ];
