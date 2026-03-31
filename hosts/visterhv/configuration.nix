@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
-    ./hardware-configuration.nix
     ../../modules/system
   ];
 
