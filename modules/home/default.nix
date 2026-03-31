@@ -8,6 +8,7 @@
     ./fcitx5.nix
     ./foot.nix
     ./git.nix
+    ./programs.nix
     ./services.nix
     ./sway.nix
     ./themes.nix
