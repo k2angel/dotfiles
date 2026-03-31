@@ -46,7 +46,6 @@
   fileSystems."/mnt/game" =
     { device = "/dev/disk/by-uuid/ee1440b5-2673-893e-b116-50befc960c6c";
       fsType = "btrfs";
-      options = [ ];
     };
 
   fileSystems."/mnt/pirate" =
