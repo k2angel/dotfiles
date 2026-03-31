@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ inputs, lib, pkgs, username, ... }:
 
 {
   imports = [
@@ -34,6 +34,11 @@
         cp "${./edid/lg.bin}" $out/lib/firmware/edid/lg.bin
       ''
     )];
+
+    openrazer = {
+      enable = true;
+      users = [ "${username}" ];
+    };
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
