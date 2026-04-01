@@ -15,14 +15,23 @@
         homeDirectory = "/home/${username}";
         stateVersion = "25.11";
       };
+      wayland.windowManager.sway.config = {
+        output = {
+          "HDMI-A-1" = {
+            enable = "";
+            res = "1920x1080";
+            pos = "0 0";
+          };
+          "DP-2" = {
+            disable = "";
+            res = "1920x1080@119.993Hz";
+            pos = "1920 0";
+          };
+        };
+      };
 
       programs = {
-        beets.settings.directory = lib.mkForce "/mnt/pirate/Music/Library"
-
-        sway.output = {
-          "HDMI-A-1" = "enable resolution 1920x1080 position 0,0";
-          "DP-2" = "disable resolution 1920x1080@119.993Hz position 1920,0";
-        };
+        beets.settings.directory = lib.mkForce "/mnt/pirate/Music/Library";
       };
     };
   };
