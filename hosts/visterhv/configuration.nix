@@ -21,7 +21,7 @@
       enable = true;
       pkiBundle = "/var/lib/sbctl";
     };
-  }
+  };
 
   hardware = {
     graphics.enable = true;
