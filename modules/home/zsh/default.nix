@@ -15,7 +15,7 @@
       ];
 
       shellAliases = {
-        nrl = "nh os switch --hostname ${host}";
+        nrl = "${pkgs.nh}/bin/nh os switch --hostname ${host}";
       };
     };
 
