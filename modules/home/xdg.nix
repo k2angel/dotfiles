@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 
 {
   xdg.userDirs = {
@@ -11,8 +11,8 @@
     [filechooser]
     cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
     default_dir=$HOME
-    env=TERMCMD='foot -T "terminal filechooser" -a "termfilechooser"'
-    env=PATH="$PATH:/run/current-system/sw/bin"
+    env=TERMCMD='${pkgs.foot}/bin/foot -T "terminal filechooser" -a "termfilechooser"'
+    env=PATH="$PATH:${pkgs.gnused}/bin:${pkgs.yazi}/bin"
     open_mode=suggested
     save_mode=last
   '';
