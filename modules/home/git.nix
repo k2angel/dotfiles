@@ -16,4 +16,6 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  programs.gh.enable = true;
 }
