@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
 
+let
+  myScripts = import ./scripts.nix { inherit pkgs; };
+in
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -57,6 +60,7 @@
         "${modifier}+Shift+q" = null;
         "${modifier}+q" = "kill";
         "${modifier}+e" = "exec ${terminal} ${pkgs.yazi}/bin/yazi";
+        "${modifier}+Shift+e" = "exec ${myScripts.wmenu-powermenu}/bin/wmenu-powermenu";
       };
 
       window = {
