@@ -34,8 +34,7 @@
     git
     vim
     wget
-    yazi
     nix-output-monitor
-    nvd
+    dix
   ];
 }

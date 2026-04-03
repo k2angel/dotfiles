@@ -6,5 +6,6 @@
     ripgrep
     tealdeer
     fastfetch
+    yazi
   ];
 }
