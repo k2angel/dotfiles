@@ -54,8 +54,9 @@
     size = 4*1024;
   }];
 
-  environment.systemPackages = [
-    pkgs.sbctl
+  environment.systemPackages = with pkgs; [
+    sbctl
+    polychromatic
   ];
 }
 
