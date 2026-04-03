@@ -19,11 +19,6 @@
       };
     };
 
-    bat = {
-      enable = true;
-      config.theme = "OneHalfDark";
-    };
-
     zoxide = {
       enable = true;
       enableZshIntegration = true;
