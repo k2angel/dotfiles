@@ -12,5 +12,7 @@
     tealdeer
     fastfetch
     yazi
+    fortune
+    cowsay
   ];
 }

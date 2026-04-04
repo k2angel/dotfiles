@@ -5,10 +5,14 @@
     zsh = {
       enable = true;
       enableCompletion = true;
-      initContent = builtins.readFile ./init.zsh;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       history.ignoreAllDups = true;
+
+      initContent = ''
+        ${builtins.readFile ./init.zsh}
+        ${pkgs.fortune}/bin/fortune -s | ${pkgs.cowsay}/bin/cowsay
+      '';
 
       plugins = [
         { name = "fzf-tab"; src = "${pkgs.zsh-fzf-tab}/share/fzf-tab"; }
