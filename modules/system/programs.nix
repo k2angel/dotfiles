@@ -15,17 +15,10 @@
       enable = true;
 
       extraPackages = with pkgs; [
-        i3blocks
         i3status
-        foot
         grim
-        swayidle
         swaylock
         swaybg
-        wmenu
-        autotiling
-        wl-clipboard
-        mako
       ];
     };
   };
@@ -35,6 +28,8 @@
     vim
     wget
     nix-output-monitor
-    dix
+    wl-clipboard
+    libnotify
+    grim
   ];
 }
