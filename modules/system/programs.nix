@@ -31,5 +31,6 @@
     wl-clipboard
     libnotify
     grim
+    wmenu
   ];
 }

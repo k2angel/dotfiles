@@ -3,7 +3,7 @@
 {
   wmenu-powermenu = pkgs.writeShellScriptBin "wmenu-powermenu" ''
     options="Lock\nLogout\nReboot\nShutdown\nSuspend"
-    chosen=$(echo -e "$options" | ${pkgs.wmenu}/bin/wmenu "JetBrains Mono Regular 11" -N "#282c34" -n "#abb2bf" -M "#61afef" -m "#1e2127" -S "#61afef" -s "#1e2127" -p "System" -l 5)
+    chosen=$(echo -e "$options" | ${pkgs.wmenu}/bin/wmenu -p "System" -l 5)
     case "$chosen" in
     *Lock) ${pkgs.swaylock}/bin/swaylock -f -c 000000 ;;
     *Logout) ${pkgs.sway}/bin/swaymsg exit ;;
