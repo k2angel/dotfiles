@@ -11,7 +11,7 @@
 
     cliphist = {
       enable = true;
-      extraOptions = [ "max-items 1000" ];
+      extraOptions = [ "-max-items" "1000" ];
     };
 
     swayidle = {
