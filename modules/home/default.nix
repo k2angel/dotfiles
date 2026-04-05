@@ -12,6 +12,7 @@
     ./services.nix
     ./sway.nix
     ./themes.nix
+    ./uwsm.nix
     ./xdg.nix
   ];
 }

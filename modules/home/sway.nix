@@ -6,18 +6,7 @@ in
 {
   wayland.windowManager.sway = {
     enable = true;
-    extraSessionCommands = ''
-      export LANG=ja_JP.UTF-8
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      export GTK_USE_PORTAL=1
-    '';
     wrapperFeatures.gtk = true;
-
-    systemd = {
-      variables = [ "--all" ];
-      xdgAutostart = true;
-    };
 
     config = rec {
       modifier = "Mod4";

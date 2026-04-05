@@ -74,6 +74,8 @@
     size = 4*1024;
   }];
 
+  programs.uwsm.waylandCompositors.sway.extraArgs = [ "--unsupported-gpu" ];
+
   environment.systemPackages = with pkgs; [
     sbctl
     polychromatic
