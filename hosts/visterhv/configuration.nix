@@ -40,6 +40,26 @@
     };
   };
 
+  networking = {
+    useDHCP = false;
+    useNetworkd = true;
+    networkmanager.enable = lib.mkForce false;
+    wireless.iwd.enable = true;
+
+    defaultGateway = {
+      address = "192.168.3.1";
+      interface = "wlan0";
+    };
+    nameservers = [ "1.1.1.1" "1.0.0.1" "8.8.8.8" ];
+
+    interfaces.wlan0 = {
+      ipv4.addresses = [{
+        address = "192.168.3.171";
+        prefixLength = 24;
+      }];
+    };
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
 
   fileSystems = {
