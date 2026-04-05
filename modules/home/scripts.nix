@@ -6,7 +6,7 @@
     chosen=$(echo -e "$options" | ${pkgs.wmenu}/bin/wmenu -p "System" -l 5)
     case "$chosen" in
     *Lock) ${pkgs.swaylock}/bin/swaylock -f -c 000000 ;;
-    *Logout) ${pkgs.sway}/bin/swaymsg exit ;;
+    *Logout) ${pkgs.uwsm}/bin/uwsm stop ;;
     *Reboot) ${pkgs.systemd}/bin/systemctl reboot ;;
     *Shutdown) ${pkgs.systemd}/bin/systemctl poweroff ;;
     *Suspend) ${pkgs.swaylock}/bin/swaylock -f -c 000000 && ${pkgs.systemd}/bin/systemctl suspend ;;
