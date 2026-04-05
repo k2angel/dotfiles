@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
-{
+let
+  nix-colors = inputs.nix-colors;
+in {
+  imports = [ inputs.nix-colors.homeManagerModules.default ];
+
+  colorScheme = nix-colors.colorSchemes.onedark;
+
   home.pointerCursor = {
     enable = true;
     package = pkgs.adwaita-icon-theme;
