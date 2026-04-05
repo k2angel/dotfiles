@@ -44,5 +44,6 @@
     libnotify
     grim
     wmenu
+    bemenu
   ];
 }

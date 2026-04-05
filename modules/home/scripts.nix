@@ -13,4 +13,12 @@
     *) exit 1 ;;
     esac
   '';
+
+  bemenu-cliphist = pkgs.writeScriptBin "bemenu-cliphist" ''
+    export BEMENU_BACKEND=curses
+    result=$(${pkgs.cliphist}/bin/cliphist list | ${pkgs.bemenu}/bin/bemenu -p cliphist)
+    if [ -n "$result" ]; then
+      echo "$result" | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy && ${pkgs.libnotify}/bin/notify-send "Copied to clipboard!"
+    fi
+  '';
 }
