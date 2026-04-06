@@ -20,10 +20,20 @@
 
     pipewire = {
       enable = true;
+
       alsa.enable = true;
       alsa.support32Bit = true;
       jack.enable = true;
       wireplumber.enable = true;
     };
+
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+    };
   };
+
+  systemd.services.tailscaled.serviceConfig.Environment = [
+    "TS_DEBUG_FIREWALL_MODE=nftables"
+  ];
 }
