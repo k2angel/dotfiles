@@ -19,14 +19,14 @@
       ];
 
       shellAliases = {
-        nrl = "${pkgs.nh}/bin/nh os switch --diff always --hostname ${host}";
+        nob = "${pkgs.nh}/bin/nh os boot --diff always --hostname ${host}";
+        nos = "${pkgs.nh}/bin/nh os switch --diff always --hostname ${host}";
       };
     };
 
-    zoxide = {
+    fzf = {
       enable = true;
       enableZshIntegration = true;
-      options = [ "--cmd cd" ];
     };
 
     lsd = {
@@ -39,9 +39,10 @@
       };
     };
 
-    fzf = {
+    zoxide = {
       enable = true;
       enableZshIntegration = true;
+      options = [ "--cmd cd" ];
     };
   };
 }
