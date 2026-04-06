@@ -3,6 +3,7 @@
 {
   services = {
     kdeconnect.enable = true;
+    udiskie.enable = true;
 
     autotiling = {
       enable = true;

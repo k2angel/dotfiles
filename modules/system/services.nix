@@ -5,6 +5,7 @@
   services = {
     dbus.implementation = "broker";
     openssh.enable = true;
+    udisks2.enable = true;
 
     greetd = {
       enable = true;
