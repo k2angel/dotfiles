@@ -7,7 +7,7 @@
 
     settings = {
       main = {
-        font = "JetBrains Mono:size=11.25, SOROEMONO:size=11.25, Symbols Nerd Font:size=11.25";
+        font = "monospace:size=11.25";
         pad = "4x2";
       };
 
