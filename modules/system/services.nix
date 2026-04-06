@@ -27,6 +27,15 @@
       wireplumber.enable = true;
     };
 
+    resolved = {
+      enable = true;
+
+      settings.Resolve = {
+        DNSOverTLS = true;
+        DNSSEC = true;
+      };
+    };
+
     tailscale = {
       enable = true;
       openFirewall = true;
