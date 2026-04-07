@@ -1,4 +1,4 @@
-{ pkgs, fetchFromGithub, ... }:
+{ pkgs, fetchFromGitHub, ... }:
 
 {
   programs.yazi = {
@@ -12,7 +12,7 @@
     # '';
 
     flavors = {
-      base16 = fetchFromGithub {
+      base16 = fetchFromGitHub {
         owner = "matt-dong-123";
         repo = "base16.yazi";
         rev = "b02b7a80b59b9166b050a6a6dfd8769a81eab5e1";
