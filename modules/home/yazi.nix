@@ -21,18 +21,26 @@
     };
 
     plugins = with pkgs.yaziPlugins; {
-      compress = compress;
       # full-border = full-border;
+      ouch = ouch;
     };
 
     keymap = {
       mgr.prepend_keymap = [
-        { run = "plugin compress"; on = ["c" "a" "a" ]; };
-        { run = "plugin compress -p"; on = ["c" "a" "p" ]; };
-        { run = "plugin compress -ph"; on = ["c" "a" "h" ]; };
-        { run = "plugin compress -l"; on = ["c" "a" "l" ]; };
-        { run = "plugin compress -phl"; on = ["c" "a" "u" ]; };
-      ]
+        { run = "plugins ouch"; on = [ "C" ]; desc = "Compress with ouch"; }
+      ];
+    };
+
+    settings = {
+      opener = {
+        extract = [
+          { run = '${pkgs.ouch}/bin/ouch d -y "$@"'; desc = "Extract here with ouch"; }
+        ];
+      };
+
+      plugin.prepend_previewers = [
+        { run = "ouch --show-file-icons"; mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"; }
+      ];
     };
 
     theme = {
