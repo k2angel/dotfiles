@@ -7,6 +7,7 @@ in
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+    systemd.dbusImplementation = "broker";
 
     config = rec {
       modifier = "Mod4";
