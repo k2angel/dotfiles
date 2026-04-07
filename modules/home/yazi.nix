@@ -43,7 +43,7 @@
       };
 
       status = {
-        oeverall = { bg = "black"; };
+        overall = { bg = "black"; };
         sep_left = { open = ""; close = ""; };
         sep_right = { open = ""; close = ""; };
       };
