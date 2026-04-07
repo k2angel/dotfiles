@@ -14,5 +14,6 @@
     ./themes.nix
     ./uwsm.nix
     ./xdg.nix
+    ./yazi.nix
   ];
 }
