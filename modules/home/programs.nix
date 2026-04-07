@@ -11,7 +11,6 @@
     ripgrep
     tealdeer
     fastfetch
-    yazi
     fortune
     cowsay
   ];
