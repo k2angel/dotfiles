@@ -1,4 +1,4 @@
-{ username, ... }:
+{ pkgs, username, ... }:
 
 {
   virtualisation = {
@@ -37,6 +37,10 @@
       };
     };
   };
+
+  environment.systemPackages = [
+    pkgs.docker-compose
+  ];
 
   # users.users.${username}.extraGroups = [ "podman" ];
 }
