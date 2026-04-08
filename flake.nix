@@ -21,12 +21,31 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: let
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     username = "k2angel";
+
     mkNixosConfig = host: nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs self username host; };
       system = "x86_64-linux";
-      modules = [ ./hosts/${host} ];
+      modules = [
+        ./hosts/${host}
+
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs self username host; };
+
+          home-manager.users.${username} = {
+            imports = [ ./modules/home ./hosts/${host}/home.nix ];
+
+            home = {
+              username = "${username}";
+              homeDirectory = "/home/${username}";
+              stateVersion = "25.11";
+            };
+          };
+        }
+      ];
     };
   in {
     nixosConfigurations = {
