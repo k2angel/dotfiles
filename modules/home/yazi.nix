@@ -1,4 +1,4 @@
-{ pkgs, fetchFromGitHub, ... }:
+{ pkgs, ... }:
 
 {
   programs.yazi = {
@@ -12,11 +12,11 @@
     # '';
 
     flavors = {
-      base16 = fetchFromGitHub {
+      base16 = pkgs.fetchFromGitHub {
         owner = "matt-dong-123";
         repo = "base16.yazi";
         rev = "b02b7a80b59b9166b050a6a6dfd8769a81eab5e1";
-        hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        hash = "sha256-qfo2/GLS6+KaUI5r6qMt6rHLkBifi2WW3lqLtwkkK/c=";
       };
     };
 
@@ -27,14 +27,14 @@
 
     keymap = {
       mgr.prepend_keymap = [
-        { run = "plugins ouch"; on = [ "C" ]; desc = "Compress with ouch"; }
+        { run = "plugin ouch"; on = [ "C" ]; desc = "Compress with ouch"; }
       ];
     };
 
     settings = {
       opener = {
         extract = [
-          { run = '${pkgs.ouch}/bin/ouch d -y "$@"'; desc = "Extract here with ouch"; }
+          { run = "${pkgs.ouch}/bin/ouch d -y \"$@\""; desc = "Extract here with ouch"; }
         ];
       };
 
