@@ -1,21 +1,37 @@
-{ username, ... }:
+{ config, username, ... }:
 
 {
-  programs.git = {
-    enable = true;
+  programs = {
+    gh.enable = true;
 
-    settings = {
-      user = {
-        name = "${username}";
-        email = "90847045+k2angel@users.noreply.github.com";
+    git = {
+      enable = true;
+
+      settings = {
+        user = {
+          name = "${username}";
+          email = "90847045+k2angel@users.noreply.github.com";
+        };
+      };
+    };
+
+    lazygit = {
+      enable = true;
+      enableZshIntegration = true;
+
+      settings = {
+        gui.theme = with config.colorScheme.palette; {
+          activeBorderColor = [ "#${base0D}" "bold" ];
+          inactiveBorderCoor = [ "#${base03}" ];
+          searchingActiveBorderColor = [ "#${base04}" "bold" ];
+          optionsTextColor = [ "#${base06}" ];
+          selectedLineBgColor = [ "#${base03}" ];
+          cherryPickedCommitBgColor = [ "#${base02}" ];
+          cherryPickedCommitFgColor = [ "#${base03}" ];
+          unstagedChangesColor = [ "#${base08}" ];
+          defaultFgColor = [ "#${base05}" ];
+        };
       };
     };
   };
-
-  programs.lazygit = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.gh.enable = true;
 }
