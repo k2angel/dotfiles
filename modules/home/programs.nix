@@ -13,5 +13,7 @@
     fastfetch
     fortune
     cowsay
+    wineWow64Packages.stableFull
+    winetricks
   ];
 }
