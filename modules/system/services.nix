@@ -4,7 +4,6 @@
 {
   services = {
     dbus.implementation = "broker";
-    openssh.enable = true;
     udisks2.enable = true;
 
     greetd = {
@@ -16,6 +15,16 @@
           command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd '${pkgs.uwsm}/bin/uwsm start sway-uwsm.desktop'";
           user = "greeter";
         };
+      };
+    };
+
+    openssh = {
+      enable = true;
+
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
       };
     };
 
