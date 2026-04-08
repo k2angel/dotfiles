@@ -23,21 +23,15 @@
 
   outputs = inputs@{ self, nixpkgs, ... }: let
     username = "k2angel";
-  in {
-    nixosConfigurations.nixos-vm = let
-      host = "nixos-vm";
-    in nixpkgs.lib.nixosSystem {
+    mkNixosConfig = host: nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs self username host; };
       system = "x86_64-linux";
       modules = [ ./hosts/${host} ];
     };
-
-    nixosConfigurations.visterhv = let
-      host = "visterhv";
-    in nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs self username host; };
-      system = "x86_64-linux";
-      modules = [ ./hosts/${host} ];
+  in {
+    nixosConfigurations = {
+      nixos-vm = mkNixosConfig "nixos-vm";
+      visterhv = mkNixosConfig "visterhv";
     };
   };
 }
