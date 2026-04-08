@@ -14,10 +14,20 @@
       backend = "podman";
 
       containers = {
-        lms = {
-          image = "docker.io/epoupon/lms";
+        jellyfin = {
+          image = "docker.io/jellyfin/jellyfin:latest";
           autoStart = true;
-          extraOptions = [ "--pull=always" ];
+          ports = [ "8096:8096" ];
+          volumes = [
+            "/var/lib/jellyfin-cache:/cache"
+            "/var/lib/jellyfin-config:/config"
+            "/mnt/pirate/jellyfin:/media"
+          ];
+        };
+
+        lms = {
+          image = "docker.io/epoupon/lms:3.76.0";
+          autoStart = true;
           ports = [ "5082:5082" ];
           volumes = [
             "/var/lib/lms-data:/var/lms:rw"
