@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
-    ../../modules/system
   ];
 
   nixpkgs.config.allowUnfree = true;

@@ -1,10 +1,6 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-    ../../modules/system
-  ];
-
   fileSystems = {
     "/".options = [ "noatime" "compress=zstd" ];
     "/home".options = [ "noatime" "compress=zstd" ];

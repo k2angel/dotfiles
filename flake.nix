@@ -29,6 +29,7 @@
       system = "x86_64-linux";
       modules = [
         ./hosts/${host}
+        ./modules/system
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
@@ -36,7 +37,10 @@
           home-manager.extraSpecialArgs = { inherit inputs self username host; };
 
           home-manager.users.${username} = {
-            imports = [ ./modules/home ./hosts/${host}/home.nix ];
+            imports = [
+              ./hosts/${host}/home.nix
+              ./modules/home
+            ];
 
             home = {
               username = "${username}";
