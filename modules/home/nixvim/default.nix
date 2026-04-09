@@ -48,6 +48,7 @@
     extraConfigLua = builtins.readFile ./init.lua;
 
     plugins = {
+      direnv.enable = true;
       dropbar.enable = true;
       friendly-snippets.enable = true;
       fidget.enable = true;
@@ -238,6 +239,7 @@
         enable = true;
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           bash
+          javascript
           json
           lua
           make
@@ -255,6 +257,7 @@
 
     lsp.servers = {
       nixd.enable = true;
+      vtsls.enable = true;
     };
   };
 }
