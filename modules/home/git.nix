@@ -1,4 +1,4 @@
-{ config, username, ... }:
+{ config, pkgs, username, ... }:
 
 {
   programs = {
@@ -11,6 +11,9 @@
         user = {
           name = "${username}";
           email = "90847045+k2angel@users.noreply.github.com";
+        };
+        ghq = {
+          root = "${config.home.homeDirectory}/src";
         };
       };
     };
@@ -34,4 +37,8 @@
       };
     };
   };
+
+  home.packages = [
+    pkgs.ghq
+  ];
 }
