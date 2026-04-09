@@ -1,10 +1,14 @@
 { pkgs, ... }:
 
 {
-  xdg.userDirs = {
+  xdg = {
     enable = true;
-    createDirectories = true;
-    setSessionVariables = false;
+
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      setSessionVariables = false;
+    };
   };
 
   xdg.configFile."xdg-desktop-portal-termfilechooser/config".text = ''
