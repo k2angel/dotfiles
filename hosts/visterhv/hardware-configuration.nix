@@ -43,6 +43,12 @@
       options = [ "defaults" "uid=1000" "gid=1000" "umask=0022" "prealloc" "nofail" ];
     };
 
+  fileSystems."/mnt/arch_home" =
+    { device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
+      fsType = "btrfs";
+      options = [ "subvol=@home" ];
+    };
+
   fileSystems."/mnt/game" =
     { device = "/dev/disk/by-uuid/ee1440b5-2673-893e-b116-50befc960c6c";
       fsType = "btrfs";
