@@ -71,9 +71,6 @@
       ]
     );
 
-    extraPackages = with pkgs; [
-      alejandra
-    ];
     extraPlugins = with pkgs.vimPlugins; [
       onedarkpro-nvim
       plenary-nvim
@@ -192,12 +189,15 @@
 
       conform-nvim = {
         enable = true;
-        format_on_save = {
-          lsp_fallback = true;
-          timeout_ms = 500;
-        };
-        formatters_by_ft = {
-          nix = [ "alejandra" ];
+        autoInstall.enable = true;
+        settings = {
+          format_on_save = {
+            lsp_fallback = true;
+            timeout_ms = 500;
+          };
+          formatters_by_ft = {
+            nix = [ "nixfmt" ];
+          };
         };
       };
 
