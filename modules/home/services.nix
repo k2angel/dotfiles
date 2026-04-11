@@ -7,12 +7,18 @@
 
     autotiling = {
       enable = true;
-      extraArgs = [ "--limit" "2" ];
+      extraArgs = [
+        "--limit"
+        "2"
+      ];
     };
 
     cliphist = {
       enable = true;
-      extraOptions = [ "-max-items" "1000" ];
+      extraOptions = [
+        "-max-items"
+        "1000"
+      ];
     };
 
     swayidle = {
@@ -24,7 +30,10 @@
       };
 
       timeouts = [
-        { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -f -c 000000"; }
+        {
+          timeout = 300;
+          command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+        }
       ];
     };
 

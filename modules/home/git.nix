@@ -1,4 +1,9 @@
-{ config, pkgs, username, ... }:
+{
+  config,
+  pkgs,
+  username,
+  ...
+}:
 
 {
   programs = {
@@ -24,9 +29,15 @@
 
       settings = {
         gui.theme = with config.colorScheme.palette; {
-          activeBorderColor = [ "#${base0D}" "bold" ];
+          activeBorderColor = [
+            "#${base0D}"
+            "bold"
+          ];
           inactiveBorderCoor = [ "#${base03}" ];
-          searchingActiveBorderColor = [ "#${base04}" "bold" ];
+          searchingActiveBorderColor = [
+            "#${base04}"
+            "bold"
+          ];
           optionsTextColor = [ "#${base06}" ];
           selectedLineBgColor = [ "#${base03}" ];
           cherryPickedCommitBgColor = [ "#${base02}" ];

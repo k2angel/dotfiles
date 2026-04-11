@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   myScripts = import ./scripts.nix { inherit pkgs; };
@@ -13,11 +18,17 @@ in
       modifier = "Mod4";
       terminal = "${pkgs.foot}/bin/footclient";
       menu = "${pkgs.wmenu}/bin/wmenu-run";
-      gaps = { inner = 4; outer = 2; };
+      gaps = {
+        inner = 4;
+        outer = 2;
+      };
       output."*".bg = "${../../image/large_ev50.png} fill";
 
       fonts = {
-        names = [ "JetBrains Mono NL" "UDEV Gothic 35" ];
+        names = [
+          "JetBrains Mono NL"
+          "UDEV Gothic 35"
+        ];
         style = "Regular";
         size = 11.0;
       };
@@ -99,26 +110,43 @@ in
         ];
       };
 
-      bars = [{
-        position = "top";
-        statusCommand = "${pkgs.i3status}/bin/i3status";
+      bars = [
+        {
+          position = "top";
+          statusCommand = "${pkgs.i3status}/bin/i3status";
 
-        fonts = {
-          names = [ "JetBrains Mono NL" "UDEV Gothic 35" ];
-          style = "Regular";
-          size = 11.0;
-        };
-        extraConfig = ''
-          height 22
-          separator_symbol "｜"
-        '';
-        colors = {
-          background = "#282c34";
-          focusedWorkspace = { background = "#61afef"; border = "#61afef"; text = "#1e2127"; };
-          inactiveWorkspace = { background = "#282c34"; border = "#282c34"; text = "#abb2bf"; };
-          urgentWorkspace = { background = "#e06c75"; border = "#e06c75"; text = "#1e2127"; };
-        };
-      }];
+          fonts = {
+            names = [
+              "JetBrains Mono NL"
+              "UDEV Gothic 35"
+            ];
+            style = "Regular";
+            size = 11.0;
+          };
+          extraConfig = ''
+            height 22
+            separator_symbol "｜"
+          '';
+          colors = {
+            background = "#282c34";
+            focusedWorkspace = {
+              background = "#61afef";
+              border = "#61afef";
+              text = "#1e2127";
+            };
+            inactiveWorkspace = {
+              background = "#282c34";
+              border = "#282c34";
+              text = "#abb2bf";
+            };
+            urgentWorkspace = {
+              background = "#e06c75";
+              border = "#e06c75";
+              text = "#1e2127";
+            };
+          };
+        }
+      ];
     };
   };
 }

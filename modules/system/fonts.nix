@@ -34,7 +34,11 @@ in
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Noto Sans CJK JP" ];
     serif = [ "Noto Serif CJK JP" ];
-    monospace = [ "JetBrains Mono" "SOROEMONO" "Symbols Nerd Font" ];
+    monospace = [
+      "JetBrains Mono"
+      "SOROEMONO"
+      "Symbols Nerd Font"
+    ];
     emoji = [ "Noto Color Emoji" ];
   };
 }

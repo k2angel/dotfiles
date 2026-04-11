@@ -2,7 +2,8 @@
 
 let
   nix-colors = inputs.nix-colors;
-in {
+in
+{
   imports = [ inputs.nix-colors.homeManagerModules.default ];
 
   colorScheme = nix-colors.colorSchemes.onedark;

@@ -21,40 +21,65 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
-    username = "k2angel";
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    let
+      username = "k2angel";
 
-    mkNixosConfig = host: nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs self username host; };
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/${host}
-        ./modules/system
-
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs self username host; };
-
-          home-manager.users.${username} = {
-            imports = [
-              ./hosts/${host}/home.nix
-              ./modules/home
-            ];
-
-            home = {
-              username = "${username}";
-              homeDirectory = "/home/${username}";
-              stateVersion = "25.11";
-            };
+      mkNixosConfig =
+        host:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit
+              inputs
+              self
+              username
+              host
+              ;
           };
-        }
-      ];
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/${host}
+            ./modules/system
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit
+                  inputs
+                  self
+                  username
+                  host
+                  ;
+              };
+
+              home-manager.users.${username} = {
+                imports = [
+                  ./hosts/${host}/home.nix
+                  ./modules/home
+                ];
+
+                home = {
+                  username = "${username}";
+                  homeDirectory = "/home/${username}";
+                  stateVersion = "25.11";
+                };
+              };
+            }
+          ];
+        };
+    in
+    {
+      nixosConfigurations = {
+        nixos-vm = mkNixosConfig "nixos-vm";
+        visterhv = mkNixosConfig "visterhv";
+      };
     };
-  in {
-    nixosConfigurations = {
-      nixos-vm = mkNixosConfig "nixos-vm";
-      visterhv = mkNixosConfig "visterhv";
-    };
-  };
 }

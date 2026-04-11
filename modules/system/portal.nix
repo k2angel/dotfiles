@@ -11,7 +11,9 @@
     ];
 
     config = {
-      common = { default = [ "gtk" ]; };
+      common = {
+        default = [ "gtk" ];
+      };
       sway = {
         "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
       };

@@ -3,7 +3,8 @@
 let
   nix-colors = inputs.nix-colors;
   colorScheme = nix-colors.colorSchemes.onedark;
-in {
+in
+{
 
   nixpkgs.overlays = with colorScheme.palette; [
     (self: super: {

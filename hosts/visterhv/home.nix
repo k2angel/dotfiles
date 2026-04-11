@@ -17,12 +17,14 @@
       };
     };
 
-    extraConfig = let
-      modifier = "Mod4";
-    in ''
-      bindsym ${modifier}+g output DP-2 enable; output HDMI-A-1 disable
-      bindsym ${modifier}+Shift+g output DP-2 disable; output HDMI-A-1 enable
-    '';
+    extraConfig =
+      let
+        modifier = "Mod4";
+      in
+      ''
+        bindsym ${modifier}+g output DP-2 enable; output HDMI-A-1 disable
+        bindsym ${modifier}+Shift+g output DP-2 disable; output HDMI-A-1 enable
+      '';
   };
 
   programs = {

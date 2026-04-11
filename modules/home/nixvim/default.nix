@@ -26,15 +26,49 @@
     };
 
     keymaps = [
-      { mode = "n"; key = "<leader>e"; action = ":NvimTreeToggle<CR>"; }
-      { mode = "n"; key = "<A-,>"; action = "<Cmd>BufferLineCyclePrev<CR>"; }
-      { mode = "n"; key = "<A-.>"; action = "<Cmd>BufferLineCycleNext<CR>"; }
-      { mode = "n"; key = "<A-<>"; action = "<Cmd>BufferLineCyclePrev<CR>"; }
-      { mode = "n"; key = "<A->>"; action = "<Cmd>BufferLineCycleNext<CR>"; }
-    ] ++ (
-      map (i: {
-        mode = "n"; key = "<A-${toString i}>"; action = "<Cmd>BufferLineGoTo ${toString i}<CR>";
-      }) [ 1 2 3 4 5 6 7 8 9 ]
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = ":NvimTreeToggle<CR>";
+      }
+      {
+        mode = "n";
+        key = "<A-,>";
+        action = "<Cmd>BufferLineCyclePrev<CR>";
+      }
+      {
+        mode = "n";
+        key = "<A-.>";
+        action = "<Cmd>BufferLineCycleNext<CR>";
+      }
+      {
+        mode = "n";
+        key = "<A-<>";
+        action = "<Cmd>BufferLineCyclePrev<CR>";
+      }
+      {
+        mode = "n";
+        key = "<A->>";
+        action = "<Cmd>BufferLineCycleNext<CR>";
+      }
+    ]
+    ++ (map
+      (i: {
+        mode = "n";
+        key = "<A-${toString i}>";
+        action = "<Cmd>BufferLineGoTo ${toString i}<CR>";
+      })
+      [
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+        8
+        9
+      ]
     );
 
     extraPackages = with pkgs; [
@@ -72,12 +106,14 @@
                 return " " .. icon .. count
               end
             '';
-            offsets = [{
-              filetype = "NvimTree";
-              text = "File Explorer";
-              highlight = "Directory";
-              separator = true;
-            }];
+            offsets = [
+              {
+                filetype = "NvimTree";
+                text = "File Explorer";
+                highlight = "Directory";
+                separator = true;
+              }
+            ];
           };
         };
       };
@@ -129,16 +165,25 @@
         };
         cmdline = {
           "/" = {
-            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
-            sources = [{ name = "buffer"; }];
+            mapping = {
+              __raw = "cmp.mapping.preset.cmdline()";
+            };
+            sources = [ { name = "buffer"; } ];
           };
           ":" = {
-            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
+            mapping = {
+              __raw = "cmp.mapping.preset.cmdline()";
+            };
             sources = [
               { name = "path"; }
               {
                 name = "cmdline";
-                option = { ignore_cmds = [ "Man" "!"]; };
+                option = {
+                  ignore_cmds = [
+                    "Man"
+                    "!"
+                  ];
+                };
               }
             ];
           };
@@ -165,14 +210,24 @@
         enable = true;
         settings = {
           options = {
-            component_separators = { right = "::"; };
-            section_separators = { right = ""; };
+            component_separators = {
+              right = "::";
+            };
+            section_separators = {
+              right = "";
+            };
           };
           sections = {
             lualine_x = [
               "encoding"
-              { __unkeyed-1 = "fileformat"; icons_enabled = false; }
-              { __unkeyed-2 = "filetype"; icons_enabled = false; }
+              {
+                __unkeyed-1 = "fileformat";
+                icons_enabled = false;
+              }
+              {
+                __unkeyed-2 = "filetype";
+                icons_enabled = false;
+              }
             ];
           };
           extensions = [
@@ -186,7 +241,7 @@
 
       luasnip = {
         enable = true;
-        fromVscode = [ {} ];
+        fromVscode = [ { } ];
       };
 
       nvim-tree = {
@@ -206,23 +261,33 @@
         keymaps = {
           "<leader>ff" = {
             action = "find_files";
-            options = { desc = "Telescope find files"; };
+            options = {
+              desc = "Telescope find files";
+            };
           };
           "<leader>fg" = {
             action = "live_grep";
-            options = { desc = "Telescope live grep"; };
+            options = {
+              desc = "Telescope live grep";
+            };
           };
           "<leader>fb" = {
             action = "buffers";
-            options = { desc = "Telescope buffers"; };
+            options = {
+              desc = "Telescope buffers";
+            };
           };
           "<leader>fh" = {
             action = "help_tags";
-            options = { desc = "Telescope help tags"; };
+            options = {
+              desc = "Telescope help tags";
+            };
           };
           "<leader>fr" = {
             action = "registers";
-            options = { desc = "Telescope registers"; };
+            options = {
+              desc = "Telescope registers";
+            };
           };
         };
       };
