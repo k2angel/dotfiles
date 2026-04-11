@@ -23,6 +23,11 @@ in
     colorScheme = "dark";
     gtk4.theme = null;
 
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
+
     theme = {
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;
