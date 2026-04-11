@@ -33,7 +33,7 @@
         copy = true;
         move = false;
         write = true;
-        autotag = false;
+        autotag = true;
       };
 
       paths = {
