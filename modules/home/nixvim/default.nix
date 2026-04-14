@@ -74,6 +74,15 @@
     extraPlugins = with pkgs.vimPlugins; [
       onedarkpro-nvim
       plenary-nvim
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "fcitx-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "h-hg";
+          repo = "fcitx.nvim";
+          rev = "c8543d72adf02a557722847c5d263171ec5c9bb4";
+          hash = "sha256-0cxLjkg9rFtl4ISeiRlI14tDMezHQSiZIdchA2x2Yes=";
+        };
+      })
     ];
     extraConfigLuaPre = builtins.readFile ./init_pre.lua;
     extraConfigLua = builtins.readFile ./init.lua;
