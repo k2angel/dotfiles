@@ -36,11 +36,11 @@
   };
 
   home.packages = with pkgs; [
+    android-tools
     duf
-    ripgrep
     fastfetch
-    fortune
-    cowsay
+    payload-dumper-go
+    ripgrep
     wineWow64Packages.stableFull
     winetricks
   ];
