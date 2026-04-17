@@ -29,6 +29,7 @@
       ];
 
       shellAliases = {
+        beet-import = "${pkgs.beets}/bin/beet import ${config.xdg.userDirs.music}/beet-import";
         nob = "${pkgs.nh}/bin/nh os boot --diff always --hostname ${host}";
         nos = "${pkgs.nh}/bin/nh os switch --diff always --hostname ${host}";
       };
