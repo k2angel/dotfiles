@@ -26,12 +26,18 @@
         osc = "no";
       };
     };
+
+    tealdeer = {
+      enable = true;
+      settings.update = {
+        auto_update = true;
+      };
+    };
   };
 
   home.packages = with pkgs; [
     duf
     ripgrep
-    tealdeer
     fastfetch
     fortune
     cowsay
