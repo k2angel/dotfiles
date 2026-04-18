@@ -40,7 +40,6 @@
     vim
     wget
     ouch
-    nix-output-monitor
     wl-clipboard
     libnotify
     grim
