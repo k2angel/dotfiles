@@ -6,8 +6,9 @@
 
     settings = {
       color = true;
-      library = "~/Music/library.db";
+      per_disc_numbering = true;
       directory = "~/Music/Library";
+      library = "~/Music/library.db";
       plugins = "musicbrainz mbsync fetchart inline info replaygain";
 
       item_fields = {
