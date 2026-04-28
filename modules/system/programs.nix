@@ -1,15 +1,9 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 
 {
   programs = {
     kdeconnect.enable = true;
     zsh.enable = true;
-
-    nh = {
-      enable = true;
-      clean.enable = true;
-      flake = "/home/${username}/dotfiles";
-    };
 
     sway = {
       enable = true;

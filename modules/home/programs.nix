@@ -31,6 +31,12 @@
       nix-direnv.enable = true;
     };
 
+    nh = {
+      enable = true;
+      clean.enable = true;
+      flake = "${config.home.homeDirectory}/dotfiles";
+    };
+
     mpv = {
       enable = true;
 
