@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   programs.beets = {
@@ -7,7 +7,7 @@
     settings = {
       color = true;
       per_disc_numbering = true;
-      directory = "~/Music/Library";
+      directory = lib.mkDefault "~/Music/Library";
       library = "~/Music/library.db";
       plugins = "musicbrainz mbsync fetchart inline info replaygain";
 

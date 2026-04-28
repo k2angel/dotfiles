@@ -28,6 +28,6 @@
   };
 
   programs = {
-    beets.settings.directory = lib.mkForce "/mnt/pirate/Music/Library";
+    beets.settings.directory = "/mnt/pirate/Music/Library";
   };
 }
