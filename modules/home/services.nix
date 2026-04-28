@@ -7,10 +7,7 @@
 
     autotiling = {
       enable = true;
-      extraArgs = [
-        "--limit"
-        "2"
-      ];
+      package = pkgs.autotiling-rs;
     };
 
     cliphist = {
