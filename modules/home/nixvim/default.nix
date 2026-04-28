@@ -205,7 +205,9 @@
             timeout_ms = 500;
           };
           formatters_by_ft = {
+            javascript = [ "prettier" ];
             nix = [ "nixfmt" ];
+            python = [ "ruff" ];
           };
         };
       };
@@ -319,6 +321,7 @@
           make
           markdown
           nix
+          python
           regex
           toml
           vim
@@ -330,6 +333,7 @@
     };
 
     lsp.servers = {
+      basedpyright.enable = true;
       nixd.enable = true;
       vtsls.enable = true;
     };
