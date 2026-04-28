@@ -12,9 +12,10 @@
 
     cliphist = {
       enable = true;
+
       extraOptions = [
         "-max-items"
-        "1000"
+        "10000"
       ];
     };
 
