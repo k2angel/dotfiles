@@ -1,20 +1,18 @@
 { pkgs, ... }:
-
 let
   soroemono = pkgs.stdenv.mkDerivation rec {
     pname = "soroemono";
     version = "1.0.0";
-    nativeBuildInputs = [ pkgs.unzip ];
-    sourceRoot = ".";
 
-    src = pkgs.fetchurl {
+    src = pkgs.fetchzip {
       url = "https://github.com/qrac/soroemono/releases/download/${version}/SOROEMONO_v${version}.zip";
-      hash = "sha256-oEu/Dqop0MJrLc79tY3rZL8B5yluLUB/s/buYqQ6aTA=";
+      hash = "sha256-70PzvCDoT8pP/jY0PvYXLChuXKdhuAmw0+nDRxpWQ5Y=";
+      stripRoot = false;
     };
 
     installPhase = ''
       runHook preInstall
-      install -Dm644 *.ttf -t $out/share/fonts/truetype/soroemono
+      install -Dm644 -t "$out/share/fonts/truetype/" *.ttf
       runHook postInstall
     '';
   };
