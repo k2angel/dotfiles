@@ -8,7 +8,7 @@
     nh = {
       enable = true;
       clean.enable = true;
-      flake = "/home/${username}/nixos";
+      flake = "/home/${username}/dotfiles";
     };
 
     sway = {
