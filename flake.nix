@@ -30,10 +30,13 @@
     }:
     let
       username = "k2angel";
+      system = "x86_64-linux";
 
       mkNixosConfig =
         host:
         nixpkgs.lib.nixosSystem {
+          inherit system;
+
           specialArgs = {
             inherit
               inputs
@@ -42,7 +45,6 @@
               host
               ;
           };
-          system = "x86_64-linux";
           modules = [
             ./hosts/${host}
             ./modules/system
@@ -65,14 +67,27 @@
                   ./hosts/${host}/home.nix
                   ./modules/home
                 ];
-
-                home = {
-                  username = "${username}";
-                  homeDirectory = "/home/${username}";
-                  stateVersion = "25.11";
-                };
               };
             }
+          ];
+        };
+
+      mkHomeConfig =
+        host:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+
+          extraSpecialArgs = {
+            inherit
+              inputs
+              username
+              host
+              ;
+          };
+
+          modules = [
+            ./hosts/${host}
+            ./modules/home-manager
           ];
         };
     in
@@ -80,6 +95,10 @@
       nixosConfigurations = {
         nixos-vm = mkNixosConfig "nixos-vm";
         visterhv = mkNixosConfig "visterhv";
+      };
+
+      homeConfigurations = {
+        "k2angel@archlinux" = mkHomeConfig "archlinux";
       };
     };
 }
