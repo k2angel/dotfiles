@@ -60,9 +60,18 @@
 
   home.packages = with pkgs; [
     android-tools
+    aria2
     duf
     fastfetch
+    fd
+    ntfs2btrfs
+    ouch
     payload-dumper-go
     ripgrep
+    rsync
+    sox
+    slsk-batchdl
+    twitch-dl
+    tree
   ];
 }
