@@ -9,6 +9,7 @@
     ./fcitx5.nix
     ./foot.nix
     ./git.nix
+    ./home.nix
     ./programs.nix
     ./services.nix
     ./sway.nix
