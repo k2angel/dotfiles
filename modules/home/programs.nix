@@ -64,7 +64,5 @@
     fastfetch
     payload-dumper-go
     ripgrep
-    wineWow64Packages.stableFull
-    winetricks
   ];
 }
