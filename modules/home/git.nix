@@ -9,6 +9,11 @@
   programs = {
     gh.enable = true;
 
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
+
     git = {
       enable = true;
 
@@ -17,6 +22,12 @@
           name = "${username}";
           email = "90847045+k2angel@users.noreply.github.com";
         };
+
+        delta = {
+          line-numbers = true;
+          keep-plus-minus-markers = true;
+        };
+
         ghq = {
           root = "${config.home.homeDirectory}/src";
         };
