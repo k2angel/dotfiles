@@ -8,4 +8,17 @@
       nos = "${pkgs.nh}/bin/nh home switch --diff always";
     };
   };
+
+  services = {
+    swayidle = {
+      events.before-sleep = lib.mkForce "/usr/bin/swaylock -f -c 000000";
+
+      timeouts = lib.mkForce [
+        {
+          timeout = 300;
+          command = "/usr/bin/swaylock -f -c 000000";
+        }
+      ];
+    };
+  };
 }
