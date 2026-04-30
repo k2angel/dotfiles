@@ -22,74 +22,18 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }:
+    inputs@{ self, ... }:
     let
-      username = "k2angel";
-      system = "x86_64-linux";
+      baseArgs = {
+        inherit inputs self;
+        username = "k2angel";
+        system = "x86_64-linux";
+      };
 
-      mkNixosConfig =
-        host:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
+      mylib = import ./lib inputs;
 
-          specialArgs = {
-            inherit
-              inputs
-              self
-              username
-              host
-              ;
-          };
-          modules = [
-            ./hosts/${host}
-            ./modules/system
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit
-                  inputs
-                  self
-                  username
-                  host
-                  ;
-              };
-
-              home-manager.users.${username} = {
-                imports = [
-                  ./hosts/${host}/home.nix
-                  ./modules/home
-                ];
-              };
-            }
-          ];
-        };
-
-      mkHomeConfig =
-        host:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-
-          extraSpecialArgs = {
-            inherit
-              inputs
-              username
-              host
-              ;
-          };
-
-          modules = [
-            ./hosts/${host}
-            ./modules/home-manager
-          ];
-        };
+      mkNixosConfig = host: mylib.mkNixosConfig (baseArgs // { inherit host; });
+      mkHomeConfig = host: mylib.mkHomeConfig (baseArgs // { inherit host; });
     in
     {
       nixosConfigurations = {
