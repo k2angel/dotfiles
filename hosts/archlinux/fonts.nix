@@ -53,6 +53,7 @@ in
     noto-fonts-color-emoji
     sf-pro
     soroemono
+    twitter-color-emoji
     udev-gothic
   ];
 
@@ -75,7 +76,7 @@ in
         "Symbols Nerd Font"
       ];
       emoji = [
-        "Twemoji"
+        "Twitter Color Emoji"
         "Noto Color Emoji"
       ];
     };

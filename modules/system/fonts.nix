@@ -19,15 +19,16 @@ let
 in
 {
   fonts.packages = with pkgs; [
+    font-awesome
+    jetbrains-mono
+    nerd-fonts.symbols-only
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
-    font-awesome
-    jetbrains-mono
-    udev-gothic
     soroemono
-    nerd-fonts.symbols-only
+    twitter-color-emoji
+    udev-gothic
   ];
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Noto Sans CJK JP" ];
@@ -37,6 +38,9 @@ in
       "SOROEMONO"
       "Symbols Nerd Font"
     ];
-    emoji = [ "Noto Color Emoji" ];
+    emoji = [
+      "Twitter Color Emoji"
+      "Noto Color Emoji"
+    ];
   };
 }
