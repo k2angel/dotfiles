@@ -81,7 +81,7 @@ in
             command = builtins.concatStringsSep ", " [
               "floating enable"
               "sticky enable"
-              "border pixel none"
+              "border pixel 1px"
               "resize set 77ppt 77ppt"
               "move position center"
             ];
@@ -91,7 +91,7 @@ in
             command = builtins.concatStringsSep ", " [
               "floating enable"
               "sticky enable"
-              "border pixel none"
+              "border pixel 1px"
               "resize set 800px 600px"
               "move position center"
               # "resize set 100ppt 100px"
