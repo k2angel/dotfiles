@@ -18,11 +18,12 @@ in
       modifier = "Mod4";
       terminal = "${pkgs.foot}/bin/footclient";
       menu = "${pkgs.wmenu}/bin/wmenu-run";
+      output."*".bg = "${../../image/large_ev50.png} fill";
+
       gaps = {
         inner = 4;
         outer = 2;
       };
-      output."*".bg = "${../../image/large_ev50.png} fill";
 
       fonts = {
         names = [
@@ -50,6 +51,7 @@ in
           repeat_delay = 200;
           repeat_rate = 25;
           xkb_layout = "jp";
+          xkb_options = "ctrl:nocaps";
         };
 
         "type:pointer" = {
