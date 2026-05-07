@@ -50,6 +50,11 @@
       };
     };
 
+    swaylock = {
+      enable = true;
+      settings.color = "000000";
+    };
+
     tealdeer = {
       enable = true;
       settings.update = {
@@ -64,6 +69,7 @@
     duf
     fastfetch
     fd
+    libnotify
     ntfs2btrfs
     ouch
     payload-dumper-go
@@ -71,7 +77,12 @@
     rsync
     sox
     slsk-batchdl
+    sway-contrib.grimshot
+    trash-cli
     twitch-dl
     tree
+    wmenu
+    wl-clipboard
+    yt-dlp
   ];
 }
