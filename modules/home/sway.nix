@@ -54,7 +54,7 @@ in
 
         "type:pointer" = {
           pointer_accel = "-0.05";
-          accel_profile = "\"flat\"";
+          accel_profile = "flat";
         };
       };
 
