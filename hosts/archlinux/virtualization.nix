@@ -1,0 +1,55 @@
+{ config, pkgs, ... }:
+
+let
+  volumes_dir = "${config.home.homeDirectory}/Containers/volumes";
+in
+{
+  services.podman = {
+    enable = true;
+
+    containers = {
+      jellyfin = {
+        image = "docker.io/jellyfin/jellyfin:latest";
+        ports = [ "8096:8096" ];
+        volumes = [
+          "${volumes_dir}/jellyfin-cache:/cache:rw"
+          "${volumes_dir}/jellyfin-config:/config:rw"
+          "/mnt/pirate/jellyfin:/media:rw"
+        ];
+      };
+
+      lms = {
+        autoStart = true;
+        image = "docker.io/epoupon/lms:latest";
+        ports = [ "5082:5082" ];
+        volumes = [
+          "${volumes_dir}/lms-data:/var/lms:rw"
+          "/mnt/pirate/Music/Library:/music:ro"
+        ];
+      };
+
+      watcher = {
+        autoStart = true;
+        image = "ghcr.io/k2angel/watcher:latest";
+        userNS = "keep-id";
+        volumes = [
+          "${volumes_dir}/watcher/config.json:/usr/src/app/config.json:ro"
+          "${volumes_dir}/watcher/attachments:/usr/src/app/attachments:rw"
+        ];
+      };
+    };
+  };
+
+  programs = {
+    lazydocker.enable = true;
+    zsh.shellAliases.lzd = "${pkgs.lazydocker}/bin/lazydocker";
+  };
+
+  home.packages = with pkgs; [
+    podman
+  ];
+
+  home.sessionVariables = {
+    DOCKER_HOST = "unix://$(${pkgs.podman}/bin/podman info -f '{{.Host.RemoteSocket.Path}}')";
+  };
+}
