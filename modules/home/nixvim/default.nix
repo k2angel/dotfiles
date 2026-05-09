@@ -8,6 +8,7 @@
     defaultEditor = true;
     globals.mapleader = " ";
     diagnostic.settings.virtual_text = true;
+    nixpkgs.config.allowUnfree = true;
 
     opts = {
       number = true;
