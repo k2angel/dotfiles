@@ -1,6 +1,25 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
+
+  nixpkgs.config = {
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "unrar"
+        "ventoy"
+      ];
+
+    permittedInsecurePackages = [
+      "ventoy-1.1.12"
+    ];
+  };
+
   programs = {
     bat = {
       enable = true;
@@ -82,6 +101,8 @@
     trash-cli
     twitch-dl
     tree
+    unrar
+    ventoy
     wmenu
     wl-clipboard
     yt-dlp
