@@ -9,6 +9,7 @@ in
 
     containers = {
       jellyfin = {
+        autoStart = false;
         image = "docker.io/jellyfin/jellyfin:latest";
         ports = [ "8096:8096" ];
         volumes = [
@@ -19,7 +20,6 @@ in
       };
 
       lms = {
-        autoStart = true;
         image = "docker.io/epoupon/lms:latest";
         ports = [ "5082:5082" ];
         volumes = [
@@ -29,7 +29,6 @@ in
       };
 
       watcher = {
-        autoStart = true;
         image = "ghcr.io/k2angel/watcher:latest";
         userNS = "keep-id";
         volumes = [
