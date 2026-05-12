@@ -118,7 +118,7 @@ in
       bars = [
         {
           position = "top";
-          statusCommand = "${pkgs.i3status}/bin/i3status";
+          statusCommand = "${pkgs.i3blocks}/bin/i3status-rs config-default.toml";
 
           fonts = {
             names = [

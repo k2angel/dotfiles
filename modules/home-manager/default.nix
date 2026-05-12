@@ -8,6 +8,7 @@
     ../home/foot.nix
     ../home/git.nix
     ../home/home.nix
+    ../home/i3status.nix
     ../home/programs.nix
     ../home/yazi.nix
     ../home/services.nix

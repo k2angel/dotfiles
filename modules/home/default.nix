@@ -10,6 +10,7 @@
     ./foot.nix
     ./git.nix
     ./home.nix
+    ./i3status.nix
     ./programs.nix
     ./services.nix
     ./sway.nix
