@@ -15,17 +15,15 @@ in
     systemd.dbusImplementation = "broker";
 
     config = rec {
+      defaultWorkspace = "workspace number 1";
+      menu = "${pkgs.wmenu}/bin/wmenu-run";
       modifier = "Mod4";
       terminal = "${pkgs.foot}/bin/footclient";
-      menu = "${pkgs.wmenu}/bin/wmenu-run";
+      fonts.size = 11.0;
       output."*".bg = "${../../image/large_ev50.png} fill";
 
       colors = with config.colorScheme.palette; {
         background = "#${base07}";
-      gaps = {
-        inner = 4;
-        outer = 2;
-      };
 
         focused = {
           border = "#${base05}";
@@ -66,18 +64,12 @@ in
           indicator = "#${base08}";
           childBorder = "#${base08}";
         };
-      fonts = {
-        names = [
-          "JetBrains Mono NL"
-          "UDEV Gothic 35"
-        ];
-        style = "Regular";
-        size = 11.0;
       };
 
-      startup = [
-        { command = "swaymsg workspace number 1"; }
-      ];
+      gaps = {
+        inner = 4;
+        outer = 2;
+      };
 
       input = {
         "type:keyboard" = {
@@ -151,36 +143,45 @@ in
       bars = [
         {
           position = "top";
-          statusCommand = "${pkgs.i3blocks}/bin/i3status-rs config-default.toml";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs config-default.toml";
+          trayOutput = "none";
+          trayPadding = 0;
+          fonts.size = 11.0;
+          extraConfig = "height 22";
 
-          fonts = {
-            names = [
-              "JetBrains Mono NL"
-              "UDEV Gothic 35"
-            ];
-            style = "Regular";
-            size = 11.0;
-          };
-          extraConfig = ''
-            height 22
-            separator_symbol "｜"
-          '';
-          colors = {
-            background = "#282c34";
+          colors = with config.colorScheme.palette; {
+            background = "#${base00}";
+            separator = "#${base01}";
+            statusline = "#${base04}";
+
+            activeWorkspace = {
+              background = "#${base03}";
+              border = "#${base03}";
+              text = "#${base00}";
+            };
+
+            bindingMode = {
+              background = "#${base0A}";
+              border = "#${base0A}";
+              text = "#${base00}";
+            };
+
             focusedWorkspace = {
-              background = "#61afef";
-              border = "#61afef";
-              text = "#1e2127";
+              background = "#${base0D}";
+              border = "#${base0D}";
+              text = "#${base00}";
             };
+
             inactiveWorkspace = {
-              background = "#282c34";
-              border = "#282c34";
-              text = "#abb2bf";
+              background = "#${base00}";
+              border = "#${base00}";
+              text = "#${base05}";
             };
+
             urgentWorkspace = {
-              background = "#e06c75";
-              border = "#e06c75";
-              text = "#1e2127";
+              background = "#${base08}";
+              border = "#${base08}";
+              text = "#${base00}";
             };
           };
         }
