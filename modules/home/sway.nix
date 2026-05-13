@@ -20,11 +20,52 @@ in
       menu = "${pkgs.wmenu}/bin/wmenu-run";
       output."*".bg = "${../../image/large_ev50.png} fill";
 
+      colors = with config.colorScheme.palette; {
+        background = "#${base07}";
       gaps = {
         inner = 4;
         outer = 2;
       };
 
+        focused = {
+          border = "#${base05}";
+          background = "#${base0D}";
+          text = "#${base00}";
+          indicator = "#${base0D}";
+          childBorder = "#${base0D}";
+        };
+
+        focusedInactive = {
+          border = "#${base01}";
+          background = "#${base01}";
+          text = "#${base05}";
+          indicator = "#${base03}";
+          childBorder = "#${base01}";
+        };
+
+        placeholder = {
+          border = "#${base00}";
+          background = "#${base00}";
+          text = "#${base05}";
+          indicator = "#${base00}";
+          childBorder = "#${base00}";
+        };
+
+        unfocused = {
+          border = "#${base01}";
+          background = "#${base00}";
+          text = "#${base05}";
+          indicator = "#${base01}";
+          childBorder = "#${base01}";
+        };
+
+        urgent = {
+          border = "#${base08}";
+          background = "#${base08}";
+          text = "#${base00}";
+          indicator = "#${base08}";
+          childBorder = "#${base08}";
+        };
       fonts = {
         names = [
           "JetBrains Mono NL"
@@ -32,14 +73,6 @@ in
         ];
         style = "Regular";
         size = 11.0;
-      };
-
-      colors.focused = {
-        border = "#61afef";
-        background = "#61afef";
-        text = "#1e2127";
-        indicator = "#2e9ef4";
-        childBorder = "#61afef";
       };
 
       startup = [
