@@ -48,8 +48,8 @@ in
 
       input = {
         "type:keyboard" = {
-          repeat_delay = 200;
-          repeat_rate = 25;
+          repeat_delay = "200";
+          repeat_rate = "25";
           xkb_layout = "jp";
           xkb_options = "ctrl:nocaps";
         };
