@@ -12,6 +12,7 @@
     ../home/programs.nix
     ../home/yazi.nix
     ../home/services.nix
+    ../home/sway.nix
     ../home/themes.nix
     ../home/uwsm.nix
     ../home/xdg.nix
