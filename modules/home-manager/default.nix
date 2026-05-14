@@ -9,6 +9,7 @@
     ../home/git.nix
     ../home/home.nix
     ../home/i3status.nix
+    ../home/overlays.nix
     ../home/programs.nix
     ../home/yazi.nix
     ../home/services.nix

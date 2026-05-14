@@ -11,6 +11,7 @@
     ./git.nix
     ./home.nix
     ./i3status.nix
+    ./overlays.nix
     ./programs.nix
     ./services.nix
     ./sway.nix
