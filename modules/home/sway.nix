@@ -102,6 +102,12 @@ in
           -a "bemenu_cliphist" \
           ${myScripts.bemenu-cliphist}/bin/bemenu-cliphist
         '';
+        "Print" =
+          "exec ${pkgs.grim}/bin/grim - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
+        "Alt+v" =
+          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save active - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
+        "Alt+Ctrl+c" =
+          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save area - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
       };
 
       window = {
