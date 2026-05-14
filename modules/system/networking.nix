@@ -1,11 +1,11 @@
-{ host, ... }:
+{ lib, host, ... }:
 
 {
   networking = {
     hostName = "${host}";
 
     nftables.enable = true;
-    networkmanager.enable = true;
+    networkmanager.enable = lib.mkDefault true;
 
     firewall = {
       enable = true;

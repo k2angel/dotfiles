@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   wayland.windowManager.sway = {
@@ -31,4 +36,8 @@
   programs = {
     beets.settings.directory = "/mnt/pirate/Music/Library";
   };
+
+  home.packages = with pkgs; [
+    razer-cli
+  ];
 }

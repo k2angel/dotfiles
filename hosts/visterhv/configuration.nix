@@ -48,13 +48,14 @@
   networking = {
     useDHCP = false;
     useNetworkd = true;
-    networkmanager.enable = lib.mkForce false;
+    networkmanager.enable = false;
     wireless.iwd.enable = true;
 
     defaultGateway = {
       address = "192.168.3.1";
       interface = "wlan0";
     };
+
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
@@ -154,6 +155,5 @@
 
   environment.systemPackages = with pkgs; [
     sbctl
-    polychromatic
   ];
 }
