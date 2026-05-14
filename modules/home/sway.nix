@@ -22,6 +22,11 @@ in
       fonts.size = 11.0;
       output."*".bg = "${../../image/large_ev50.png} fill";
 
+      assigns = {
+        "workspace number 2" = [ { app_id = "firefox"; } ];
+        "workspace number 3" = [ { app_id = "vesktop"; } ];
+      };
+
       colors = with config.colorScheme.palette; {
         background = "#${base07}";
 
