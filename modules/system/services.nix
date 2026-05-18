@@ -12,7 +12,7 @@
 
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd '${pkgs.uwsm}/bin/uwsm start sway-uwsm.desktop'";
+          command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-user-session --time";
           user = "greeter";
         };
       };
