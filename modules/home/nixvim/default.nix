@@ -11,13 +11,15 @@
     nixpkgs.config.allowUnfree = true;
 
     opts = {
-      number = true;
       cursorline = true;
+      number = true;
       relativenumber = true;
       signcolumn = "yes";
       expandtab = true;
-      shiftwidth = 4;
       tabstop = 2;
+      shiftwidth = 4;
+      undofile = true;
+      undolevels = 10000;
       list = true;
       listchars = {
         space = "･";
@@ -72,6 +74,7 @@
       ]
     );
 
+    extraConfigLuaPre = builtins.readFile ./init_pre.lua;
     extraPlugins = with pkgs.vimPlugins; [
       onedarkpro-nvim
       plenary-nvim
@@ -85,8 +88,6 @@
         };
       })
     ];
-    extraConfigLuaPre = builtins.readFile ./init_pre.lua;
-    extraConfigLua = builtins.readFile ./init.lua;
 
     plugins = {
       direnv.enable = true;
