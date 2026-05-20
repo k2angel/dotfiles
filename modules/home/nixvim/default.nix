@@ -99,6 +99,7 @@
       lsp.enable = true;
       nvim-autopairs.enable = true;
       sleuth.enable = true;
+      treesitter.enable = true;
       treesj.enable = true;
       trouble.enable = true;
       web-devicons.enable = true;
@@ -311,26 +312,6 @@
           open_mapping = "[[<c-\\>]]";
           direction = "horizontal";
         };
-      };
-
-      treesitter = {
-        enable = true;
-        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-          bash
-          javascript
-          json
-          lua
-          make
-          markdown
-          nix
-          python
-          regex
-          toml
-          vim
-          vimdoc
-          xml
-          yaml
-        ];
       };
     };
 
