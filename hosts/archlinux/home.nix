@@ -8,5 +8,6 @@
   home.packages = with pkgs; [
     mcomix
     razer-cli
+    yay
   ];
 }
