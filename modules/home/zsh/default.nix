@@ -7,6 +7,8 @@
 
 {
   programs = {
+    fzf.enable = true;
+
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -36,14 +38,8 @@
       };
     };
 
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
     lsd = {
       enable = true;
-      enableZshIntegration = true;
 
       settings = {
         size = "short";
@@ -53,7 +49,6 @@
 
     zoxide = {
       enable = true;
-      enableZshIntegration = true;
       options = [ "--cmd cd" ];
     };
   };

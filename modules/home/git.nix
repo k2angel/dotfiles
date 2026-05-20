@@ -36,7 +36,6 @@
 
     lazygit = {
       enable = true;
-      enableZshIntegration = true;
 
       settings = {
         gui.theme = with config.colorScheme.palette; {
