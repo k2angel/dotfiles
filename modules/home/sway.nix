@@ -97,10 +97,10 @@ in
         "${modifier}+Shift+e" = "exec ${myScripts.wmenu-powermenu}/bin/wmenu-powermenu";
         "${modifier}+v" = ''
           exec ${pkgs.foot}/bin/foot \
-          -o "main.pad=0x0" \
-          -o "colors-${config.colorScheme.variant}.alpha=1" \
-          -a "bemenu_cliphist" \
-          ${myScripts.bemenu-cliphist}/bin/bemenu-cliphist
+            -o "main.pad=0x0" \
+            -o "colors-${config.colorScheme.variant}.alpha=1" \
+            -a "bemenu_cliphist" \
+            ${myScripts.bemenu-cliphist}/bin/bemenu-cliphist
         '';
         "Print" =
           "exec ${pkgs.grim}/bin/grim - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
