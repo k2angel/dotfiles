@@ -21,6 +21,17 @@
   };
 
   programs = {
+    aria2p.enable = true;
+
+    aria2 = {
+      enable = true;
+      systemd.enable = true;
+
+      settings = {
+        dir = "${config.xdg.userDirs.download}/aria2";
+      };
+    };
+
     bat = {
       enable = true;
       config.theme = "OneHalfDark";
@@ -83,7 +94,6 @@
 
   home.packages = with pkgs; [
     android-tools
-    aria2
     duf
     fastfetch
     fd
