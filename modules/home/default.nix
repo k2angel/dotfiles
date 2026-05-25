@@ -19,7 +19,6 @@
     ./sway.nix
     ./themes.nix
     ./uwsm.nix
-    ./wine.nix
     ./xdg.nix
     ./yazi.nix
   ];
