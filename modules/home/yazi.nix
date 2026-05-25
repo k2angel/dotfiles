@@ -40,22 +40,6 @@
         show_hidden = true;
         sort_dir_first = true;
       };
-
-      opener = {
-        extract = [
-          {
-            run = "${pkgs.ouch}/bin/ouch d -y \"$@\"";
-            desc = "Extract here with ouch";
-          }
-        ];
-      };
-
-      plugin.prepend_previewers = [
-        {
-          run = "ouch --show-file-icons";
-          mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}";
-        }
-      ];
     };
 
     theme = {
