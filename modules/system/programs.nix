@@ -28,16 +28,4 @@
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-    ouch
-    wl-clipboard
-    libnotify
-    grim
-    wmenu
-    bemenu
-  ];
 }

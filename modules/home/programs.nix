@@ -1,25 +1,10 @@
 {
-  lib,
   config,
   pkgs,
   ...
 }:
 
 {
-
-  nixpkgs.config = {
-    allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "unrar"
-        "ventoy"
-      ];
-
-    permittedInsecurePackages = [
-      "ventoy-1.1.12"
-    ];
-  };
-
   programs = {
     aria2p.enable = true;
 
@@ -91,28 +76,4 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-    android-tools
-    duf
-    fastfetch
-    fd
-    libnotify
-    ntfs2btrfs
-    ouch
-    payload-dumper-go
-    ripgrep
-    rsync
-    sox
-    slsk-batchdl
-    sway-contrib.grimshot
-    trash-cli
-    twitch-dl
-    tree
-    unrar
-    ventoy
-    wmenu
-    wl-clipboard
-    yt-dlp
-  ];
 }

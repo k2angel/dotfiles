@@ -4,6 +4,7 @@
     ./nixvim
     ./vesktop
     ./zsh
+
     ./beets.nix
     ./btop.nix
     ./fcitx5.nix
@@ -12,6 +13,7 @@
     ./home.nix
     ./i3status.nix
     ./overlays.nix
+    ./packages.nix
     ./programs.nix
     ./services.nix
     ./sway.nix

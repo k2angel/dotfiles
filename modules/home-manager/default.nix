@@ -10,6 +10,7 @@
     ../home/home.nix
     ../home/i3status.nix
     ../home/overlays.nix
+    ../home/packages.nix
     ../home/programs.nix
     ../home/yazi.nix
     ../home/services.nix
@@ -17,6 +18,7 @@
     ../home/themes.nix
     ../home/uwsm.nix
     ../home/xdg.nix
+
     ./overrides.nix
     ./portal.nix
   ];

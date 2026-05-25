@@ -3,6 +3,7 @@
     ./boot.nix
     ./fonts.nix
     ./networking.nix
+    ./packages.nix
     ./portal.nix
     ./programs.nix
     ./security.nix
