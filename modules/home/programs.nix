@@ -24,6 +24,7 @@
 
     bemenu = {
       enable = true;
+      package = null;
 
       settings = with config.colorScheme.palette; {
         tb = "#${base01}";
