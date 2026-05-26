@@ -12,6 +12,7 @@
     ripgrep
     trash-cli
     tree
+    wl-clipboard
     xh
   ];
 }
