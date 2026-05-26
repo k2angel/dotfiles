@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    android-tools
     duf
     dust
     fastfetch
@@ -9,6 +10,7 @@
     jq
     ouch
     ripgrep
+    trash-cli
     tree
     xh
   ];
