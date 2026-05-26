@@ -9,8 +9,6 @@
       enable = true;
 
       extraPackages = with pkgs; [
-        i3status
-        grim
         swaylock
         swaybg
       ];
