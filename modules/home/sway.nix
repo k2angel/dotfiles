@@ -16,7 +16,8 @@ in
 
     config = rec {
       defaultWorkspace = "workspace number 1";
-      menu = "${pkgs.wmenu}/bin/wmenu-run";
+      menu = "uwsm app -- $(${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wmenu}/bin/wmenu)";
+      # menu = "${pkgs.wmenu}/bin/wmenu-run";
       modifier = "Mod4";
       startup = [ { command = "uwsm finalize"; } ];
       terminal = "${pkgs.foot}/bin/footclient";
