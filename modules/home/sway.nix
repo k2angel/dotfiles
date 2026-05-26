@@ -12,12 +12,13 @@ in
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    systemd.dbusImplementation = "broker";
+    systemd.enable = false;
 
     config = rec {
       defaultWorkspace = "workspace number 1";
       menu = "${pkgs.wmenu}/bin/wmenu-run";
       modifier = "Mod4";
+      startup = [ { command = "uwsm finalize"; } ];
       terminal = "${pkgs.foot}/bin/footclient";
       fonts.size = 11.0;
       output."*".bg = "${../../image/large_ev50.png} fill";

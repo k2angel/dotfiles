@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   ...
 }:
@@ -32,11 +31,5 @@
 
   wayland.windowManager.sway = {
     package = null;
-    systemd.enable = false;
-
-    extraConfig = ''
-      include /etc/sway/config.d/*
-      include ${config.xdg.configHome}/sway/config.d/*
-    '';
   };
 }
