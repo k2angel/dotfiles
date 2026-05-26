@@ -2,13 +2,6 @@
 
 {
   bemenu-cliphist = pkgs.writeScriptBin "bemenu-cliphist" ''
-    LOCKFILE="/tmp/bemenu-cliphist.lock"
-    exec 9>"$LOCKFILE"
-    if ! flock -n 9; then
-      echo "Script is already running." >&2
-        exit 1
-        fi
-
     export BEMENU_BACKEND=curses
     result=$(${pkgs.cliphist}/bin/cliphist list | ${pkgs.bemenu}/bin/bemenu -p cliphist)
 
@@ -36,12 +29,11 @@
   '';
 
   wmenu-powermenu = pkgs.writeShellScriptBin "wmenu-powermenu" ''
-    LOCKFILE="/tmp/wmenu-powermenu.lock"
-    exec 9>"$LOCKFILE"
-    if ! flock -n 9; then
-      echo "Script is already running." >&2
-        exit 1
-        fi
+    exec 9>/tmp/wmenu-powermenu.lock
+    flock -n 9
+    if [ $? -ne 0 ]; then
+      exit 1
+    fi
 
     options="Lock\nLogout\nReboot\nShutdown\nSuspend"
     chosen=$(echo -e "$options" | ${pkgs.wmenu}/bin/wmenu -p "System" -l 5)
