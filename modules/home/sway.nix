@@ -98,7 +98,7 @@ in
         "${modifier}+e" = "exec ${terminal} ${pkgs.yazi}/bin/yazi";
         "${modifier}+Shift+e" = "exec ${myScripts.wmenu-powermenu}/bin/wmenu-powermenu";
         "${modifier}+v" = ''
-          exec ${pkgs.foot}/bin/foot \
+          exec ${terminal} \
             -o "main.pad=0x0" \
             -o "colors-${config.colorScheme.variant}.alpha=1" \
             -a "bemenu_cliphist" \
