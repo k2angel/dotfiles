@@ -110,6 +110,10 @@ in
           "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save active - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
         "Alt+Ctrl+c" =
           "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save area - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
+        "--locked XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
+        "--locked XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_SOURCE@ toggle";
+        "--locked XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
+        "--locked XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
       };
 
       window = {
