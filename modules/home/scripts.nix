@@ -39,12 +39,12 @@
     chosen=$(echo -e "$options" | ${pkgs.wmenu}/bin/wmenu -p "System" -l 5)
 
     case "$chosen" in
-    *Lock) swaylock -f ;;
-    *Logout) ${pkgs.uwsm}/bin/uwsm stop ;;
-    *Reboot) ${pkgs.systemd}/bin/systemctl reboot ;;
-    *Shutdown) ${pkgs.systemd}/bin/systemctl poweroff ;;
-    *Suspend) swaylock -f && ${pkgs.systemd}/bin/systemctl suspend ;;
-    *) exit 1 ;;
+      Lock) swaylock -f ;;
+      Logout) uwsm stop ;;
+      Reboot) systemctl reboot ;;
+      Shutdown) systemctl poweroff ;;
+      Suspend) swaylock -f && systemctl suspend ;;
+      *) exit 1 ;;
     esac
   '';
 }
