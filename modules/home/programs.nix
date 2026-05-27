@@ -14,6 +14,7 @@
 
       settings = {
         dir = "${config.xdg.userDirs.download}/aria2";
+        seed-time = 0;
       };
     };
 
