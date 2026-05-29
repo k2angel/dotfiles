@@ -114,6 +114,11 @@ in
         "--locked XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_SOURCE@ toggle";
         "--locked XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
         "--locked XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
+        "--locked XF86AudioPlay" = "exec playerctl play-pause";
+        "--locked XF86AudioPause" = "exec playerctl play-pause";
+        "--locked XF86AudioPrev" = "exec playerctl previous";
+        "--locked XF86AudioNext" = "exec playerctl next";
+        "--locked XF86AudioStop" = "exec playerctl stop";
       };
 
       window = {
