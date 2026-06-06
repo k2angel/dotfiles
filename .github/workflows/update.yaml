@@ -18,7 +18,8 @@ jobs:
       - uses: DeterminateSystems/determinate-nix-action@v3
       - uses: DeterminateSystems/update-flake-lock@v28
         with:
-          pr-title: "chore(nix): update flake.lock" # Title of PR to be created
+          commit-msg: "chore: update flake.lock"
+          pr-title: "chore: update flake.lock" # Title of PR to be created
           pr-labels: | # Labels to be set on the PR
             dependencies
             automated
