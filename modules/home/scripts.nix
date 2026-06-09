@@ -36,7 +36,7 @@
     fi
 
     options="Lock\nLogout\nReboot\nShutdown\nSuspend"
-    chosen=$(echo -e "$options" | ${pkgs.wmenu}/bin/wmenu -p "System" -l 5)
+    chosen=$(echo -e "$options" | ${pkgs.wmenu}/bin/wmenu -i -p "System" -l 5)
 
     case "$chosen" in
       Lock) swaylock -f ;;
