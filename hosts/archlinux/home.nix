@@ -16,6 +16,5 @@
     twitch-dl
     wireguard-tools
     yay
-    yt-dlp
   ];
 }
