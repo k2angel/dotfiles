@@ -77,5 +77,26 @@
         auto_update = true;
       };
     };
+
+    yt-dlp = {
+      enable = true;
+
+      settings = {
+        output = "${config.xdg.userDirs.videos}/YouTube/%(id)s/%(id)s.%(ext)s";
+        download-archive = "${config.xdg.userDirs.videos}/YouTube/downloaded.txt";
+        downloader = "aria2c";
+        embed-chapters = true;
+        embed-info-json = true;
+        embed-metadata = true;
+        embed-thumbnail = true;
+        write-comments = true;
+        write-description = true;
+        write-info-json = true;
+        write-playlist-metafiles = true;
+        write-thumbnail = true;
+        merge-output-format = "mkv";
+        remux-video = "mkv";
+      };
+    };
   };
 }
