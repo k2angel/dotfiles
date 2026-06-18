@@ -19,7 +19,11 @@
 
       initContent = ''
         ${builtins.readFile ./init.zsh}
-        ${pkgs.fortune}/bin/fortune -s | ${pkgs.cowsay}/bin/cowsay
+        if [ -n "$SSH_CONNECTION" ]; then
+          ${pkgs.fortune}/bin/fortune -s | ${pkgs.cowsay}/bin/cowsay -p
+        else
+          ${pkgs.fortune}/bin/fortune -s | ${pkgs.cowsay}/bin/cowsay
+        fi
       '';
 
       plugins = [
