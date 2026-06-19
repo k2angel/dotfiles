@@ -4,6 +4,7 @@
   services = {
     kdeconnect.enable = true;
     playerctld.enable = true;
+    polkit-gnome.enable = true;
     udiskie.enable = true;
 
     autotiling = {
