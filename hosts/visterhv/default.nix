@@ -1,7 +1,8 @@
 {
   imports = [
-    ./configuration.nix
     ./hardware-configuration.nix
+    ./configuration.nix
+    ./filesystems.nix
     ./virtualisation.nix
   ];
 }
