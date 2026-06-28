@@ -66,7 +66,7 @@
   };
 
   fileSystems."/mnt/game" = {
-    device = "/dev/disk/by-uuid/ee1440b5-2673-893e-b116-50befc960c6c";
+    device = "/dev/disk/by-uuid/1b3dad64-6da1-45fe-86af-ac0db2c4c963";
     fsType = "btrfs";
     options = [ "nofail" ];
   };
