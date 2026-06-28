@@ -53,28 +53,22 @@
     ];
   };
 
-  fileSystems."/mnt/arcade" = {
-    device = "/dev/disk/by-uuid/4ED8B1B8D8B19EA1";
-    fsType = "ntfs3";
-    options = [
-      "defaults"
-      "uid=1000"
-      "gid=1000"
-      "umask=0022"
-      "prealloc"
-      "nofail"
-    ];
-  };
-
   fileSystems."/mnt/arch_home" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
     options = [ "subvol=@home" ];
   };
 
+  fileSystems."/mnt/arcade" = {
+    device = "/dev/disk/by-uuid/f0e67ebf-4af6-4a8e-9c08-196e26926db6";
+    fsType = "btrfs";
+    options = [ "nofail" ];
+  };
+
   fileSystems."/mnt/game" = {
     device = "/dev/disk/by-uuid/ee1440b5-2673-893e-b116-50befc960c6c";
     fsType = "btrfs";
+    options = [ "nofail" ];
   };
 
   fileSystems."/mnt/pirate" = {
@@ -87,6 +81,7 @@
       "umask=0022"
       "prealloc"
       "nofail"
+      "x-systemd.automount"
     ];
   };
 
