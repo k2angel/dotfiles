@@ -3,6 +3,7 @@
 
 {
   services = {
+    resolved.enable = true;
     udisks2.enable = true;
 
     greetd = {
@@ -35,15 +36,6 @@
       jack.enable = true;
       pulse.enable = true;
       wireplumber.enable = true;
-    };
-
-    resolved = {
-      enable = true;
-
-      settings.Resolve = {
-        DNSOverTLS = true;
-        DNSSEC = true;
-      };
     };
 
     tailscale = {
