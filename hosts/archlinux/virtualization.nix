@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 let
   volumes_dir = "${config.home.homeDirectory}/Containers/volumes";
@@ -37,18 +37,5 @@ in
         ];
       };
     };
-  };
-
-  programs = {
-    lazydocker.enable = true;
-    zsh.shellAliases.lzd = "${pkgs.lazydocker}/bin/lazydocker";
-  };
-
-  home.packages = with pkgs; [
-    podman
-  ];
-
-  home.sessionVariables = {
-    DOCKER_HOST = "unix://$(${pkgs.podman}/bin/podman info -f '{{.Host.RemoteSocket.Path}}')";
   };
 }
