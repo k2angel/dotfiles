@@ -13,6 +13,9 @@ let
     "Music"
     "Pictures"
     "Videos"
+
+    "dotfiles"
+    "Containers"
   ];
 in
 {
