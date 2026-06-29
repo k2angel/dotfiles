@@ -66,6 +66,35 @@
     };
   };
 
+  services.firewalld.zones = {
+    home = {
+      forward = true;
+
+      sources = {
+        pixel-7a.mac = "94:45:60:13:b6:aa";
+      };
+
+      services = [
+        "dhcpv6-client"
+        "kdeconnect"
+        "ssh"
+        "steam-streaming"
+      ];
+
+      ports = {
+        lms = {
+          port = 5082;
+          protocol = "tcp";
+        };
+
+        jellyfin = {
+          port = 8096;
+          protocol = "tcp";
+        };
+      };
+    };
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
 
   programs.uwsm.waylandCompositors.sway.extraArgs = [ "--unsupported-gpu" ];
