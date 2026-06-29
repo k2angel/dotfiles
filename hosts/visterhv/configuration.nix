@@ -56,12 +56,6 @@
       interface = "wlan0";
     };
 
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "8.8.8.8"
-    ];
-
     interfaces.wlan0 = {
       ipv4.addresses = [
         {
