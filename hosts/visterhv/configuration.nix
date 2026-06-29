@@ -68,30 +68,34 @@
     };
   };
 
-  services.firewalld.zones = {
-    home = {
-      forward = true;
+  services = {
+    blocky.settings.connectIPVersion = "v4";
 
-      sources = {
-        pixel-7a.mac = "94:45:60:13:b6:aa";
-      };
+    firewalld.zones = {
+      home = {
+        forward = true;
 
-      services = [
-        "dhcpv6-client"
-        "kdeconnect"
-        "ssh"
-        "steam-streaming"
-      ];
-
-      ports = {
-        lms = {
-          port = 5082;
-          protocol = "tcp";
+        sources = {
+          pixel-7a.mac = "94:45:60:13:b6:aa";
         };
 
-        jellyfin = {
-          port = 8096;
-          protocol = "tcp";
+        services = [
+          "dhcpv6-client"
+          "kdeconnect"
+          "ssh"
+          "steam-streaming"
+        ];
+
+        ports = {
+          lms = {
+            port = 5082;
+            protocol = "tcp";
+          };
+
+          jellyfin = {
+            port = 8096;
+            protocol = "tcp";
+          };
         };
       };
     };
