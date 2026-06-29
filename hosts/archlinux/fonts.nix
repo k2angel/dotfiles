@@ -73,6 +73,7 @@ in
       monospace = [
         "JetBrains Mono"
         "SOROEMONO"
+        "Noto Sans Mono CJK JP"
         "Symbols Nerd Font"
       ];
       emoji = [
