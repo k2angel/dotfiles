@@ -16,10 +16,6 @@
       };
 
       sway = {
-        default = [
-          "wlr"
-          "gtk"
-        ];
         "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
       };
     };
