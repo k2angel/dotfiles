@@ -2,7 +2,7 @@
 
 {
   networking = {
-    hostName = "${host}";
+    hostName = host;
     nameservers = [ "127.0.0.1:5354" ];
 
     nftables.enable = true;
