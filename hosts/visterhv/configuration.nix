@@ -12,6 +12,8 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  programs.uwsm.waylandCompositors.sway.extraArgs = [ "--unsupported-gpu" ];
 
   boot = {
     loader.systemd-boot.enable = lib.mkForce false;
@@ -94,10 +96,6 @@
       };
     };
   };
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  programs.uwsm.waylandCompositors.sway.extraArgs = [ "--unsupported-gpu" ];
 
   environment.systemPackages = with pkgs; [
     sbctl
