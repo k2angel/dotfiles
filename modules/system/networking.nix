@@ -6,10 +6,27 @@
 
     nftables.enable = true;
     networkmanager.enable = lib.mkDefault true;
+  };
 
-    firewall = {
+  services = {
+    firewalld = {
       enable = true;
-      trustedInterfaces = [ "tailscale0" ];
+
+      zones = {
+        public = {
+          forward = true;
+          services = [
+            "dhcpv6-client"
+            "kdeconnect"
+            "ssh"
+          ];
+        };
+
+        trusted = {
+          forward = true;
+          interfaces = [ "tailscale0" ];
+        };
+      };
     };
   };
 }
