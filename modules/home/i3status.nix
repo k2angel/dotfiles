@@ -1,5 +1,13 @@
-{ config, ... }:
+{
+  self,
+  config,
+  host,
+  ...
+}:
 
+let
+  mappingsPath = self + "/hosts/${host}/mappings.nix";
+in
 {
   programs.i3status-rust = {
     enable = true;
@@ -20,11 +28,7 @@
             block = "sound";
             format = " $icon {$volume [$output_name]|[$output_name]} ";
 
-            mappings = {
-              "alsa_output.pci-0000_01_00.1.hdmi-stereo" = "AD107 High Defination Audio";
-              "alsa_output.usb-ASUSTeK_XONAR_SOUND_CARD-00.analog-stereo" = "XONAR SOUND CARD";
-              "alsa_output.pci-0000_00_1f.3.analog-stereo" = "内部オーディオ";
-            };
+            mappings = if builtins.pathExists mappingsPath then import mappingsPath else { };
           }
           {
             block = "net";

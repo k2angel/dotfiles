@@ -1,0 +1,1 @@
+import ../archlinux/mappings.nix
