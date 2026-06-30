@@ -75,9 +75,9 @@
       home = {
         forward = true;
 
-        sources = {
-          pixel-7a.mac = "94:45:60:13:b6:aa";
-        };
+        sources = [
+          { mac = "94:45:60:13:b6:aa"; }
+        ];
 
         services = [
           "dhcpv6-client"
@@ -86,17 +86,16 @@
           "steam-streaming"
         ];
 
-        ports = {
-          lms = {
+        ports = [
+          {
             port = 5082;
             protocol = "tcp";
-          };
-
-          jellyfin = {
+          }
+          {
             port = 8096;
             protocol = "tcp";
-          };
-        };
+          }
+        ];
       };
     };
   };
