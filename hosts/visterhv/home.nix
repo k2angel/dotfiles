@@ -1,3 +1,3 @@
 {
-  import = [ ../archlinux ];
+  imports = [ ../archlinux ];
 }
