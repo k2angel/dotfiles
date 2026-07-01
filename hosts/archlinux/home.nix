@@ -15,7 +15,7 @@
             {
               actions = {
                 update-props = {
-                  "target.object" = "alsa_output.usb-ASUSTeK_XONAR_SOUND_CARD-01.analog-stereo";
+                  "target.object" = "alsa_output.usb-ASUSTeK_XONAR_SOUND_CARD-00.analog-stereo";
                 };
               };
 
