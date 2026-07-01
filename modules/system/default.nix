@@ -1,5 +1,7 @@
 {
   imports = [
+    ../features/overlays.nix
+
     ./boot.nix
     ./fonts.nix
     ./networking.nix
