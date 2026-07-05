@@ -12,7 +12,6 @@
     ./git.nix
     ./home.nix
     ./i3status.nix
-    ./overlays.nix
     ./packages.nix
     ./programs.nix
     ./services.nix
