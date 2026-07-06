@@ -15,7 +15,6 @@
 
       settings = {
         log.privacy = true;
-        dnssec.validate = true;
 
         ports = {
           dns = 5354;
