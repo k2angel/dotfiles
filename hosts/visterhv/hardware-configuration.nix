@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -75,10 +74,7 @@
     device = "/dev/disk/by-uuid/787EAE207EADD762";
     fsType = "ntfs3";
     options = [
-      "defaults"
       "uid=1000"
-      "gid=1000"
-      "umask=0022"
       "prealloc"
       "nofail"
       "x-systemd.automount"
