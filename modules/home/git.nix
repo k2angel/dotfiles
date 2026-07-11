@@ -16,6 +16,7 @@
 
     git = {
       enable = true;
+      package = null;
 
       settings = {
         user = {
