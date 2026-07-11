@@ -48,22 +48,18 @@
   };
 
   networking = {
-    useNetworkd = true;
     networkmanager.enable = false;
     wireless.iwd.enable = true;
+  };
 
-    defaultGateway = {
-      address = "192.168.3.1";
-      interface = "wlan0";
-    };
+  systemd.network = {
+    enable = true;
 
-    interfaces.wlan0 = {
-      ipv4.addresses = [
-        {
-          address = "192.168.3.171";
-          prefixLength = 24;
-        }
-      ];
+    networks."25-wireless" = {
+      name = "wlan0";
+      address = [ "192.168.3.171/24" ];
+      gateway = [ "192.168.3.1" ];
+      networkConfig.DHCP = false;
     };
   };
 
