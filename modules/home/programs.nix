@@ -48,9 +48,12 @@
 
     nh = {
       enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3 --no-direnv";
       flake = "${config.home.homeDirectory}/dotfiles";
+
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 4d --keep 3 --no-direnv";
+      };
     };
 
     mpv = {
@@ -73,9 +76,7 @@
 
     tealdeer = {
       enable = true;
-      settings.update = {
-        auto_update = true;
-      };
+      settings.update.auto_update = true;
     };
 
     yt-dlp = {
