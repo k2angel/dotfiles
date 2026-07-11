@@ -54,7 +54,6 @@ in
     sf-pro
     soroemono
     twitter-color-emoji
-    udev-gothic
   ];
 
   fonts.fontconfig = {
