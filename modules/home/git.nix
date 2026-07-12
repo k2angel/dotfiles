@@ -20,7 +20,7 @@
 
       settings = {
         user = {
-          name = "${username}";
+          name = username;
           email = "90847045+k2angel@users.noreply.github.com";
         };
 
