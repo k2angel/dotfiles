@@ -1,4 +1,5 @@
 {
+  self,
   config,
   pkgs,
   lib,
@@ -21,7 +22,7 @@ in
       startup = [ { command = "uwsm finalize"; } ];
       terminal = "${pkgs.foot}/bin/footclient";
       fonts.size = 11.0;
-      output."*".bg = "${../../image/large_ev50.png} fill";
+      output."*".bg = "${self + /image/large_ev50.png} fill";
 
       assigns = {
         "workspace number 2" = [ { app_id = "firefox"; } ];
