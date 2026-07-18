@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  bemenu-cliphist = pkgs.writeScriptBin "bemenu-cliphist" ''
+  bemenu-cliphist = pkgs.writeShellScriptBin "bemenu-cliphist" ''
     export BEMENU_BACKEND=curses
     result=$(${pkgs.cliphist}/bin/cliphist list | ${pkgs.bemenu}/bin/bemenu -p cliphist)
 
