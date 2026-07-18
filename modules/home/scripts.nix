@@ -11,7 +11,7 @@
   '';
 
   screenshot-proc = pkgs.writeShellScriptBin "screenshot-proc" ''
-    screenshot_dir=$(${pkgs.xdg-user-dirs}/bin/xdg-user-dir PICTURES)/Screenshots
+    screenshot_dir=${config.xdg.userDirs.pictures}/Screenshots
     screenshot_name=Screenshot_$(${pkgs.coreutils}/bin/date +"%Y%m%d-%H%M%S").png
     screenshot_out="$screenshot_dir/$screenshot_name"
 
