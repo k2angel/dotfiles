@@ -1,10 +1,17 @@
 {
+  lib,
   config,
   pkgs,
   host,
   ...
 }:
 
+let
+  cowsay = lib.getExe pkgs.cowsay;
+  fortune = lib.getExe pkgs.fortune;
+  ghq = lib.getExe pkgs.ghq;
+  nh = lib.getExe pkgs.nh;
+in
 {
   programs = {
     fzf.enable = true;
@@ -20,9 +27,9 @@
       initContent = ''
         ${builtins.readFile ./init.zsh}
         if [ -n "$SSH_CONNECTION" ]; then
-          ${pkgs.fortune}/bin/fortune -s | ${pkgs.cowsay}/bin/cowsay -p
+          ${fortune} -s | ${cowsay} -p
         else
-          ${pkgs.fortune}/bin/fortune -s | ${pkgs.cowsay}/bin/cowsay
+          ${fortune} -s | ${cowsay}
         fi
       '';
 
@@ -34,10 +41,10 @@
       ];
 
       shellAliases = {
-        beet-import = "${pkgs.beets}/bin/beet import ${config.xdg.userDirs.music}/beet-import";
-        ghqc = "cd $(${pkgs.ghq}/bin/ghq root)/$(${pkgs.ghq}/bin/ghq list | ${pkgs.fzf}/bin/fzf)";
-        nob = "${pkgs.nh}/bin/nh os boot --diff always --hostname ${host}";
-        nos = "${pkgs.nh}/bin/nh os switch --diff always --hostname ${host}";
+        beet-import = "${lib.getExe pkgs.beets} import ${config.xdg.userDirs.music}/beet-import";
+        ghqc = "cd $(${ghq} root)/$(${ghq} list | ${lib.getExe pkgs.fzf})";
+        nob = "${nh} os boot --diff always --hostname ${host}";
+        nos = "${nh} os switch --diff always --hostname ${host}";
       };
     };
 

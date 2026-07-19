@@ -8,6 +8,10 @@
 
 let
   scripts = pkgs.callPackage ./scripts.nix { inherit config; };
+
+  grimshot = lib.getExe pkgs.sway-contrib.grimshot;
+  ifne = lib.getExe' pkgs.moreutils "ifne";
+  screenshot-proc = lib.getExe scripts.screenshot-proc;
 in
 {
   wayland.windowManager.sway = {
@@ -95,21 +99,18 @@ in
       keybindings = lib.mkOptionDefault {
         "${modifier}+Shift+q" = null;
         "${modifier}+q" = "kill";
-        "${modifier}+e" = "exec ${terminal} ${pkgs.yazi}/bin/yazi";
-        "${modifier}+Shift+e" = "exec ${myScripts.wmenu-powermenu}/bin/wmenu-powermenu";
+        "${modifier}+e" = "exec ${terminal} ${lib.getExe pkgs.yazi}";
+        "${modifier}+Shift+e" = "exec ${lib.getExe scripts.wmenu-powermenu}";
         "${modifier}+v" = ''
           exec ${terminal} \
             -o "main.pad=0x0" \
             -o "colors-${config.colorScheme.variant}.alpha=1" \
             -a "bemenu_cliphist" \
-            ${myScripts.bemenu-cliphist}/bin/bemenu-cliphist
+            ${lib.getExe scripts.bemenu-cliphist}
         '';
-        "Print" =
-          "exec ${pkgs.grim}/bin/grim - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
-        "Alt+v" =
-          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save active - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
-        "Alt+Ctrl+c" =
-          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save area - | ${pkgs.moreutils}/bin/ifne ${myScripts.screenshot-proc}/bin/screenshot-proc";
+        "Print" = "exec ${lib.getExe pkgs.grim} - | ${ifne} ${screenshot-proc}";
+        "Alt+v" = "exec ${grimshot} save active - | ${ifne} ${screenshot-proc}";
+        "Alt+Ctrl+c" = "exec ${grimshot} save area - | ${ifne} ${screenshot-proc}";
         "--locked XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
         "--locked XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_SOURCE@ toggle";
         "--locked XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
@@ -165,7 +166,7 @@ in
       bars = [
         {
           position = "top";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs config-default.toml";
+          statusCommand = "${lib.getExe pkgs.i3status-rust} config-default.toml";
           trayOutput = "none";
           trayPadding = 0;
           fonts.size = 11.0;
