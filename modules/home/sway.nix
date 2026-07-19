@@ -7,7 +7,7 @@
 }:
 
 let
-  myScripts = import ./scripts.nix { inherit pkgs; };
+  scripts = pkgs.callPackage ./scripts.nix { inherit config; };
 in
 {
   wayland.windowManager.sway = {
