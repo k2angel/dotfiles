@@ -52,15 +52,21 @@
   };
 
   home.packages = with pkgs; [
+    dos2unix
+    ipsw
     mcomix
+    mkvtoolnix-cli
     payload-dumper-go
     pipe-rename
     razer-cli
     savepagenow
     sox
     slsk-batchdl
+    tdl
     twitch-dl
     wireguard-tools
     yay
+    xq-xml
+    xnviewmp
   ];
 }
