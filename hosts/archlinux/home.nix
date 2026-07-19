@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   programs = {
     beets.settings.directory = "/mnt/pirate/Music/Library";
   };
