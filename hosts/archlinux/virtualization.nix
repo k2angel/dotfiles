@@ -20,7 +20,7 @@ in
       };
 
       lms = {
-        image = "docker.io/epoupon/lms:3.78.0";
+        image = "docker.io/epoupon/lms:3.79.0";
         ports = [ "5082:5082" ];
         volumes = [
           "${volumes_dir}/lms-data:/var/lms:rw"
