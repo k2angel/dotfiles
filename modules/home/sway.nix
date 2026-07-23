@@ -83,11 +83,11 @@ in
       };
 
       input = {
-        "type:keyboard" = {
+        "type:keyboard" = with config.home.keyboard; {
           repeat_delay = "200";
           repeat_rate = "25";
-          xkb_layout = "jp";
-          xkb_options = "ctrl:nocaps";
+          xkb_layout = layout;
+          xkb_options = lib.concatStringsSep ";" options;
         };
 
         "type:pointer" = {
