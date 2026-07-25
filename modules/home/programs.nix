@@ -7,6 +7,7 @@
 {
   programs = {
     aria2p.enable = true;
+    jqp.enable = true;
 
     aria2 = {
       enable = true;
