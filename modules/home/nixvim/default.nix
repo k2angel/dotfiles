@@ -98,6 +98,7 @@
       highlight-colors.enable = true;
       lsp.enable = true;
       nvim-autopairs.enable = true;
+      refactoring.enable = true;
       sleuth.enable = true;
       treesitter.enable = true;
       treesj.enable = true;
