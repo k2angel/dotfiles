@@ -45,6 +45,8 @@ in
   services.mako.settings."app-name=wf-recorder".layer = "overlay";
 
   wayland.windowManager.sway = {
+    extraConfig = "include ${config.xdg.configHome}/sway/config.d/*";
+
     config = {
       keybindings =
         let
