@@ -317,8 +317,12 @@
 
     lsp.servers = {
       basedpyright.enable = true;
+      clangd.enable = true;
+      lua_ls.enable = true;
       nixd.enable = true;
+      rust_analyzer.enable = true;
       vtsls.enable = true;
+      yamlls.enable = true;
     };
   };
 }
