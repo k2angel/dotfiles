@@ -211,6 +211,7 @@
             javascript = [ "prettier" ];
             nix = [ "nixfmt" ];
             python = [ "ruff" ];
+            rust = [ "rustfmt" ];
           };
         };
       };
