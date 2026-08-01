@@ -56,6 +56,7 @@
     ipsw
     mcomix
     mkvtoolnix-cli
+    n-m3u8dl-re
     payload-dumper-go
     pipe-rename
     razer-cli
