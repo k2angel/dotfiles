@@ -25,8 +25,9 @@
         };
 
         delta = {
-          line-numbers = true;
           keep-plus-minus-markers = true;
+          line-numbers = true;
+          side-by-side = true;
         };
 
         ghq = {
