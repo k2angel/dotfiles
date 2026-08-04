@@ -1,13 +1,17 @@
 {
+  inputs,
   config,
   pkgs,
   ...
 }:
 
 {
+  imports = [ inputs.nix-index-database.homeModules.default ];
+
   programs = {
     aria2p.enable = true;
     jqp.enable = true;
+    nix-index-database.comma.enable = true;
 
     aria2 = {
       enable = true;
