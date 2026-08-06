@@ -35,10 +35,10 @@
         system = "x86_64-linux";
       };
 
-      mylib = import ./lib inputs;
+      mkConfig = import ./lib/mkconfig.nix inputs;
 
-      mkNixosConfig = host: mylib.mkNixosConfig (baseArgs // { inherit host; });
-      mkHomeConfig = host: mylib.mkHomeConfig (baseArgs // { inherit host; });
+      mkNixosConfig = host: mkConfig.mkNixosConfig (baseArgs // { inherit host; });
+      mkHomeConfig = host: mkConfig.mkHomeConfig (baseArgs // { inherit host; });
     in
     {
       nixosConfigurations = {
