@@ -6,12 +6,12 @@
 
 stdenv.mkDerivation {
   pname = "sf-pro";
-  version = "7.0.6";
+  version = "7.0.7";
   nativeBuildInputs = [ p7zip ];
 
   src = fetchurl {
     url = "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg";
-    hash = "sha256-YxGk8IQ6TS5hagsFx3US0x0uqVBFnPUmzbW5CZageU8=";
+    hash = "sha256-qQlPDem3idc1RO5Q/FKgiE1Kn3/PYt5Sl04yBPOnSmI=";
   };
 
   unpackPhase = ''
