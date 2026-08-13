@@ -35,7 +35,7 @@
         system = "x86_64-linux";
       };
 
-      mkConfig = import ./lib/mkconfig.nix inputs;
+      mkConfig = import (self + /lib/mkconfig.nix) inputs;
 
       mkNixosConfig = host: mkConfig.mkNixosConfig (baseArgs // { inherit host; });
       mkHomeConfig = host: mkConfig.mkHomeConfig (baseArgs // { inherit host; });
