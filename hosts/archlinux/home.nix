@@ -57,6 +57,7 @@
     mcomix
     mkvtoolnix-cli
     n-m3u8dl-re
+    opencommit
     payload-dumper-go
     pipe-rename
     razer-cli
