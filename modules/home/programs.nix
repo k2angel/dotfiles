@@ -88,8 +88,8 @@
       enable = true;
 
       settings = {
-        output = "${config.xdg.userDirs.videos}/YouTube/%(id)s/%(id)s.%(ext)s";
-        download-archive = "${config.xdg.userDirs.videos}/YouTube/downloaded.txt";
+        output = "${config.xdg.userDirs.videos}/yt-dlp/%(extractor)s/%(id)s/%(id)s.%(ext)s";
+        download-archive = "${config.xdg.userDirs.videos}/yt-dlp/downloaded.txt";
         downloader = "aria2c";
         embed-chapters = true;
         embed-info-json = true;
