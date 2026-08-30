@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   nixpkgs.config = {
@@ -50,6 +50,10 @@
       };
     };
   };
+
+  systemd.user.packages = [
+    config.services.mako.package
+  ];
 
   home.packages = with pkgs; [
     dos2unix
