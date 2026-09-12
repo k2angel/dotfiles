@@ -70,6 +70,7 @@
     slsk-batchdl
     tdl
     twitch-dl
+    unar
     wireguard-tools
     yay
     xq-xml
