@@ -1,9 +1,5 @@
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  sf-pro = pkgs.callPackage (self + /packages/sf-pro/package.nix) { };
-  soroemono = pkgs.callPackage (self + /packages/soroemono/package.nix) { };
-in
 {
   home.packages = with pkgs; [
     font-awesome

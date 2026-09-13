@@ -1,14 +1,14 @@
-inputs: {
+{ inputs, pkgs }:
+
+{
   mkNixosConfig =
     args@{
       host,
-      system,
       username,
       ...
     }:
     inputs.nixpkgs.lib.nixosSystem {
-      inherit system;
-
+      inherit pkgs;
       specialArgs = args;
 
       modules = [
@@ -34,9 +34,9 @@ inputs: {
     };
 
   mkHomeConfig =
-    args@{ host, system, ... }:
+    args@{ host, ... }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      inherit pkgs;
       extraSpecialArgs = args;
 
       modules = [

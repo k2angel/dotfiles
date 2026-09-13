@@ -1,8 +1,5 @@
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  soroemono = pkgs.callPackage (self + /packages/soroemono/package.nix) { };
-in
 {
   fonts.packages = with pkgs; [
     font-awesome
