@@ -16,7 +16,7 @@ in
 {
   wayland.windowManager.sway = {
     enable = true;
-    wrapperFeatures.gtk = true;
+    package = null;
     systemd.enable = false;
 
     config = rec {

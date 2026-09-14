@@ -37,8 +37,4 @@ in
       ];
     };
   };
-
-  wayland.windowManager.sway = {
-    package = null;
-  };
 }
