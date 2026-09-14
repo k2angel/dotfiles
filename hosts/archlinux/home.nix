@@ -1,15 +1,38 @@
-{ config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
+let
+  nixGLPackages = import "${inputs.nixGL}/default.nix" {
+    pkgs = import inputs.nixpkgs-nixgl {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
+
+    enable32bits = true;
+    enableIntelX86Extensions = true;
+  };
+in
 {
   nixpkgs.config = {
     allowUnfree = true;
   };
 
-  programs = {
-    beets.settings.directory = "/mnt/pirate/Music/Library";
+  targets.genericLinux = {
+    enable = true;
+
+    nixGL = {
+      packages = nixGLPackages;
+      defaultWrapper = "nvidia";
+      installScripts = [ "nvidia" ];
+    };
   };
 
-    };
+  programs = {
+    beets.settings.directory = "/mnt/pirate/Music/Library";
   };
 
   systemd.user.packages = [
