@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  isNixOS,
   ...
 }:
 
@@ -22,7 +23,7 @@ in
   };
 
   targets.genericLinux = {
-    enable = true;
+    enable = !isNixOS;
 
     nixGL = {
       packages = nixGLPackages;

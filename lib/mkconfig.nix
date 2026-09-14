@@ -20,7 +20,9 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = args;
+            extraSpecialArgs = args // {
+              isNixOS = true;
+            };
 
             users.${username} = {
               imports = [
@@ -37,7 +39,9 @@
     args@{ host, ... }:
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      extraSpecialArgs = args;
+      extraSpecialArgs = args // {
+        isNixOS = false;
+      };
 
       modules = [
         ../hosts/${host}
