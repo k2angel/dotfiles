@@ -8,6 +8,11 @@
 let
   jq = lib.getExe pkgs.jq;
   notify-send = lib.getExe pkgs.libnotify;
+  wf-recorder =
+    if config.targets.genericLinux.enable then
+      config.lib.nixGL.wrap pkgs.wf-recorder
+    else
+      pkgs.wf-recorder;
 
   recording-proc = pkgs.writeShellScriptBin "recording-proc" ''
     DEFAULT_AUDIO="@DEFAULT_SINK@"
@@ -34,7 +39,7 @@ let
         "Recording started" \
         "$(basename "$OUTPUT")"
 
-    wf-recorder \
+    ${lib.getExe wf-recorder} \
         --audio="$audio.monitor" -P b=320k \
         -c av1_nvenc -r 60 -x nv12 -p cq=34 \
         -p color_primaries=bt709 -p color_trc=bt709 -p colorspace=bt709 -p color_range=tv \
