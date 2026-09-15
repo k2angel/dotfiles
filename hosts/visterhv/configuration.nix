@@ -1,34 +1,22 @@
 {
-  inputs,
-  lib,
+  self,
   pkgs,
   username,
   ...
 }:
 
 {
-  imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
-  ];
+  imports = [ (self + /modules/features/lanzaboote.nix) ];
 
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   programs.uwsm.waylandCompositors.sway.extraArgs = [ "--unsupported-gpu" ];
 
-  boot = {
-    loader.systemd-boot.enable = lib.mkForce false;
-
-    kernelParams = [
-      "drm.edid_firmware=DP-2:edid/lg.bin"
-      "video=DP-2:d"
-      "video=HDMI-A-1:e"
-    ];
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-    };
-  };
+  boot.kernelParams = [
+    "drm.edid_firmware=DP-2:edid/lg.bin"
+    "video=DP-2:d"
+    "video=HDMI-A-1:e"
+  ];
 
   hardware = {
     graphics.enable = true;
@@ -94,8 +82,4 @@
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    sbctl
-  ];
 }
