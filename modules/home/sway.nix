@@ -3,15 +3,17 @@
   config,
   pkgs,
   lib,
+  isNixOS,
   ...
 }:
 
 let
-  scripts = pkgs.callPackage ./scripts.nix { inherit config; };
+  scripts = pkgs.callPackage ./scripts.nix { inherit config isNixOS; };
 
   grimshot = lib.getExe pkgs.sway-contrib.grimshot;
   ifne = lib.getExe' pkgs.moreutils "ifne";
   screenshot-proc = lib.getExe scripts.screenshot-proc;
+  uwsm = if isNixOS then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
 in
 {
   wayland.windowManager.sway = {
@@ -21,9 +23,9 @@ in
 
     config = rec {
       defaultWorkspace = "workspace number 1";
-      menu = "uwsm app -- $(${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wmenu}/bin/wmenu)";
+      menu = "${uwsm} app -- $(${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wmenu}/bin/wmenu)";
       modifier = "Mod4";
-      startup = [ { command = "uwsm finalize"; } ];
+      startup = [ { command = "${uwsm} finalize"; } ];
       terminal = "${pkgs.foot}/bin/footclient";
       fonts.size = 11.0;
       output."*".bg = "${self + /image/large_ev50.png} fill";

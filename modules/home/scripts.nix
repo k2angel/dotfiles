@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  isNixOS,
   ...
 }:
 
@@ -10,6 +11,10 @@ let
   notify-send = lib.getExe pkgs.libnotify;
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
   wmenu = lib.getExe' pkgs.wmenu "wmenu";
+
+  uwsm = if isNixOS then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
+  swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
+  systemctl = if isNixOS then lib.getExe' pkgs.systemd "systemctl" else "/usr/bin/systemctl";
 in
 {
   bemenu-cliphist = pkgs.writeShellScriptBin "bemenu-cliphist" ''
@@ -49,11 +54,11 @@ in
     chosen=$(echo -e "$options" | ${wmenu} -i -p "System" -l 5)
 
     case "$chosen" in
-      Lock) swaylock -f ;;
-      Logout) uwsm stop ;;
-      Reboot) systemctl reboot ;;
-      Shutdown) systemctl poweroff ;;
-      Suspend) swaylock -f && systemctl suspend ;;
+      Lock) ${swaylock} -f ;;
+      Logout) ${uwsm} stop ;;
+      Reboot) ${systemctl} reboot ;;
+      Shutdown) ${systemctl} poweroff ;;
+      Suspend) ${swaylock} -f && ${systemctl} suspend ;;
       *) exit 1 ;;
     esac
   '';
