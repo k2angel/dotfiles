@@ -1,6 +1,4 @@
-{ inputs, pkgs }:
-
-{
+inputs: {
   mkNixosConfig =
     args@{
       host,
@@ -8,7 +6,6 @@
       ...
     }:
     inputs.nixpkgs.lib.nixosSystem {
-      inherit pkgs;
       specialArgs = args;
 
       modules = [
@@ -38,7 +35,7 @@
   mkHomeConfig =
     args@{ host, ... }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+      pkgs = inputs.nixpkgs.legacyPackages.${builtins.currentSystem};
       extraSpecialArgs = args // {
         isNixOS = false;
       };

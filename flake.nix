@@ -31,22 +31,12 @@
   outputs =
     inputs@{ self, ... }:
     let
-      system = "x86_64-linux";
-
       baseArgs = {
         inherit inputs self;
         username = "k2angel";
       };
 
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        overlays = [ (import ./overlay.nix) ];
-      };
-
-      mkConfig = import (self + /lib/mkconfig.nix) {
-        inherit inputs pkgs;
-      };
-
+      mkConfig = import (self + /lib/mkconfig.nix) inputs;
       mkNixosConfig = host: mkConfig.mkNixosConfig (baseArgs // { inherit host; });
       mkHomeConfig = host: mkConfig.mkHomeConfig (baseArgs // { inherit host; });
     in

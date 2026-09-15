@@ -1,6 +1,7 @@
 {
   imports = [
-    ../features/overlays.nix
+    ../features/pkgs.nix
+    ../features/wmenu.nix
 
     ./boot.nix
     ./fonts.nix

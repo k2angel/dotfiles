@@ -1,7 +1,8 @@
 {
   imports = [
     ../home
-    ../features/overlays.nix
+    ../features/pkgs.nix
+    ../features/wmenu.nix
 
     ./mpv.nix
     ./overrides.nix
