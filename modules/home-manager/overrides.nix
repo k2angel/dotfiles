@@ -24,17 +24,4 @@ in
         nos = lib.mkForce "${pkgs.nh}/bin/nh home switch --diff always${impure}";
       };
   };
-
-  services = {
-    swayidle = {
-      events.before-sleep = lib.mkForce "/usr/bin/swaylock -f";
-
-      timeouts = lib.mkForce [
-        {
-          timeout = 300;
-          command = "/usr/bin/swaylock -f";
-        }
-      ];
-    };
-  };
 }

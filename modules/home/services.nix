@@ -1,4 +1,10 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  isNixOS,
+  ...
+}:
 
 {
   services = {
@@ -21,21 +27,25 @@
       ];
     };
 
-    swayidle = {
-      enable = true;
+    swayidle =
+      let
+        swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
+      in
+      {
+        enable = true;
 
-      events = {
-        before-sleep = "${pkgs.swaylock}/bin/swaylock -f";
-        lock = "lock";
+        events = {
+          before-sleep = "${swaylock} -f";
+          lock = "lock";
+        };
+
+        timeouts = [
+          {
+            timeout = 300;
+            command = "${swaylock} -f";
+          }
+        ];
       };
-
-      timeouts = [
-        {
-          timeout = 300;
-          command = "${pkgs.swaylock}/bin/swaylock -f";
-        }
-      ];
-    };
 
     mako = {
       enable = true;
