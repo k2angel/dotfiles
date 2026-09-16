@@ -36,6 +36,7 @@
   };
 
   networking = {
+    useDHCP = false;
     networkmanager.enable = false;
     wireless.iwd.enable = true;
   };
