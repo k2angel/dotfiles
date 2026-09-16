@@ -19,9 +19,7 @@ let
   };
 in
 {
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  nixpkgs.config.allowUnfree = !isNixOS;
 
   targets.genericLinux = lib.mkIf (!isNixOS) {
     enable = true;
