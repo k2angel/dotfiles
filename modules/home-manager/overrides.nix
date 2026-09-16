@@ -6,7 +6,9 @@
 }:
 
 let
-  wrapper = config.targets.genericLinux.nixGL.defaultWrapper;
+  cfg = config.targets.genericLinux;
+  wrapper = cfg.nixGL.defaultWrapper;
+  enableNixGL = cfg.enable && wrapper != null;
 in
 {
   programs = {
@@ -14,6 +16,11 @@ in
     mpv.enable = lib.mkForce false;
     swaylock.package = null;
     vesktop.enable = lib.mkForce false;
+
+    imv = {
+      enable = lib.mkForce enableNixGL;
+      package = lib.mkIf enableNixGL (config.lib.nixGL.wrap pkgs.imv);
+    };
 
     zsh.shellAliases =
       let
