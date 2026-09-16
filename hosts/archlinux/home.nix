@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   pkgs,
   isNixOS,
   ...
@@ -22,8 +23,8 @@ in
     allowUnfree = true;
   };
 
-  targets.genericLinux = {
-    enable = !isNixOS;
+  targets.genericLinux = lib.mkIf (!isNixOS) {
+    enable = true;
 
     nixGL = {
       packages = nixGLPackages;
