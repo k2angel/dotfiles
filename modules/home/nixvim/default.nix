@@ -9,6 +9,9 @@
   ...
 }:
 
+let
+  helpers = config.lib.nixvim;
+in
 {
   imports = [ inputs.nixvim.homeModules.nixvim ];
 
@@ -335,39 +338,84 @@
       };
     };
 
-    lsp.servers = {
-      basedpyright.enable = true;
-      clangd.enable = true;
-      jsonls.enable = true;
-      lua_ls.enable = true;
-      rust_analyzer.enable = true;
-      vtsls.enable = true;
-      yamlls.enable = true;
+    lsp = {
+      keymaps = [
+        {
+          key = "gd";
+          lspBufAction = "definition";
+        }
+        {
+          key = "gD";
+          lspBufAction = "references";
+        }
+        {
+          key = "gt";
+          lspBufAction = "type_definition";
+        }
+        {
+          key = "gi";
+          lspBufAction = "implementation";
+        }
+        {
+          key = "K";
+          lspBufAction = "hover";
+        }
+        {
+          action = helpers.mkRaw "function() vim.diagnostic.jump({ count=-1, float=true }) end";
+          key = "<leader>k";
+        }
+        {
+          action = helpers.mkRaw "function() vim.diagnostic.jump({ count=1, float=true }) end";
+          key = "<leader>j";
+        }
+        {
+          action = ":lsp disable<CR>";
+          key = "<leader>lx";
+        }
+        {
+          action = ":lsp enable<CR>";
+          key = "<leader>ls";
+        }
+        {
+          action = ":lsp restart<CR>";
+          key = "<leader>lr";
+        }
+      ];
 
-      nixd = {
-        enable = true;
+      servers = {
+        basedpyright.enable = true;
+        clangd.enable = true;
+        jsonls.enable = true;
+        lua_ls.enable = true;
+        rust_analyzer.enable = true;
+        vtsls.enable = true;
+        yamlls.enable = true;
 
-        config.settings.nixd =
-          let
-            flake = "(builtins.getFlake \"${config.programs.nh.flake}\")";
-          in
-          {
-            nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+        nixd = {
+          enable = true;
 
-            options = {
-              nixos.expr =
-                if isNixOS then
-                  "${flake}.nixosConfigurations.${host}.options"
-                else
-                  "${flake}.nixosConfigurations.visterhv.options";
+          config.settings.nixd =
+            let
+              flake = "(builtins.getFlake \"${config.programs.nh.flake}\")";
+            in
+            {
+              nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
 
-              home_manager.expr =
-                if isNixOS then
-                  "${flake}.nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []"
-                else
-                  "${flake}.homeConfigurations.\"${username}@${host}\".options";
+              options = {
+                nixos.expr =
+                  if isNixOS then
+                    "${flake}.nixosConfigurations.${host}.options"
+                  else
+                    "${flake}.nixosConfigurations.visterhv.options";
+
+                home_manager.expr =
+                  if isNixOS then
+                    "${flake}.nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []"
+                  else
+                    "${flake}.homeConfigurations.\"${username}@${host}\".options";
+              };
             };
-          };
+        };
       };
     };
   };
