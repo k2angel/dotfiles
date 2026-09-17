@@ -54,6 +54,11 @@
         key = "<A->>";
         action = "<Cmd>BufferLineCycleNext<CR>";
       }
+      {
+        mode = "t";
+        key = "<C-]>";
+        action = "<C-\\><C-n>";
+      }
     ]
     ++ (map
       (i: {
