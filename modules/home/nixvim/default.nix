@@ -8,7 +8,11 @@
     defaultEditor = true;
     globals.mapleader = " ";
     diagnostic.settings.virtual_text = true;
-    nixpkgs.config.allowUnfree = true;
+
+    nixpkgs = {
+      config.allowUnfree = true;
+      source = inputs.nixpkgs;
+    };
 
     opts = {
       cursorline = true;
