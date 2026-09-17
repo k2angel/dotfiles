@@ -1,4 +1,13 @@
-{ pkgs, inputs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  host,
+  username,
+  isNixOS,
+  ...
+}:
 
 {
   imports = [ inputs.nixvim.homeModules.nixvim ];
@@ -331,10 +340,35 @@
       clangd.enable = true;
       jsonls.enable = true;
       lua_ls.enable = true;
-      nixd.enable = true;
       rust_analyzer.enable = true;
       vtsls.enable = true;
       yamlls.enable = true;
+
+      nixd = {
+        enable = true;
+
+        config.settings.nixd =
+          let
+            flake = "(builtins.getFlake \"${config.programs.nh.flake}\")";
+          in
+          {
+            nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+
+            options = {
+              nixos.expr =
+                if isNixOS then
+                  "${flake}.nixosConfigurations.${host}.options"
+                else
+                  "${flake}.nixosConfigurations.visterhv.options";
+
+              home_manager.expr =
+                if isNixOS then
+                  "${flake}.nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []"
+                else
+                  "${flake}.homeConfigurations.\"${username}@${host}\".options";
+            };
+          };
+      };
     };
   };
 }
