@@ -96,7 +96,7 @@
       fidget.enable = true;
       gitsigns.enable = true;
       highlight-colors.enable = true;
-      lsp.enable = true;
+      lspconfig.enable = true;
       nvim-autopairs.enable = true;
       refactoring.enable = true;
       sleuth.enable = true;
