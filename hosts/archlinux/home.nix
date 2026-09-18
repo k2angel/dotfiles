@@ -33,6 +33,24 @@ in
 
   programs = {
     beets.settings.directory = "/mnt/pirate/Music/Library";
+
+    retroarch =
+      let
+        retroarch = pkgs.retroarch-bare;
+      in
+      {
+        enable = true;
+        package = lib.mkIf (!isNixOS) (
+          retroarch
+          // {
+            wrapper = args: config.lib.nixGL.wrap (retroarch.wrapper args);
+          }
+        );
+
+        cores = {
+          np2kai.enable = true;
+        };
+      };
   };
 
   systemd.user.packages = [
