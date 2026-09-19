@@ -1,5 +1,6 @@
 {
   inputs,
+  self,
   config,
   lib,
   pkgs,
@@ -19,6 +20,8 @@ let
   };
 in
 {
+  imports = [ (self + /modules/features/beets.nix) ];
+
   nixpkgs.config.allowUnfree = !isNixOS;
 
   targets.genericLinux = lib.mkIf (!isNixOS) {

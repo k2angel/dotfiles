@@ -5,7 +5,6 @@
     ./vesktop
     ./zsh
 
-    ./beets.nix
     ./btop.nix
     ./fcitx5.nix
     ./foot.nix
