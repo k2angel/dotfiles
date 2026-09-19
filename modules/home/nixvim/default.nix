@@ -379,9 +379,13 @@ in
         clangd.enable = true;
         jsonls.enable = true;
         lua_ls.enable = true;
-        rust_analyzer.enable = true;
         vtsls.enable = true;
         yamlls.enable = true;
+
+        rust_analyzer = {
+          enable = true;
+          package = null;
+        };
 
         nixd = {
           enable = true;
