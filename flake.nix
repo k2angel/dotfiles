@@ -7,13 +7,18 @@
     nixGL.url = "github:danisosa2001/nixGL/fix-nvidia-open-kernel-regex";
     nixpkgs-nixgl.url = "github:nixos/nixpkgs/93e8cdce7afc64297cfec447c311470788131cd9";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.1.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,8 +27,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v1.1.0";
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
