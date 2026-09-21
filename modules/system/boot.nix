@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   boot = {
@@ -6,7 +6,7 @@
     initrd.systemd.enable = true;
 
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkDefault true;
       systemd-boot.consoleMode = "max";
       systemd-boot.configurationLimit = 10;
       efi.canTouchEfiVariables = true;
