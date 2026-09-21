@@ -12,6 +12,7 @@ inputs: {
         ../hosts/${host}
         ../modules/system
 
+        inputs.lanzaboote.nixosModules.lanzaboote
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
