@@ -49,6 +49,7 @@
       nixosConfigurations = {
         nixos-vm = mkNixosConfig "nixos-vm";
         visterhv = mkNixosConfig "visterhv";
+        yoga-310 = mkNixosConfig "yoga-310";
       };
 
       homeConfigurations = {
