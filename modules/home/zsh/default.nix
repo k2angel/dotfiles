@@ -41,7 +41,6 @@ in
       ];
 
       shellAliases = {
-        beet-import = "${lib.getExe pkgs.beets} import ${config.xdg.userDirs.music}/beet-import";
         ghqc = "cd $(${ghq} root)/$(${ghq} list | ${lib.getExe pkgs.fzf})";
         nob = "${nh} os boot --diff always --hostname ${host}";
         nos = "${nh} os switch --diff always --hostname ${host}";
