@@ -11,7 +11,6 @@
     noto-fonts-color-emoji
     soroemono
     twitter-color-emoji
-    udev-gothic
   ];
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Noto Sans CJK JP" ];
