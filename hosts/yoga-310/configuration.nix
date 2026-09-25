@@ -1,14 +1,18 @@
-{ pkgs, username, ... }:
+{
+  self,
+  pkgs,
+  username,
+  ...
+}:
 
 {
-  nix.settings = {
-    substituters = [
-      "http://192.168.3.171:5000"
-      "https://cache.nixos.org"
-    ];
+  imports = [ (self + /modules/features/attic-watch-store.nix) ];
 
-    trusted-public-keys = [
-      "cache.archlinux.local-1:30Lhk8MrzdEz+Fp5oRrjiyR9m/icirtQsDxntO0oKcA="
+  nix = {
+    settings = {
+      trusted-users = [ "@wheel" ];
+    };
+
     ];
   };
 

@@ -8,6 +8,7 @@
     ./virtualization.nix
   ]
   ++ lib.optionals (!isNixOS) [
+    ./atticd.nix
     ./fonts.nix
   ];
 }

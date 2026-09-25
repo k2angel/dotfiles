@@ -25,6 +25,7 @@ in
     "/nix".options = btrfsOptions;
     "/mnt/arch_home".options = btrfsOptions;
     "/mnt/arcade".options = btrfsOptions;
+    "/mnt/atticd".options = btrfsOptions;
     "/mnt/game".options = btrfsOptions;
   }
   // lib.listToAttrs (

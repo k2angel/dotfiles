@@ -64,6 +64,12 @@
     options = [ "nofail" ];
   };
 
+  fileSystems."/mnt/atticd" = {
+    device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
+    fsType = "btrfs";
+    options = [ "subvol=@atticd" ];
+  };
+
   fileSystems."/mnt/game" = {
     device = "/dev/disk/by-uuid/1b3dad64-6da1-45fe-86af-ac0db2c4c963";
     fsType = "btrfs";

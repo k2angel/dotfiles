@@ -84,6 +84,5 @@ in
       xnviewmp
     ]
     ++ lib.optionals (!isNixOS) [
-      nix-serve-ng
     ];
 }
