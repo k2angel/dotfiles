@@ -106,4 +106,8 @@
       };
     };
   };
+
+  home.sessionVariables = {
+    COMMA_NIXPKGS_FLAKE = inputs.nixpkgs;
+  };
 }
