@@ -1,8 +1,6 @@
 {
   lib,
-  config,
   pkgs,
-  host,
   ...
 }:
 
@@ -42,8 +40,8 @@ in
 
       shellAliases = {
         ghqc = "cd $(${ghq} root)/$(${ghq} list | ${lib.getExe pkgs.fzf})";
-        nob = "${nh} os boot --diff always --hostname ${host}";
-        nos = "${nh} os switch --diff always --hostname ${host}";
+        nob = "${nh} os boot --diff always";
+        nos = "${nh} os switch --diff always";
       };
     };
 
