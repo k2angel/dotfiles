@@ -84,5 +84,6 @@ in
       xnviewmp
     ]
     ++ lib.optionals (!isNixOS) [
+      blocky
     ];
 }
