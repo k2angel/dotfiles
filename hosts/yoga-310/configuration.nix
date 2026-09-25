@@ -9,10 +9,19 @@
   imports = [ (self + /modules/features/attic-watch-store.nix) ];
 
   nix = {
+    distributedBuilds = true;
+
     settings = {
       trusted-users = [ "@wheel" ];
     };
 
+    buildMachines = [
+      {
+        hostName = "builder";
+        system = builtins.currentSystem;
+        protocol = "ssh-ng";
+        maxJobs = 3;
+      }
     ];
   };
 
