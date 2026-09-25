@@ -24,7 +24,7 @@ in
 
     zsh.shellAliases =
       let
-        impure = lib.optionalString (wrapper == "nvidia") " --impure";
+        impure = lib.optionalString (wrapper == "nvidia" && enableNixGL) " --impure";
       in
       {
         nob = lib.mkForce "${pkgs.nh}/bin/nh home build --diff always${impure}";
