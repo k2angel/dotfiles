@@ -1,13 +1,6 @@
-{
-  self,
-  pkgs,
-  username,
-  ...
-}:
+{ pkgs, username, ... }:
 
 {
-  imports = [ (self + /modules/features/attic-watch-store.nix) ];
-
   nix = {
     distributedBuilds = true;
 

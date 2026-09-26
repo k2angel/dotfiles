@@ -1,8 +1,6 @@
-{ self, username, ... }:
+{ username, ... }:
 
 {
-  imports = [ (self + /modules/features/attic-watch-store.nix) ];
-
   services.atticd = {
     enable = true;
     environmentFile = "/etc/atticd/environment";
