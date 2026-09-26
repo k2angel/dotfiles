@@ -4,7 +4,7 @@
   config,
   lib,
   pkgs,
-  isNixOS,
+  isNixos,
   ...
 }:
 
@@ -22,9 +22,9 @@ in
 {
   imports = [ (self + /modules/features/beets.nix) ];
 
-  nixpkgs.config.allowUnfree = !isNixOS;
+  nixpkgs.config.allowUnfree = !isNixos;
 
-  targets.genericLinux = lib.mkIf (!isNixOS) {
+  targets.genericLinux = lib.mkIf (!isNixos) {
     enable = true;
 
     nixGL = {
@@ -43,7 +43,7 @@ in
       in
       {
         enable = true;
-        package = lib.mkIf (!isNixOS) (
+        package = lib.mkIf (!isNixos) (
           retroarch
           // {
             wrapper = args: config.lib.nixGL.wrap (retroarch.wrapper args);
@@ -83,7 +83,7 @@ in
       xq-xml
       xnviewmp
     ]
-    ++ lib.optionals (!isNixOS) [
+    ++ lib.optionals (!isNixos) [
       blocky
     ];
 }

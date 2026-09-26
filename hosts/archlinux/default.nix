@@ -1,4 +1,4 @@
-{ lib, isNixOS, ... }:
+{ lib, isNixos, ... }:
 
 {
   imports = [
@@ -7,7 +7,7 @@
     ./sway.nix
     ./virtualization.nix
   ]
-  ++ lib.optionals (!isNixOS) [
+  ++ lib.optionals (!isNixos) [
     ./atticd.nix
     ./fonts.nix
   ];

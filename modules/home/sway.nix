@@ -3,17 +3,17 @@
   config,
   pkgs,
   lib,
-  isNixOS,
+  isNixos,
   ...
 }:
 
 let
-  scripts = pkgs.callPackage ./scripts.nix { inherit config isNixOS; };
+  scripts = pkgs.callPackage ./scripts.nix { inherit config isNixos; };
 
   grimshot = lib.getExe pkgs.sway-contrib.grimshot;
   ifne = lib.getExe' pkgs.moreutils "ifne";
   screenshot-proc = lib.getExe scripts.screenshot-proc;
-  uwsm = if isNixOS then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
+  uwsm = if isNixos then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
 in
 {
   wayland.windowManager.sway = {

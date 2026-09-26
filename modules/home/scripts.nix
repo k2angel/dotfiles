@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  isNixOS,
+  isNixos,
   ...
 }:
 
@@ -12,9 +12,9 @@ let
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
   wmenu = lib.getExe' pkgs.wmenu "wmenu";
 
-  uwsm = if isNixOS then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
-  swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
-  systemctl = if isNixOS then lib.getExe' pkgs.systemd "systemctl" else "/usr/bin/systemctl";
+  uwsm = if isNixos then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
+  swaylock = if isNixos then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
+  systemctl = if isNixos then lib.getExe' pkgs.systemd "systemctl" else "/usr/bin/systemctl";
 in
 {
   bemenu-cliphist = pkgs.writeShellScriptBin "bemenu-cliphist" ''
