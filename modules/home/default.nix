@@ -1,7 +1,6 @@
 {
   imports = [
     ./firefox
-    ./nixvim
     ./vesktop
     ./zsh
 

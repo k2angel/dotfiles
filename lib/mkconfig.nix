@@ -11,10 +11,12 @@ inputs: {
       modules = [
         ../hosts/${host}
         ../modules/system
+        ../modules/nixvim
 
         inputs.disko.nixosModules.disko
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.home-manager.nixosModules.home-manager
+        inputs.nixvim.nixosModules.nixvim
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -45,6 +47,9 @@ inputs: {
       modules = [
         ../hosts/${host}
         ../modules/home-manager
+        ../modules/nixvim
+
+        inputs.nixvim.homeModules.nixvim
       ];
     };
 }

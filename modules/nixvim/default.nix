@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   pkgs,
   host,
   username,
@@ -13,8 +12,6 @@ let
   helpers = config.lib.nixvim;
 in
 {
-  imports = [ inputs.nixvim.homeModules.nixvim ];
-
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
