@@ -3,7 +3,6 @@
 
 {
   services = {
-    resolved.enable = true;
     udisks2.enable = true;
 
     greetd = {
@@ -18,16 +17,6 @@
       };
     };
 
-    openssh = {
-      enable = true;
-
-      settings = {
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-        PermitRootLogin = "no";
-      };
-    };
-
     pipewire = {
       enable = true;
 
@@ -37,14 +26,5 @@
       pulse.enable = true;
       wireplumber.enable = true;
     };
-
-    tailscale = {
-      enable = true;
-      openFirewall = true;
-    };
   };
-
-  systemd.services.tailscaled.serviceConfig.Environment = [
-    "TS_DEBUG_FIREWALL_MODE=nftables"
-  ];
 }

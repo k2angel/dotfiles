@@ -10,6 +10,9 @@
   };
 
   services = {
+    resolved.enable = true;
+    tailscale.enable = true;
+
     blocky = {
       enable = true;
 
@@ -72,5 +75,19 @@
         };
       };
     };
+
+    openssh = {
+      enable = true;
+
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
+      };
+    };
   };
+
+  systemd.services.tailscaled.serviceConfig.Environment = [
+    "TS_DEBUG_FIREWALL_MODE=nftables"
+  ];
 }
