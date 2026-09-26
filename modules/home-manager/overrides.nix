@@ -15,7 +15,11 @@ in
     firefox.enable = lib.mkForce false;
     mpv.enable = lib.mkForce false;
     swaylock.package = null;
-    vesktop.enable = lib.mkForce false;
+
+    vesktop = {
+      enable = lib.mkForce enableNixGL;
+      package = lib.mkIf enableNixGL (config.lib.nixGL.wrap pkgs.vesktop);
+    };
 
     imv = {
       enable = lib.mkForce enableNixGL;
