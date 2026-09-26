@@ -1,0 +1,3 @@
+{
+  "alsa_output.pci-0000_00_0e.0.analog-stereo" = "ALC236 Analog";
+}
