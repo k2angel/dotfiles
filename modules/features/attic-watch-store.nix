@@ -3,7 +3,7 @@
 {
   systemd.user.services.attic-watch-store-k2angel-private = {
     Unit = {
-      Description = "Attic Binary Cache Auto-Push Service for ncaq:private";
+      Description = "Attic Binary Cache Auto-Push Service for k2angel:private";
       After = [
         "network-online.target"
         "nix-daemon.service"
