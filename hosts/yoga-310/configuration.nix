@@ -11,7 +11,7 @@
     buildMachines = [
       {
         hostName = "builder";
-        system = builtins.currentSystem;
+        system = pkgs.stdenv.hostPlatform.system;
         protocol = "ssh-ng";
         maxJobs = 3;
       }
