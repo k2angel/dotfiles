@@ -73,6 +73,7 @@ in
       pipe-rename
       razer-cli
       savepagenow
+      seeker
       sox
       slsk-batchdl
       tdl
