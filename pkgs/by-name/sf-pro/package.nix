@@ -1,13 +1,17 @@
 {
   stdenvNoCC,
   fetchurl,
+  installFonts,
   p7zip,
 }:
 
 stdenvNoCC.mkDerivation {
   pname = "sf-pro";
   version = "22.0d5e4";
-  nativeBuildInputs = [ p7zip ];
+  nativeBuildInputs = [
+    installFonts
+    p7zip
+  ];
 
   src = fetchurl {
     url = "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg";
@@ -17,12 +21,5 @@ stdenvNoCC.mkDerivation {
   unpackPhase = ''
     7z e $src
     7z e -tcpio Payload\~ "./Library/Fonts/*"
-  '';
-
-  installPhase = ''
-    runHook preInstall
-    install -Dm644 -t "$out/share/fonts/opentype/" *.otf
-    install -Dm644 -t "$out/share/fonts/truetype/" *.ttf
-    runHook postInstall
   '';
 }
