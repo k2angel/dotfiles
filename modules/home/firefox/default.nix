@@ -1,10 +1,12 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [ ./betterfox.nix ];
 
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+
     languagePacks = [
       "ja"
       "en-US"
