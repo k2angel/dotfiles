@@ -19,6 +19,8 @@
       package = null;
 
       settings = {
+        init.defaultBranch = "main";
+
         user = {
           name = username;
           email = "90847045+k2angel@users.noreply.github.com";
