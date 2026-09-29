@@ -47,7 +47,7 @@
             "#${base0D}"
             "bold"
           ];
-          inactiveBorderCoor = [ "#${base03}" ];
+          inactiveBorderColor = [ "#${base03}" ];
           searchingActiveBorderColor = [
             "#${base04}"
             "bold"
