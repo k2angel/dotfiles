@@ -10,7 +10,7 @@
 
 let
   nixGLPackages = import "${inputs.nixGL}/default.nix" {
-    pkgs = import inputs.nixpkgs-nixgl {
+    pkgs = import inputs.nixGL.inputs.nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
     };

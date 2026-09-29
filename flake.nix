@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
     nixGL.url = "github:danisosa2001/nixGL/fix-nvidia-open-kernel-regex";
-    nixpkgs-nixgl.url = "github:nixos/nixpkgs/93e8cdce7afc64297cfec447c311470788131cd9";
 
     disko = {
       url = "github:nix-community/disko";
