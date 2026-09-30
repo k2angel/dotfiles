@@ -12,9 +12,13 @@ let
 in
 {
   programs = {
-    firefox.enable = lib.mkForce false;
     mpv.enable = lib.mkForce false;
     swaylock.package = null;
+
+    firefox = {
+      enable = lib.mkForce enableNixGL;
+      package = lib.mkIf enableNixGL (config.lib.nixGL.wrap pkgs.firefox);
+    };
 
     vesktop = {
       enable = lib.mkForce enableNixGL;
