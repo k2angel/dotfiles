@@ -16,6 +16,8 @@
       settings = import "${pkgs.betterfox-nix}/betterfox.nix" // {
         "intl.locale.requested" = "ja,en-US";
         "extension.activeTehemeID" = "{d148819b-332d-4519-bfc3-679e49d27112}";
+        "font.cjk_pref_fallback_order" = "ja,zh-cn,zh-hk,zh-tw,ko";
+        "font.name-list.emoji" = "emoji";
       };
 
       search = {
