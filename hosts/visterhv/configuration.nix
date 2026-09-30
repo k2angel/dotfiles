@@ -9,6 +9,13 @@
   imports = [ (self + /modules/features/lanzaboote.nix) ];
 
   nixpkgs.config.allowUnfree = true;
+
+  nix.settings.trusted-users = [
+    "root"
+    "nixremote"
+    "@wheel"
+  ];
+
   services.xserver.videoDrivers = [ "nvidia" ];
   programs.uwsm.waylandCompositors.sway.extraArgs = [ "--unsupported-gpu" ];
 
@@ -87,6 +94,13 @@
         ];
       };
     };
+  };
+
+  users.users.nixremote = {
+    isSystemUser = true;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEbCDJLpXQRW4OirmsLdK/BHTrWkE90zsNKlxIMnvhpy root@yoga-310"
+    ];
   };
 
   users.users.${username}.openssh.authorizedKeys.keys = [
