@@ -1,11 +1,11 @@
 {
   imports = [
-    ./firefox
     ./vesktop
     ./zsh
 
     ./btop.nix
     ./fcitx5.nix
+    ./firefox.nix
     ./foot.nix
     ./git.nix
     ./home.nix
