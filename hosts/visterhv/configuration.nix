@@ -61,6 +61,7 @@
 
         sources = [
           { mac = "94:45:60:13:b6:aa"; }
+          { mac = "58:00:e3:f2:19:21"; }
         ];
 
         services = [
@@ -71,6 +72,10 @@
         ];
 
         ports = [
+          {
+            port = 5000;
+            protocol = "tcp";
+          }
           {
             port = 5082;
             protocol = "tcp";
