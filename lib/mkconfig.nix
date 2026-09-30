@@ -6,7 +6,9 @@ inputs: {
       ...
     }:
     inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = args;
+      specialArgs = args // {
+        isNixos = true;
+      };
 
       modules = [
         ../hosts/${host}
