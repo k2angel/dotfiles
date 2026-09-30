@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./betterfox.nix ];
-
   programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
@@ -12,12 +10,10 @@
       "en-US"
     ];
 
-    policies = {
-      DisableTelemetry = true;
-    };
+    policies = import "${pkgs.betterfox-nix}/policies.nix";
 
     profiles.default = {
-      settings = {
+      settings = import "${pkgs.betterfox-nix}/betterfox.nix" // {
         "intl.locale.requested" = "ja,en-US";
         "extension.activeTehemeID" = "{d148819b-332d-4519-bfc3-679e49d27112}";
       };
