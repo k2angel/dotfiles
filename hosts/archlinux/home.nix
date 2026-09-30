@@ -37,6 +37,7 @@ in
 
   programs = {
     beets.settings.directory = "/mnt/pirate/Music/Library";
+    firefox.profiles.default.settings."browser.display.use_document_fonts" = 0;
 
     retroarch =
       let
