@@ -23,6 +23,7 @@ in
   imports = [ (self + /modules/features/beets.nix) ];
 
   nixpkgs.config.allowUnfree = !isNixos;
+  nixpkgs.config.cudaSupport = !isNixos;
 
   targets.genericLinux = lib.mkIf (!isNixos) {
     enable = true;
@@ -86,5 +87,6 @@ in
     ]
     ++ lib.optionals (!isNixos) [
       blocky
+      (config.lib.nixGL.wrap llama-cpp-cuda)
     ];
 }
