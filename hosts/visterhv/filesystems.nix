@@ -46,10 +46,5 @@ in
     }) bindDirs
   );
 
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 4 * 1024;
-    }
-  ];
+  swapDevices = [ { device = "/dev/nvme0n1p2"; } ];
 }
