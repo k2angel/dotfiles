@@ -24,9 +24,11 @@
     users.atticd = {
       isSystemUser = true;
       group = "atticd";
+      uid = 929;
     };
 
     groups.atticd = {
+      gid = 928;
       members = [ username ];
     };
   };
