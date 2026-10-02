@@ -16,6 +16,9 @@ let
 
     "dotfiles"
     "Containers"
+    "Games"
+    "models"
+    "src"
   ];
 in
 {
