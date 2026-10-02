@@ -68,8 +68,8 @@
         forward = true;
 
         sources = [
-          { mac = "94:45:60:13:b6:aa"; }
-          { mac = "58:00:e3:f2:19:21"; }
+          { address = "94:45:60:13:b6:aa"; }
+          { address = "58:00:e3:f2:19:21"; }
         ];
 
         services = [
