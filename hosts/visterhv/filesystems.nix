@@ -45,6 +45,4 @@ in
       };
     }) bindDirs
   );
-
-  swapDevices = [ { device = "/dev/nvme0n1p2"; } ];
 }
