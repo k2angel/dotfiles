@@ -22,7 +22,7 @@ in
 {
   imports = [ (self + /modules/features/beets.nix) ];
 
-  nixpkgs.config.allowUnfree = !isNixos;
+  nixpkgs.config.allowUnfree = true;
 
   targets.genericLinux = lib.mkIf (!isNixos) {
     enable = true;
