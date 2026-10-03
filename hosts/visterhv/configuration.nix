@@ -9,7 +9,6 @@
   imports = [ (self + /modules/features/lanzaboote.nix) ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.cudaSupport = true;
 
   nix.settings.trusted-users = [
     "root"

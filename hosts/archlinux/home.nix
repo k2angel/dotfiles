@@ -23,7 +23,6 @@ in
   imports = [ (self + /modules/features/beets.nix) ];
 
   nixpkgs.config.allowUnfree = !isNixos;
-  nixpkgs.config.cudaSupport = !isNixos;
 
   targets.genericLinux = lib.mkIf (!isNixos) {
     enable = true;
