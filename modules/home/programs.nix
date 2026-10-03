@@ -55,11 +55,6 @@
     nh = {
       enable = true;
       flake = "${config.home.homeDirectory}/dotfiles";
-
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 4d --keep 3 --no-gcroots --no-direnv";
-      };
     };
 
     mpv = {

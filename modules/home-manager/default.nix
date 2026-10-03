@@ -1,6 +1,7 @@
 {
   imports = [
     ../home
+    ../features/nh-clean.nix
     ../features/pkgs.nix
     ../features/wmenu.nix
 
