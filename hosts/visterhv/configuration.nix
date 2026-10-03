@@ -41,9 +41,6 @@
     };
   };
 
-    enable = true;
-  };
-
   users = {
     groups.nixremote = { };
 
