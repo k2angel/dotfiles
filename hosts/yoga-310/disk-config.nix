@@ -16,7 +16,7 @@ in
 
           partitions = {
             ESP = {
-              size = "128M";
+              size = "512M";
               type = "EF00";
               priority = 1;
 
@@ -58,14 +58,10 @@ in
                     mountOptions = [
                       "noatime"
                       "nodatacow"
-                      "nodatasum"
                     ];
 
                     swap = {
-                      swapfile = {
-                        size = "4G";
-                        path = "swapfile";
-                      };
+                      swapfile.size = "4G";
                     };
                   };
                 };
