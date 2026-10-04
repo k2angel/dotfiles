@@ -41,12 +41,23 @@
     };
   };
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      pipewire
-      ffmpeg
-    ];
+  programs = {
+    gamemode.enable = true;
+
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        pipewire
+        ffmpeg
+      ];
+    };
+
+    steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
   };
 
   users = {
