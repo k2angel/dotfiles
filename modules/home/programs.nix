@@ -12,6 +12,7 @@
     aria2p.enable = true;
     imv.enable = true;
     jqp.enable = true;
+    nix-index.enable = true;
     nix-index-database.comma.enable = true;
 
     aria2 = {
