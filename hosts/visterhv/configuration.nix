@@ -69,5 +69,11 @@
 
   environment.systemPackages = with pkgs; [
     llama-cpp-cuda
+    wineWow64Packages.waylandFull
+    winetricks
+
+    (pkgs.writeShellScriptBin "wine64" ''
+      exec ${pkgs.wineWow64Packages.waylandFull}/bin/wine "$@"
+    '')
   ];
 }
