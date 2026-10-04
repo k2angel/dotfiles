@@ -5,21 +5,6 @@ let
     "noatime"
     "compress=zstd"
   ];
-
-  bindDirs = [
-    "Desktop"
-    "Documents"
-    "Downloads"
-    "Music"
-    "Pictures"
-    "Videos"
-
-    "dotfiles"
-    "Containers"
-    "Games"
-    "models"
-    "src"
-  ];
 in
 {
   fileSystems = {
@@ -30,19 +15,5 @@ in
     "/mnt/arcade".options = btrfsOptions;
     "/mnt/atticd".options = btrfsOptions;
     "/mnt/game".options = btrfsOptions;
-  }
-  // lib.listToAttrs (
-    map (dir: {
-      name = "/home/${username}/${dir}";
-      value = {
-        device = "/mnt/arch_home/k2angel/${dir}";
-        fsType = "none";
-        options = [
-          "bind"
-          "x-systemd.after=/mnt/arch_home"
-          "x-systemd.requires=/mnt/arch_home"
-        ];
-      };
-    }) bindDirs
-  );
+  };
 }

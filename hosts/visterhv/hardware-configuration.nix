@@ -28,19 +28,19 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
-    options = [ "subvol=@nixos" ];
+    options = [ "subvol=@" ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
-    options = [ "subvol=@nixos_home" ];
+    options = [ "subvol=@home" ];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
-    options = [ "subvol=@nixos_nix" ];
+    options = [ "subvol=@nix" ];
   };
 
   fileSystems."/boot" = {
@@ -55,7 +55,7 @@
   fileSystems."/mnt/arch_home" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
-    options = [ "subvol=@home" ];
+    options = [ "subvol=@arch_home" ];
   };
 
   fileSystems."/mnt/arcade" = {
