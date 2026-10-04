@@ -41,6 +41,14 @@
     };
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      pipewire
+      ffmpeg
+    ];
+  };
+
   users = {
     groups.nixremote = { };
 
