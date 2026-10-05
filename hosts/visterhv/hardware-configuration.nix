@@ -52,12 +52,6 @@
     ];
   };
 
-  fileSystems."/mnt/arch_home" = {
-    device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
-    fsType = "btrfs";
-    options = [ "subvol=@arch_home" ];
-  };
-
   fileSystems."/mnt/arcade" = {
     device = "/dev/disk/by-uuid/f0e67ebf-4af6-4a8e-9c08-196e26926db6";
     fsType = "btrfs";

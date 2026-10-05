@@ -1,4 +1,4 @@
-{ lib, username, ... }:
+{ ... }:
 
 let
   btrfsOptions = [
@@ -11,7 +11,6 @@ in
     "/".options = btrfsOptions;
     "/home".options = btrfsOptions;
     "/nix".options = btrfsOptions;
-    "/mnt/arch_home".options = btrfsOptions;
     "/mnt/arcade".options = btrfsOptions;
     "/mnt/atticd".options = btrfsOptions;
     "/mnt/game".options = btrfsOptions;
