@@ -1,28 +1,31 @@
 { pkgs, ... }:
 
 {
-  fonts.packages = with pkgs; [
-    font-awesome
-    jetbrains-mono
-    nerd-fonts.symbols-only
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-color-emoji
-    soroemono
-    twitter-color-emoji
-  ];
-  fonts.fontconfig.defaultFonts = {
-    sansSerif = [ "Noto Sans CJK JP" ];
-    serif = [ "Noto Serif CJK JP" ];
-    monospace = [
-      "JetBrains Mono"
-      "SOROEMONO"
-      "Symbols Nerd Font"
+  fonts = {
+    packages = with pkgs; [
+      font-awesome
+      jetbrains-mono
+      nerd-fonts.symbols-only
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-color-emoji
+      soroemono
+      twitter-color-emoji
     ];
-    emoji = [
-      "Twitter Color Emoji"
-      "Noto Color Emoji"
-    ];
+
+    fontconfig.defaultFonts = {
+      sansSerif = [ "Noto Sans CJK JP" ];
+      serif = [ "Noto Serif CJK JP" ];
+      monospace = [
+        "JetBrains Mono"
+        "SOROEMONO"
+        "Symbols Nerd Font"
+      ];
+      emoji = [
+        "Twitter Color Emoji"
+        "Noto Color Emoji"
+      ];
+    };
   };
 }
