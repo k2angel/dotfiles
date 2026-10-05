@@ -44,10 +44,17 @@
   programs = {
     gamemode.enable = true;
 
+    java = {
+      enable = true;
+      package = pkgs.jdk.override { enableJavaFX = true; };
+    };
+
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
         pipewire
+        pipewire.jack
+        jportaudio
         ffmpeg
       ];
     };
