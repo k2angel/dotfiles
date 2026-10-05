@@ -89,6 +89,7 @@
 
   environment.systemPackages = with pkgs; [
     llama-cpp-cuda
+    python3
     wineWow64Packages.waylandFull
     winetricks
 
