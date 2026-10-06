@@ -87,6 +87,23 @@
     };
   };
 
+  systemd.services = {
+    activate-monitor-dp-2 = {
+      enable = true;
+      description = "Enable DP-2 when WM starts";
+
+      wantedBy = [ "graphical.target" ];
+      after = [ "graphical.target" ];
+
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.coreutils}/bin/tee /sys/class/drm/card1-DP-2/status";
+        StandardInputText = "on";
+        RemainAfterExit = true;
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     llama-cpp-cuda
     python3
