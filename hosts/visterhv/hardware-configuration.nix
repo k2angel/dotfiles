@@ -28,19 +28,31 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
-    options = [ "subvol=@" ];
+    options = [
+      "noatime"
+      "compress=zstd"
+      "subvol=@"
+    ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
-    options = [ "subvol=@home" ];
+    options = [
+      "noatime"
+      "compress=zstd"
+      "subvol=@home"
+    ];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
-    options = [ "subvol=@nix" ];
+    options = [
+      "noatime"
+      "compress=zstd"
+      "subvol=@nix"
+    ];
   };
 
   fileSystems."/boot" = {
@@ -55,19 +67,31 @@
   fileSystems."/mnt/arcade" = {
     device = "/dev/disk/by-uuid/f0e67ebf-4af6-4a8e-9c08-196e26926db6";
     fsType = "btrfs";
-    options = [ "nofail" ];
+    options = [
+      "noatime"
+      "compress=zstd"
+      "nofail"
+    ];
   };
 
   fileSystems."/mnt/atticd" = {
     device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
     fsType = "btrfs";
-    options = [ "subvol=@atticd" ];
+    options = [
+      "noatime"
+      "compress=zstd"
+      "subvol=@atticd"
+    ];
   };
 
   fileSystems."/mnt/game" = {
     device = "/dev/disk/by-uuid/1b3dad64-6da1-45fe-86af-ac0db2c4c963";
     fsType = "btrfs";
-    options = [ "nofail" ];
+    options = [
+      "noatime"
+      "compress=zstd"
+      "nofail"
+    ];
   };
 
   fileSystems."/mnt/pirate" = {
