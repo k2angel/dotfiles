@@ -1,4 +1,9 @@
-{ lib, host, ... }:
+{
+  config,
+  lib,
+  host,
+  ...
+}:
 
 {
   networking = {
@@ -71,7 +76,7 @@
 
         trusted = {
           forward = true;
-          interfaces = [ "tailscale0" ];
+          interfaces = [ config.services.tailscale.interfaceName ];
         };
       };
     };
