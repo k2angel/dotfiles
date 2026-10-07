@@ -108,6 +108,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    ffmpeg
     llama-cpp-cuda
     python3
     wineWow64Packages.waylandFull
