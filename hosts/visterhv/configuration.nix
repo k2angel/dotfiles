@@ -6,7 +6,10 @@
 }:
 
 {
-  imports = [ (self + /modules/features/lanzaboote.nix) ];
+  imports = [
+    (self + /modules/features/lanzaboote.nix)
+    (self + /modules/features/bluetooth.nix)
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
