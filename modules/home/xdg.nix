@@ -4,6 +4,17 @@
   xdg = {
     enable = true;
 
+    mimeApps = {
+      enable = true;
+
+      defaultApplications = {
+        "application/pdf" = "firefox.desktop";
+        "application/vnd.microsoft.portable-executable" = "wine.desktop";
+        "video/*" = "mpv.desktop";
+        "x-scheme-handler/discord" = "vesktop.desktop";
+      };
+    };
+
     userDirs = {
       enable = true;
       createDirectories = true;
