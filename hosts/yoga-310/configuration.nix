@@ -1,6 +1,13 @@
-{ pkgs, username, ... }:
+{
+  self,
+  pkgs,
+  username,
+  ...
+}:
 
 {
+  imports = [ (self + /modules/features/bluetooth.nix) ];
+
   nix = {
     distributedBuilds = true;
 
