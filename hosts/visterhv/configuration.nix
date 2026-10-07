@@ -40,7 +40,7 @@
 
     openrazer = {
       enable = true;
-      users = [ "${username}" ];
+      users = [ username ];
     };
   };
 
