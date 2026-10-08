@@ -1,6 +1,8 @@
 { pkgs, username, ... }:
 
 {
+  networking.firewall.allowedTCPPorts = [ 5000 ];
+
   services.atticd = {
     enable = true;
     environmentFile = "/etc/atticd/environment";

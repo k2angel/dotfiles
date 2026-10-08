@@ -5,6 +5,11 @@
     useDHCP = false;
     networkmanager.enable = false;
     wireless.iwd.enable = true;
+
+    firewall.extraInputRules = ''
+      ether saddr 94:45:60:13:b6:aa tcp dport { 5082, 8096 } accept
+      tcp dport { 5082, 8096 } drop
+    '';
   };
 
   systemd.network = {
@@ -20,38 +25,6 @@
 
   services = {
     blocky.settings.connectIPVersion = "v4";
-
-    firewalld.zones = {
-      home = {
-        forward = true;
-
-        sources = [
-          { address = "94:45:60:13:b6:aa"; }
-          { address = "58:00:e3:f2:19:21"; }
-        ];
-
-        services = [
-          "dhcpv6-client"
-          "kdeconnect"
-          "ssh"
-          "steam-streaming"
-        ];
-
-        ports = [
-          {
-            port = 5000;
-            protocol = "tcp";
-          }
-          {
-            port = 5082;
-            protocol = "tcp";
-          }
-          {
-            port = 8096;
-            protocol = "tcp";
-          }
-        ];
-      };
     };
   };
 }

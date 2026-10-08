@@ -9,14 +9,13 @@
   networking = {
     hostName = host;
     nameservers = [ "127.0.0.1:5354" ];
-
     nftables.enable = true;
     networkmanager.enable = lib.mkDefault true;
+    firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
   };
 
   services = {
     resolved.enable = true;
-    tailscale.enable = true;
 
     blocky = {
       enable = true;
@@ -61,26 +60,6 @@
       };
     };
 
-    firewalld = {
-      enable = true;
-
-      zones = {
-        public = {
-          forward = true;
-          services = [
-            "dhcpv6-client"
-            "kdeconnect"
-            "ssh"
-          ];
-        };
-
-        trusted = {
-          forward = true;
-          interfaces = [ config.services.tailscale.interfaceName ];
-        };
-      };
-    };
-
     openssh = {
       enable = true;
 
@@ -89,6 +68,11 @@
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
       };
+    };
+
+    tailscale = {
+      enable = true;
+      openFirewall = true;
     };
   };
 
