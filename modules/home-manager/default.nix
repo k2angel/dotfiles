@@ -9,5 +9,6 @@
     ./nix.nix
     ./overrides.nix
     ./portal.nix
+    ./services.nix
   ];
 }
