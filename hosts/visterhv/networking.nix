@@ -1,6 +1,14 @@
-{ ... }:
+{
+  self,
+  config,
+  lib,
+  username,
+  ...
+}:
 
 {
+  imports = [ (self + /modules/features/lmsd.nix) ];
+
   networking = {
     useDHCP = false;
     networkmanager.enable = false;
@@ -24,6 +32,23 @@
   };
 
   services = {
+    jellyfin = {
+      enable = true;
+      user = username;
+    };
+
+    lmsd = {
+      enable = true;
+      library = "/mnt/pirate/Music/Library";
+    };
+  };
+
+  systemd.services = {
+    lmsd.serviceConfig.BindReadOnlyPaths = [ "${config.services.lmsd.library}:/music" ];
+
+    jellyfin = {
+      wantedBy = lib.mkForce [ ];
+      serviceConfig.BindPaths = [ "/mnt/pirate/jellyfin:/media" ];
     };
   };
 }
