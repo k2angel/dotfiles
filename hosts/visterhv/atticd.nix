@@ -8,7 +8,7 @@
     environmentFile = "/etc/atticd/environment";
 
     settings = {
-      listen = "0.0.0.0:5000";
+      listen = "[::]:5000";
 
       storage = {
         type = "local";
