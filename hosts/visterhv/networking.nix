@@ -18,6 +18,11 @@
       ether saddr 94:45:60:13:b6:aa tcp dport { 5082, 8096 } accept
       tcp dport { 5082, 8096 } drop
     '';
+
+    wg-quick.interfaces.wg0 = {
+      autostart = false;
+      configFile = "/etc/wireguard/wg-US-FREE-15.conf";
+    };
   };
 
   systemd.network = {

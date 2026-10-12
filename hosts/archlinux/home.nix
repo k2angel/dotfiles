@@ -80,12 +80,12 @@ in
       tdl
       twitch-dl
       unar
-      wireguard-tools
       xq-xml
       xnviewmp
     ]
     ++ lib.optionals (!isNixos) [
       blocky
+      wireguard-tools
       yay
       (config.lib.nixGL.wrap llama-cpp-cuda)
     ];
