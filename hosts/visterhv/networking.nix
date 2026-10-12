@@ -24,7 +24,6 @@
   };
 
   services = {
-    blocky.settings.connectIPVersion = "v4";
     };
   };
 }
