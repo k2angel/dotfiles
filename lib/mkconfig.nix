@@ -11,12 +11,11 @@ inputs: {
       };
 
       modules = [
-        ../hosts/${host}
-        ../modules/system
-
         inputs.disko.nixosModules.disko
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.home-manager.nixosModules.home-manager
+        ../hosts/${host}
+        ../modules/system
         {
           home-manager = {
             useGlobalPkgs = true;
