@@ -12,10 +12,14 @@
   networking = {
     wireless.iwd.enable = true;
 
-    firewall.extraInputRules = ''
-      ether saddr 94:45:60:13:b6:aa tcp dport { 5082, 8096 } accept
-      tcp dport { 5082, 8096 } drop
-    '';
+    firewall = {
+      allowedTCPPorts = [ 5353 ];
+
+      extraInputRules = ''
+        ether saddr 94:45:60:13:b6:aa tcp dport { 5082, 8096 } accept
+        tcp dport { 5082, 8096 } drop
+      '';
+    };
 
     wg-quick.interfaces.wg0 = {
       autostart = false;
@@ -30,6 +34,7 @@
       name = "wlan0";
       address = [ "192.168.3.171/24" ];
       gateway = [ "192.168.3.1" ];
+      networkConfig.MulticastDNS = true;
       networkConfig.DHCP = false;
     };
   };

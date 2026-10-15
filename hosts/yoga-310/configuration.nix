@@ -47,6 +47,7 @@
       name = "wlan0";
       DHCP = "yes";
       dhcpV4Config.UseDNS = false;
+      networkConfig.MulticastDNS = true;
     };
   };
 
