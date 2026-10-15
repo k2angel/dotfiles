@@ -13,7 +13,7 @@
     wireless.iwd.enable = true;
 
     firewall = {
-      allowedTCPPorts = [ 5353 ];
+      allowedUDPPorts = [ 5353 ];
 
       extraInputRules = ''
         ether saddr 94:45:60:13:b6:aa tcp dport { 5082, 8096 } accept

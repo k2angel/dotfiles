@@ -38,6 +38,7 @@
   networking = {
     useNetworkd = false;
     wireless.iwd.enable = true;
+    firewall.allowedUDPPorts = [ 5353 ];
   };
 
   systemd.network = {
