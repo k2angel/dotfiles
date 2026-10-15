@@ -36,6 +36,7 @@
   };
 
   networking = {
+    useDHCP = false;
     useNetworkd = false;
     wireless.iwd.enable = true;
     firewall.allowedUDPPorts = [ 5353 ];
@@ -46,9 +47,12 @@
 
     networks."25-wireless" = {
       name = "wlan0";
-      DHCP = "yes";
       dhcpV4Config.UseDNS = false;
-      networkConfig.MulticastDNS = true;
+
+      networkConfig = {
+        DHCP = true;
+        MulticastDNS = true;
+      };
     };
   };
 

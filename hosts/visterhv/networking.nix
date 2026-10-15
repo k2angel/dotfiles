@@ -10,6 +10,7 @@
   imports = [ (self + /modules/features/lmsd.nix) ];
 
   networking = {
+    useDHCP = false;
     wireless.iwd.enable = true;
 
     firewall = {
@@ -32,9 +33,12 @@
 
     networks."25-wireless" = {
       name = "wlan0";
-      address = [ "192.168.3.171/24" ];
-      gateway = [ "192.168.3.1" ];
-      networkConfig.MulticastDNS = true;
+      dhcpV4Config.UseDNS = false;
+
+      networkConfig = {
+        DHCP = true;
+        MulticastDNS = true;
+      };
     };
   };
 
