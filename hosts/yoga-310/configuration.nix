@@ -21,6 +21,13 @@
         system = pkgs.stdenv.hostPlatform.system;
         protocol = "ssh-ng";
         maxJobs = 3;
+
+        system-features = [
+          "nixos-test"
+          "benchmark"
+          "big-parallel"
+          "kvm"
+        ];
       }
     ];
   };
