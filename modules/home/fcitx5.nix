@@ -8,6 +8,7 @@
     fcitx5 = {
       addons = with pkgs; [ fcitx5-mozc-ut ];
       waylandFrontend = true;
+      systemd.enable = false;
 
       settings = {
         addons.classicui.globalSection.Theme = "default-dark";
