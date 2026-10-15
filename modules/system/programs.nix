@@ -14,6 +14,20 @@
       ];
     };
 
+    tuigreet = {
+      enable = true;
+
+      settings = {
+        display.time = true;
+        # session.default_session = "sway-uwsm";
+
+        remember = {
+          username = true;
+          user_session = true;
+        };
+      };
+    };
+
     uwsm = {
       enable = true;
 

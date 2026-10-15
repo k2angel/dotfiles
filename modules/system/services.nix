@@ -1,21 +1,7 @@
-# List services that you want to enable:
-{ pkgs, ... }:
-
 {
   services = {
+    greetd.enable = true;
     udisks2.enable = true;
-
-    greetd = {
-      enable = true;
-      useTextGreeter = true;
-
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-user-session --time";
-          user = "greeter";
-        };
-      };
-    };
 
     pipewire = {
       enable = true;

@@ -2,6 +2,7 @@
   imports = [
     ../features/nh-clean.nix
     ../features/pkgs.nix
+    ../features/tuigreet.nix
     ../features/wmenu.nix
 
     ./boot.nix
