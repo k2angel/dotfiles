@@ -10,8 +10,6 @@
   imports = [ (self + /modules/features/lmsd.nix) ];
 
   networking = {
-    useDHCP = false;
-    networkmanager.enable = false;
     wireless.iwd.enable = true;
 
     firewall.extraInputRules = ''

@@ -35,6 +35,21 @@
     ];
   };
 
+  networking = {
+    useNetworkd = false;
+    wireless.iwd.enable = true;
+  };
+
+  systemd.network = {
+    enable = true;
+
+    networks."25-wireless" = {
+      name = "wlan0";
+      DHCP = "yes";
+      dhcpV4Config.UseDNS = false;
+    };
+  };
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
   };

@@ -8,9 +8,9 @@
 {
   networking = {
     hostName = host;
+    useNetworkd = lib.mkDefault true;
     nameservers = [ "127.0.0.1:5354" ];
     nftables.enable = true;
-    networkmanager.enable = lib.mkDefault true;
     firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
   };
 
