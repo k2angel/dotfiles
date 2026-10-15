@@ -57,6 +57,6 @@
   };
 
   users.users.${username}.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKeFnOZf13UIpO0QK2eGJoiGYPvdOUrUaiVwoTC7I4fm k2angel@archlinux"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINR2QeX5/nYQeKgtB7uzU6v2TUcrUXEUQE0PvuayzGV9 k2angel@visterhv"
   ];
 }

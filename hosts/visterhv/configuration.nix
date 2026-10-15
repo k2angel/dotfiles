@@ -93,7 +93,7 @@
       isSystemUser = true;
       group = "nixremote";
       openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEbCDJLpXQRW4OirmsLdK/BHTrWkE90zsNKlxIMnvhpy root@yoga-310"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILqee7NEVf6h2+TYbBWQ45SyduaY8Ej8JzSNMCUX12F9 root@yoga-310"
       ];
     };
   };
