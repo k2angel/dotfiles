@@ -35,7 +35,6 @@
       address = [ "192.168.3.171/24" ];
       gateway = [ "192.168.3.1" ];
       networkConfig.MulticastDNS = true;
-      networkConfig.DHCP = false;
     };
   };
 
