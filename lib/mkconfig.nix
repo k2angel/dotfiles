@@ -21,7 +21,7 @@ inputs: {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = args // {
-              isNixos = true;
+              isNixOS = true;
             };
 
             users.${username} = {
@@ -40,7 +40,7 @@ inputs: {
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = inputs.nixpkgs.legacyPackages.${builtins.currentSystem};
       extraSpecialArgs = args // {
-        isNixos = false;
+        isNixOS = false;
       };
 
       modules = [

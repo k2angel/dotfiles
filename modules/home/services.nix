@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  isNixos,
+  isNixOS,
   ...
 }:
 
@@ -28,7 +28,7 @@
 
     swayidle =
       let
-        swaylock = if isNixos then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
+        swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
       in
       {
         enable = true;

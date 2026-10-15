@@ -5,7 +5,7 @@
   pkgs,
   host,
   username,
-  isNixos,
+  isNixOS,
   ...
 }:
 
@@ -399,13 +399,13 @@ in
 
               options = {
                 nixos.expr =
-                  if isNixos then
+                  if isNixOS then
                     "${flake}.nixosConfigurations.${host}.options"
                   else
                     "${flake}.nixosConfigurations.visterhv.options";
 
                 home_manager.expr =
-                  if isNixos then
+                  if isNixOS then
                     "${flake}.nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []"
                   else
                     "${flake}.homeConfigurations.\"${username}@${host}\".options";

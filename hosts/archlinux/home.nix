@@ -4,7 +4,7 @@
   config,
   lib,
   pkgs,
-  isNixos,
+  isNixOS,
   ...
 }:
 
@@ -24,7 +24,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  targets.genericLinux = lib.mkIf (!isNixos) {
+  targets.genericLinux = lib.mkIf (!isNixOS) {
     enable = true;
 
     nixGL = {
@@ -44,7 +44,7 @@ in
       in
       {
         enable = true;
-        package = lib.mkIf (!isNixos) (
+        package = lib.mkIf (!isNixOS) (
           retroarch
           // {
             wrapper = args: config.lib.nixGL.wrap (retroarch.wrapper args);
@@ -83,7 +83,7 @@ in
       xq-xml
       xnviewmp
     ]
-    ++ lib.optionals (!isNixos) [
+    ++ lib.optionals (!isNixOS) [
       blocky
       wireguard-tools
       yay
