@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   xdg.configFile."uwsm/env".text = ''
     export LANG=ja_JP.UTF-8

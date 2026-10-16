@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   fileSystems = {
     "/".options = [
