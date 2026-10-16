@@ -1,5 +1,4 @@
 {
-  inputs,
   self,
   config,
   lib,
@@ -8,31 +7,10 @@
   ...
 }:
 
-let
-  nixGLPackages = import "${inputs.nixGL}/default.nix" {
-    pkgs = import inputs.nixGL.inputs.nixpkgs {
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-    };
-
-    enable32bits = true;
-    enableIntelX86Extensions = true;
-  };
-in
 {
-  imports = [ (self + /modules/features/beets.nix) ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  targets.genericLinux = lib.mkIf (!isNixOS) {
-    enable = true;
-
-    nixGL = {
-      packages = nixGLPackages;
-      defaultWrapper = "nvidia";
-      installScripts = [ "nvidia" ];
-    };
-  };
+  imports = [
+    (self + /modules/features/beets.nix)
+  ];
 
   programs = {
     beets.settings.directory = "/mnt/pirate/Music/Library";

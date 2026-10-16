@@ -2,8 +2,10 @@
 
 {
   imports = [
-    ../archlinux
     (self + /modules/features/attic-watch-store.nix)
+    ../archlinux/home.nix
+    ../archlinux/serviecs.nix
+    ../archlinux/sway.nix
   ];
 
   home.packages = with pkgs; [

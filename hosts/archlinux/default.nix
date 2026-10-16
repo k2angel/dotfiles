@@ -1,14 +1,11 @@
-{ lib, isNixOS, ... }:
-
 {
   imports = [
-    ./home.nix
-    ./serviecs.nix
-    ./sway.nix
-  ]
-  ++ lib.optionals (!isNixOS) [
     ./atticd.nix
     ./fonts.nix
+    ./home.nix
+    ./nixgl.nix
+    ./serviecs.nix
+    ./sway.nix
     ./virtualization.nix
   ];
 }
