@@ -20,11 +20,6 @@ in
       package = lib.mkIf enableNixGL (config.lib.nixGL.wrap pkgs.firefox);
     };
 
-    vesktop = {
-      enable = lib.mkForce enableNixGL;
-      package = lib.mkIf enableNixGL (config.lib.nixGL.wrap pkgs.vesktop);
-    };
-
     imv = {
       enable = lib.mkForce enableNixGL;
       package = lib.mkIf enableNixGL (config.lib.nixGL.wrap pkgs.imv);

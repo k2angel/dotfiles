@@ -32,6 +32,8 @@ in
   };
 
   programs = {
+    vesktop.package = (config.lib.nixGL.wrap pkgs.vesktop);
+
     retroarch.package = (
       retroarch
       // {

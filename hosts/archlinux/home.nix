@@ -10,6 +10,7 @@
 {
   imports = [
     (self + /modules/features/beets.nix)
+    (self + /modules/features/vesktop.nix)
   ];
 
   programs = {
