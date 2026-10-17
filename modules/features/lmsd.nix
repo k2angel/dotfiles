@@ -28,7 +28,13 @@ in
   options = {
     services.lmsd = {
       enable = lib.mkEnableOption "Lightweight Music Server";
+
       package = lib.mkPackageOption pkgs "lms" { };
+
+      openFirewall = lib.mkOption {
+        type = types.bool;
+        default = false;
+      };
 
       library = lib.mkOption {
         type = types.str;
@@ -37,6 +43,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [ 5082 ];
+
     systemd.services.lmsd = {
       wantedBy = [ "multi-user.target" ];
       after = [ "network-online.target" ];
