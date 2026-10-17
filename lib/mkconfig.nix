@@ -6,9 +6,7 @@ inputs: {
       ...
     }:
     inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = args // {
-        isNixos = true;
-      };
+      specialArgs = args;
 
       modules = [
         inputs.disko.nixosModules.disko
