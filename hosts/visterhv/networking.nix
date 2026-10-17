@@ -94,7 +94,6 @@
   systemd.services = {
     jellyfin = {
       wantedBy = lib.mkForce [ ];
-      serviceConfig.BindPaths = [ "/mnt/pirate/jellyfin:/media" ];
     };
   };
 }
