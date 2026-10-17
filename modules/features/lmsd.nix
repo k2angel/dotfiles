@@ -10,41 +10,12 @@ let
 
   cfg = config.services.lmsd;
 
-  lms = pkgs.lms.overrideAttrs (old: rec {
-    version = "3.81.0";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "epoupon";
-      repo = "lms";
-      rev = "v${version}";
-      hash = "sha256-wyMTnTlKMS4N3zTY4C574BTB88nRugsi21QWjDeLZrg=";
-    };
-
-    buildInputs = with pkgs; [
-      gtest
-      boost190
-      wt
-      taglib
-      libconfig
-      libarchive
-      ffmpeg
-      zlib
-      stb
-      openssl
-      xxhash
-      pugixml
-      onnxruntime
-    ];
-
-    postInstall = "";
-  });
-
   configAttrs = {
     working-dir = "/var/lib/lmsd";
     wt-resources = "${pkgs.wt}/share/Wt/resources";
-    docroot = "${lms}/share/lms/docroot/;/resources,/css,/images,/js,/favicon.ico";
-    approot = "${lms}/share/lms/approot";
-    musicnn-model-path = "${lms}/share/lms/models/MSD_musicnn_embedding.onnx";
+    docroot = "${cfg.package}/share/lms/docroot/;/resources,/css,/images,/js,/favicon.ico";
+    approot = "${cfg.package}/share/lms/approot";
+    musicnn-model-path = "${cfg.package}/share/lms/models/MSD_musicnn_embedding.onnx";
   };
 
   configFile = pkgs.writeText "lms.conf" (
@@ -57,6 +28,7 @@ in
   options = {
     services.lmsd = {
       enable = lib.mkEnableOption "Lightweight Music Server";
+      package = lib.mkPackageOption pkgs "lms" { };
 
       library = lib.mkOption {
         type = types.str;
@@ -72,7 +44,7 @@ in
       environment.OMP_THREAD_LIMIT = "1";
 
       serviceConfig = {
-        ExecStart = "${lib.getExe lms} ${configFile}";
+        ExecStart = "${lib.getExe cfg.package} ${configFile}";
         StateDirectory = "lmsd";
         DynamicUser = true;
         Restart = "on-failure";
