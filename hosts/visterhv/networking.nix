@@ -85,8 +85,6 @@
   };
 
   systemd.services = {
-    lmsd.serviceConfig.BindReadOnlyPaths = [ "${config.services.lmsd.library}:/music" ];
-
     jellyfin = {
       wantedBy = lib.mkForce [ ];
       serviceConfig.BindPaths = [ "/mnt/pirate/jellyfin:/media" ];
