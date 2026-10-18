@@ -5,7 +5,6 @@
     base16.url = "github:SenchoPens/base16.nix";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    nix-colors.url = "github:misterio77/nix-colors";
     nixGL.url = "github:danisosa2001/nixGL/fix-nvidia-open-kernel-regex";
 
     disko = {
