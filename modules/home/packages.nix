@@ -13,6 +13,7 @@
     trash-cli
     tree
     wl-clipboard
+    wmenu
     xh
   ];
 }
