@@ -42,22 +42,22 @@
       enable = true;
 
       settings = {
-        gui.theme = with config.colorScheme.palette; {
+        gui.theme = with config.scheme.withHashtag; {
           activeBorderColor = [
-            "#${base0D}"
+            base0D
             "bold"
           ];
-          inactiveBorderColor = [ "#${base03}" ];
+          inactiveBorderColor = [ base03 ];
           searchingActiveBorderColor = [
-            "#${base04}"
+            base04
             "bold"
           ];
-          optionsTextColor = [ "#${base06}" ];
-          selectedLineBgColor = [ "#${base03}" ];
-          cherryPickedCommitBgColor = [ "#${base02}" ];
-          cherryPickedCommitFgColor = [ "#${base03}" ];
-          unstagedChangesColor = [ "#${base08}" ];
-          defaultFgColor = [ "#${base05}" ];
+          optionsTextColor = [ base06 ];
+          selectedLineBgColor = [ base03 ];
+          cherryPickedCommitBgColor = [ base02 ];
+          cherryPickedCommitFgColor = [ base03 ];
+          unstagedChangesColor = [ base08 ];
+          defaultFgColor = [ base05 ];
         };
       };
     };

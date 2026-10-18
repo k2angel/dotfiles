@@ -11,7 +11,7 @@
         pad = "4x2";
       };
 
-      "colors-${config.colorScheme.variant}" = with config.colorScheme.palette; {
+      "colors-${config.scheme.variant}" = with config.scheme; {
         alpha = "0.9";
         foreground = base05;
         background = base00;

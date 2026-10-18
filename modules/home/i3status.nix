@@ -57,19 +57,19 @@ in
           theme = {
             theme = "plain";
 
-            overrides = with config.colorScheme.palette; {
-              idle_bg = "#${base00}";
-              idle_fg = "#${base05}";
-              info_bg = "#${base09}";
-              info_fg = "#${base00}";
-              good_bg = "#${base01}";
-              good_fg = "#${base05}";
-              warning_bg = "#${base0A}";
-              warning_fg = "#${base00}";
-              critical_bg = "#${base08}";
-              critical_fg = "#${base00}";
-              separator_bg = "#${base00}";
-              separator_fg = "#${base05}";
+            overrides = with config.scheme.withHashtag; {
+              idle_bg = base00;
+              idle_fg = base05;
+              info_bg = base09;
+              info_fg = base00;
+              good_bg = base01;
+              good_fg = base05;
+              warning_bg = base0A;
+              warning_fg = base00;
+              critical_bg = base08;
+              critical_fg = base00;
+              separator_bg = base00;
+              separator_fg = base05;
             };
           };
         };

@@ -49,23 +49,23 @@
     mako = {
       enable = true;
 
-      settings = with config.colorScheme.palette; {
+      settings = with config.scheme.withHashtag; {
         default-timeout = 5000;
-        background-color = "#${base00}";
-        border-color = "#${base0D}";
-        text-color = "#${base05}";
-        progress-color = "over #${base02}";
+        background-color = base00;
+        border-color = base0D;
+        text-color = base05;
+        progress-color = "over ${base02}";
 
         "urgency=low" = {
-          background-color = "#${base00}";
-          border-color = "#${base03}";
-          text-color = "#${base05}";
+          background-color = base00;
+          border-color = base03;
+          text-color = base05;
         };
 
         "urgency=critical" = {
-          background-color = "#${base00}";
-          border-color = "#${base08}";
-          text-color = "#${base05}";
+          background-color = base00;
+          border-color = base08;
+          text-color = base05;
         };
       };
     };

@@ -35,47 +35,47 @@ in
         "workspace number 3" = [ { app_id = "vesktop"; } ];
       };
 
-      colors = with config.colorScheme.palette; {
-        background = "#${base07}";
+      colors = with config.scheme.withHashtag; {
+        background = base07;
 
         focused = {
-          border = "#${base05}";
-          background = "#${base0D}";
-          text = "#${base00}";
-          indicator = "#${base0D}";
-          childBorder = "#${base0D}";
+          border = base05;
+          background = base0D;
+          text = base00;
+          indicator = base0D;
+          childBorder = base0D;
         };
 
         focusedInactive = {
-          border = "#${base01}";
-          background = "#${base01}";
-          text = "#${base05}";
-          indicator = "#${base03}";
-          childBorder = "#${base01}";
+          border = base01;
+          background = base01;
+          text = base05;
+          indicator = base03;
+          childBorder = base01;
         };
 
         placeholder = {
-          border = "#${base00}";
-          background = "#${base00}";
-          text = "#${base05}";
-          indicator = "#${base00}";
-          childBorder = "#${base00}";
+          border = base00;
+          background = base00;
+          text = base05;
+          indicator = base00;
+          childBorder = base00;
         };
 
         unfocused = {
-          border = "#${base01}";
-          background = "#${base00}";
-          text = "#${base05}";
-          indicator = "#${base01}";
-          childBorder = "#${base01}";
+          border = base01;
+          background = base00;
+          text = base05;
+          indicator = base01;
+          childBorder = base01;
         };
 
         urgent = {
-          border = "#${base08}";
-          background = "#${base08}";
-          text = "#${base00}";
-          indicator = "#${base08}";
-          childBorder = "#${base08}";
+          border = base08;
+          background = base08;
+          text = base00;
+          indicator = base08;
+          childBorder = base08;
         };
       };
 
@@ -106,7 +106,7 @@ in
         "${modifier}+v" = ''
           exec ${terminal} \
             -o "main.pad=0x0" \
-            -o "colors-${config.colorScheme.variant}.alpha=1" \
+            -o "colors-${config.scheme.variant}.alpha=1" \
             -a "bemenu_cliphist" \
             ${lib.getExe scripts.bemenu-cliphist}
         '';
@@ -174,39 +174,39 @@ in
           fonts.size = 11.0;
           extraConfig = "height 22";
 
-          colors = with config.colorScheme.palette; {
-            background = "#${base00}";
-            separator = "#${base01}";
-            statusline = "#${base04}";
+          colors = with config.scheme.withHashtag; {
+            background = base00;
+            separator = base01;
+            statusline = base04;
 
             activeWorkspace = {
-              background = "#${base03}";
-              border = "#${base03}";
-              text = "#${base00}";
+              background = base03;
+              border = base03;
+              text = base00;
             };
 
             bindingMode = {
-              background = "#${base0A}";
-              border = "#${base0A}";
-              text = "#${base00}";
+              background = base0A;
+              border = base0A;
+              text = base00;
             };
 
             focusedWorkspace = {
-              background = "#${base0D}";
-              border = "#${base0D}";
-              text = "#${base00}";
+              background = base0D;
+              border = base0D;
+              text = base00;
             };
 
             inactiveWorkspace = {
-              background = "#${base00}";
-              border = "#${base00}";
-              text = "#${base05}";
+              background = base00;
+              border = base00;
+              text = base05;
             };
 
             urgentWorkspace = {
-              background = "#${base08}";
-              border = "#${base08}";
-              text = "#${base00}";
+              background = base08;
+              border = base08;
+              text = base00;
             };
           };
         }

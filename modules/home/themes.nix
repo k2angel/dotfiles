@@ -4,9 +4,9 @@ let
   nix-colors = inputs.nix-colors;
 in
 {
-  imports = [ inputs.nix-colors.homeManagerModules.default ];
+  imports = [ inputs.base16.homeManagerModule ];
 
-  colorScheme = nix-colors.colorSchemes.onedark;
+  scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
 
   home.pointerCursor = {
     enable = true;
