@@ -7,6 +7,5 @@
     wget
     rsync
     libnotify
-    wf-recorder
   ];
 }
