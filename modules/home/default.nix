@@ -1,5 +1,6 @@
 {
   imports = [
+    ../features/home
     ./nixvim
     ./zsh
 

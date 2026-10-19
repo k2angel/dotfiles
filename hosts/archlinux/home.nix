@@ -1,5 +1,4 @@
 {
-  self,
   config,
   lib,
   pkgs,
@@ -8,13 +7,16 @@
 }:
 
 {
-  imports = [
-    (self + /modules/features/beets.nix)
-    (self + /modules/features/vesktop.nix)
-  ];
+  features = {
+    vesktop.enable = true;
+
+    beets = {
+      enable = true;
+      directory = "/mnt/pirate/Music/Library";
+    };
+  };
 
   programs = {
-    beets.settings.directory = "/mnt/pirate/Music/Library";
     firefox.profiles.default.settings."browser.display.use_document_fonts" = 0;
 
     retroarch = {

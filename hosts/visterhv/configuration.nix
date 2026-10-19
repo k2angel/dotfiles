@@ -1,17 +1,11 @@
 {
   inputs,
-  self,
   pkgs,
   username,
   ...
 }:
 
 {
-  imports = [
-    (self + /modules/features/lanzaboote.nix)
-    (self + /modules/features/bluetooth.nix)
-  ];
-
   nixpkgs.config.allowUnfree = true;
 
   nix.settings = {
@@ -33,6 +27,11 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   programs.uwsm.waylandCompositors.sway.extraArgs = [ "--unsupported-gpu" ];
+
+  features = {
+    bluetooth.enable = true;
+    lanzaboote.enable = true;
+  };
 
   boot.kernelParams = [
     "drm.edid_firmware=DP-2:edid/lg.bin"

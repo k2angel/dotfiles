@@ -1,13 +1,10 @@
 {
-  self,
   pkgs,
   username,
   ...
 }:
 
 {
-  imports = [ (self + /modules/features/bluetooth.nix) ];
-
   nix = {
     distributedBuilds = true;
 
@@ -32,6 +29,7 @@
     ];
   };
 
+  features.bluetooth.enable = true;
   services.xserver.videoDrivers = [ "modesetting" ];
 
   hardware.graphics = {

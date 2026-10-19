@@ -1,9 +1,7 @@
 {
   imports = [
-    ../features/nh-clean.nix
-    ../features/pkgs.nix
-    ../features/tuigreet.nix
-    ../features/wmenu.nix
+    ../features/system
+    ../features/shared
 
     ./boot.nix
     ./fonts.nix

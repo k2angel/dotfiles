@@ -1,5 +1,4 @@
 {
-  self,
   lib,
   pkgs,
   username,
@@ -7,8 +6,6 @@
 }:
 
 {
-  imports = [ (self + /modules/features/lmsd.nix) ];
-
   networking = {
     useDHCP = false;
     wireless.iwd.enable = true;

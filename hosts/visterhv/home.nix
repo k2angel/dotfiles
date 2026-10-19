@@ -1,12 +1,18 @@
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    (self + /modules/features/attic-watch-store.nix)
     ../archlinux/home.nix
     ../archlinux/serviecs.nix
     ../archlinux/sway.nix
   ];
+
+  features = {
+    attic-watch-store = {
+      enable = true;
+      cache = "k2angel:private";
+    };
+  };
 
   home.packages = with pkgs; [
     sf-pro

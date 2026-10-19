@@ -1,6 +1,6 @@
 # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/networking/atticd.nix
 
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   atticadmShim = pkgs.writeShellScript "atticadm" ''
@@ -35,7 +35,12 @@ let
   '';
 in
 {
-  imports = [ (self + /modules/features/attic-watch-store.nix) ];
+  features = {
+    attic-watch-store = {
+      enable = true;
+      cache = "k2angel:private";
+    };
+  };
 
   home.packages = [
     pkgs.attic-server
