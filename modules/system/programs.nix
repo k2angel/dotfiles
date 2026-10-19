@@ -18,7 +18,7 @@
       enable = true;
 
       settings = {
-        display.time = true;
+        display.show_time = true;
         # session.default_session = "sway-uwsm";
 
         remember = {
