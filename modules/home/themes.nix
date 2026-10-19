@@ -1,4 +1,10 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   wmenu_settings = with config.scheme.withHashtag; {
