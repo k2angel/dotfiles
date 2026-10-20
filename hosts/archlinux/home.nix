@@ -55,7 +55,6 @@
       xnviewmp
     ]
     ++ lib.optionals (!isNixOS) [
-      blocky
       wireguard-tools
       yay
     ];
