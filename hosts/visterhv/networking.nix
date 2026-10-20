@@ -56,35 +56,6 @@
     lmsd = {
       enable = true;
       library = "/mnt/pirate/Music/Library";
-
-      package = pkgs.lms.overrideAttrs (old: rec {
-        version = "3.81.0";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "epoupon";
-          repo = "lms";
-          rev = "v${version}";
-          hash = "sha256-wyMTnTlKMS4N3zTY4C574BTB88nRugsi21QWjDeLZrg=";
-        };
-
-        buildInputs = with pkgs; [
-          gtest
-          boost190
-          wt
-          taglib
-          libconfig
-          libarchive
-          ffmpeg
-          zlib
-          stb
-          openssl
-          xxhash
-          pugixml
-          onnxruntime
-        ];
-
-        postInstall = "";
-      });
     };
   };
 
