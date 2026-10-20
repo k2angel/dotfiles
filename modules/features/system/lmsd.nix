@@ -10,19 +10,9 @@ let
 
   cfg = config.services.lmsd;
 
-  configAttrs = {
-    working-dir = "/var/lib/lmsd";
-    wt-resources = "${pkgs.wt}/share/Wt/resources";
-    docroot = "${cfg.package}/share/lms/docroot/;/resources,/css,/images,/js,/favicon.ico";
-    approot = "${cfg.package}/share/lms/approot";
-    musicnn-model-path = "${cfg.package}/share/lms/models/MSD_musicnn_embedding.onnx";
-  };
-
-  configFile = pkgs.writeText "lms.conf" (
-    lib.generators.toKeyValue {
-      mkKeyValue = key: value: "${key} = \"${value}\";";
-    } configAttrs
-  );
+  configFile = pkgs.runCommand "lms.conf" { } ''
+    substitute ${cfg.package}/share/lms/lms.conf $out --replace-fail "/var/lms" "/var/lib/lmsd"
+  '';
 in
 {
   options = {
