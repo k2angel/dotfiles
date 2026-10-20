@@ -41,4 +41,8 @@ in
       }
     );
   };
+
+  home.packages = with pkgs; [
+    (config.lib.nixGL.wrap llama-cpp-cuda)
+  ];
 }

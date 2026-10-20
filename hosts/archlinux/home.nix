@@ -58,6 +58,5 @@
       blocky
       wireguard-tools
       yay
-      (config.lib.nixGL.wrap llama-cpp-cuda)
     ];
 }
