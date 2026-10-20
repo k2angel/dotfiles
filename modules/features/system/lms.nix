@@ -8,15 +8,15 @@
 let
   inherit (lib) types;
 
-  cfg = config.services.lmsd;
+  cfg = config.services.lms;
 
   configFile = pkgs.runCommand "lms.conf" { } ''
-    substitute ${cfg.package}/share/lms/lms.conf $out --replace-fail "/var/lms" "/var/lib/lmsd"
+    substitute ${cfg.package}/share/lms/lms.conf $out --replace-fail "/var/lms" "/var/lib/lms"
   '';
 in
 {
   options = {
-    services.lmsd = {
+    services.lms = {
       enable = lib.mkEnableOption "Lightweight Music Server";
 
       package = lib.mkPackageOption pkgs "lms" { };
@@ -35,7 +35,7 @@ in
   config = lib.mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [ 5082 ];
 
-    systemd.services.lmsd = {
+    systemd.services.lms = {
       wantedBy = [ "multi-user.target" ];
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
@@ -43,7 +43,7 @@ in
 
       serviceConfig = {
         ExecStart = "${lib.getExe cfg.package} ${configFile}";
-        StateDirectory = "lmsd";
+        StateDirectory = "lms";
         DynamicUser = true;
         Restart = "on-failure";
         RestartSec = 10;

@@ -2,7 +2,7 @@
   imports = [
     ./bluetooth.nix
     ./lanzaboote.nix
-    ./lmsd.nix
+    ./lms.nix
     ./tuigreet.nix
     ./wireless.nix
   ];

@@ -53,7 +53,7 @@
       user = username;
     };
 
-    lmsd = {
+    lms = {
       enable = true;
       library = "/mnt/pirate/Music/Library";
     };
