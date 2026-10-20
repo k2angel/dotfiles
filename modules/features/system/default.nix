@@ -4,5 +4,6 @@
     ./lanzaboote.nix
     ./lmsd.nix
     ./tuigreet.nix
+    ./wireless.nix
   ];
 }

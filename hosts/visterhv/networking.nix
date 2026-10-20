@@ -6,9 +6,10 @@
 }:
 
 {
+  features.wireless.enable = true;
+
   networking = {
     useDHCP = false;
-    wireless.iwd.enable = true;
 
     firewall = {
       allowedUDPPorts = [ 5353 ];

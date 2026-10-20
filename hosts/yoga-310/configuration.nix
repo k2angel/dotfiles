@@ -29,8 +29,12 @@
     ];
   };
 
-  features.bluetooth.enable = true;
   services.xserver.videoDrivers = [ "modesetting" ];
+
+  features = {
+    bluetooth.enable = true;
+    wireless.enable = true;
+  };
 
   hardware.graphics = {
     enable = true;
