@@ -19,7 +19,7 @@
         protocol = "ssh-ng";
         maxJobs = 3;
 
-        system-features = [
+        supportedFeatures = [
           "nixos-test"
           "benchmark"
           "big-parallel"
