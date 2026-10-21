@@ -18,8 +18,12 @@
       enable = true;
 
       settings = {
-        display.show_time = true;
         # session.default_session = "sway-uwsm";
+
+        display = {
+          show_time = true;
+          time_format = "%Y-%m-%d %H:%M:%S";
+        };
 
         remember = {
           username = true;

@@ -8,7 +8,7 @@
   time.timeZone = "Asia/Tokyo";
 
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = "ja_JP.UTF-8";
 
     supportedLocales = [
       "en_US.UTF-8/UTF-8"
