@@ -4,7 +4,7 @@
     "flakes"
   ];
 
-  console.keyMap = "jp106";
+  console.useXkbConfig = true;
   time.timeZone = "Asia/Tokyo";
 
   i18n = {
