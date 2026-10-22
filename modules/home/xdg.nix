@@ -31,4 +31,8 @@
     open_mode=suggested
     save_mode=last
   '';
+
+  systemd.user.sessionVariables = {
+    GTK_USE_PORTAL = 1;
+  };
 }
