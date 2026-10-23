@@ -28,7 +28,7 @@
     };
   };
 
-  systemd.user.packages = [
+  systemd.user.packages = lib.mkIf (!isNixOS) [
     config.services.mako.package
   ];
 
