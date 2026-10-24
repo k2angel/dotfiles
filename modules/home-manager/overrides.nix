@@ -27,11 +27,12 @@ in
 
     zsh.shellAliases =
       let
-        impure = lib.optionalString (wrapper == "nvidia" && enableNixGL) " --impure";
+        nh = lib.getExe pkgs.nh;
+        impure = lib.isBool (wrapper == "nvidia" && enableNixGL);
       in
       {
-        nob = lib.mkForce "${pkgs.nh}/bin/nh home build --diff always${impure}";
-        nos = lib.mkForce "${pkgs.nh}/bin/nh home switch --diff always${impure}";
+        nob = lib.mkForce "${nh} home build" + lib.optionalString impure " --impure";
+        nos = lib.mkForce "${nh} home switch" + lib.optionalString impure " --impure";
       };
   };
 }

@@ -40,8 +40,8 @@ in
 
       shellAliases = {
         ghqc = "cd $(${ghq} root)/$(${ghq} list | ${lib.getExe pkgs.fzf})";
-        nob = "${nh} os boot --diff always";
-        nos = "${nh} os switch --diff always";
+        nob = "${nh} os boot";
+        nos = "${nh} os switch";
       };
     };
 
