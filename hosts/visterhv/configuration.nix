@@ -40,7 +40,6 @@
 
   hardware = {
     graphics.enable = true;
-    nvidia.open = true;
 
     display.edid.packages = [
       (pkgs.runCommand "lg-edid" { } ''
@@ -48,6 +47,11 @@
         cp "${./edid/lg.bin}" $out/lib/firmware/edid/lg.bin
       '')
     ];
+
+    nvidia = {
+      open = true;
+      branch = "latest";
+    };
 
     openrazer = {
       enable = true;
