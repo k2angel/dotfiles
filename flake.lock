@@ -257,6 +257,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-openrazer": {
+      "locked": {
+        "lastModified": 1792532812,
+        "narHash": "sha256-GxIjzmB0yAKETAdIXoZhyuyqIWGF8bjGnobwOQhbF4Y=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "965f876a780c1fad7f14b9f817e093e40ea5d5e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "965f876a780c1fad7f14b9f817e093e40ea5d5e5",
+        "type": "github"
+      }
+    },
     "nixpkgs-xr": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -410,6 +426,7 @@
         "nix-index-database": "nix-index-database",
         "nixGL": "nixGL",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-openrazer": "nixpkgs-openrazer",
         "nixpkgs-xr": "nixpkgs-xr",
         "nixvim": "nixvim"
       }
