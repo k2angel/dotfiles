@@ -34,19 +34,23 @@
     lanzaboote.enable = true;
   };
 
-  boot.kernelParams = [
-    "drm.edid_firmware=DP-2:edid/lg.bin"
-  ];
-
   hardware = {
     graphics.enable = true;
 
-    display.edid.packages = [
-      (pkgs.runCommand "lg-edid" { } ''
-        mkdir -p $out/lib/firmware/edid
-        cp "${./edid/lg.bin}" $out/lib/firmware/edid/lg.bin
-      '')
-    ];
+    display = {
+      edid = {
+        packages = [
+          (pkgs.runCommand "lg-edid" { } ''
+            mkdir -p $out/lib/firmware/edid
+            cp "${./edid/lg.bin}" $out/lib/firmware/edid/lg.bin
+          '')
+        ];
+      };
+
+      outputs = {
+        "DP-2".edid = "lg.bin";
+      };
+    };
 
     nvidia = {
       open = true;
