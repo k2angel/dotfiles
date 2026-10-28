@@ -23,5 +23,6 @@
   system = {
     stateVersion = "26.05";
     configurationRevision = lib.mkIf (self ? rev || self ? dirtyRev) (self.rev or self.dirtyRev);
+    tools.nixos-rebuild.enableRun0Elevation = true;
   };
 }
