@@ -35,5 +35,9 @@
     };
   };
 
+  systemd.tmpfiles.rules = [
+    "d /mnt/atticd/storage 0755 atticd atticd -"
+  ];
+
   environment.systemPackages = [ pkgs.attic-client ];
 }
