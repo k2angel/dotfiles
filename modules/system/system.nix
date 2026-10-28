@@ -1,3 +1,5 @@
+{ self, lib, ... }:
+
 {
   nix.settings.experimental-features = [
     "nix-command"
@@ -16,5 +18,10 @@
     ];
   };
 
-  system.stateVersion = "26.05";
+  environment.etc."current-flake".source = self.outPath;
+
+  system = {
+    stateVersion = "26.05";
+    configurationRevision = lib.mkIf (self ? rev || self ? dirtyRev) (self.rev or self.dirtyRev);
+  };
 }
