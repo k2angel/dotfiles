@@ -40,6 +40,7 @@
       mcomix
       mkvtoolnix-cli
       n-m3u8dl-re
+      opencode
       opencommit
       payload-dumper-go
       pipe-rename
