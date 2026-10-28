@@ -59,6 +59,7 @@
     nvidia = {
       open = true;
       branch = "latest";
+      powerManagement.enable = true;
     };
 
     openrazer = {
