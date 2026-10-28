@@ -29,6 +29,7 @@
     swayidle =
       let
         swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
+        swaymsg = if isNixOS then lib.getExe' pkgs.sway "swaymsg" else "/usr/bin/swaymsg";
       in
       {
         enable = true;
@@ -42,6 +43,11 @@
           {
             timeout = 300;
             command = "${swaylock} -f";
+          }
+          {
+            timeout = 600;
+            command = "${swaymsg} \"output * power off\"";
+            resumeCommand = "${swaymsg} \"output * power on\"";
           }
         ];
       };
