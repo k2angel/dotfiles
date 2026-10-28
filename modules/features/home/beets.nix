@@ -41,7 +41,7 @@ in
         };
 
         replaygain = {
-          backend = "gstreamer";
+          backend = "ffmpeg";
           overwrite = true;
         };
 
