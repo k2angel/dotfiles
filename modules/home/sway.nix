@@ -22,7 +22,6 @@ in
     systemd.enable = false;
 
     config = rec {
-      defaultWorkspace = "workspace number 1";
       menu = "${uwsm} app -- $(${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wmenu}/bin/wmenu)";
       modifier = "Mod4";
       startup = [ { command = "${uwsm} finalize"; } ];
@@ -99,6 +98,8 @@ in
       };
 
       keybindings = lib.mkOptionDefault {
+        "${modifier}+0" = null;
+        "${modifier}+Shift+0" = null;
         "${modifier}+Shift+q" = null;
         "${modifier}+q" = "kill";
         "${modifier}+e" = "exec ${terminal} ${lib.getExe pkgs.yazi}";
