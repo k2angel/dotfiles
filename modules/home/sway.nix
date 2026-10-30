@@ -24,7 +24,10 @@ in
     config = rec {
       menu = "${uwsm} app -- $(${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wmenu}/bin/wmenu)";
       modifier = "Mod4";
-      startup = [ { command = "${uwsm} finalize"; } ];
+      startup = [
+        { command = "${uwsm} finalize"; }
+        { command = "${lib.getExe pkgs.sway-audio-idle-inhibit}"; }
+      ];
       terminal = "${pkgs.foot}/bin/footclient";
       fonts.size = 11.0;
       output."*".bg = "${self + /image/large_ev50.png} fill";
