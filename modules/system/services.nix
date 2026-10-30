@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   services = {
     greetd.enable = true;
@@ -30,4 +32,6 @@
       options = "ctrl:nocaps";
     };
   };
+
+  environment.systemPackages = [ pkgs.wiremix ];
 }
