@@ -257,22 +257,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-mozc": {
-      "locked": {
-        "lastModified": 1792595678,
-        "narHash": "sha256-j8ErtuLRTWcu8Wu+Y+HSpKJlW1v2ATFuSgm7ScDulwg=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5f239bb3ce14be4f7c8e91962348df827900a7fe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5f239bb3ce14be4f7c8e91962348df827900a7fe",
-        "type": "github"
-      }
-    },
     "nixpkgs-openrazer": {
       "locked": {
         "lastModified": 1792532812,
@@ -442,7 +426,6 @@
         "nix-index-database": "nix-index-database",
         "nixGL": "nixGL",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-mozc": "nixpkgs-mozc",
         "nixpkgs-openrazer": "nixpkgs-openrazer",
         "nixpkgs-xr": "nixpkgs-xr",
         "nixvim": "nixvim"
