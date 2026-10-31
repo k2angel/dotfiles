@@ -10,6 +10,7 @@
       useXkbConfig = true;
 
       config = {
+        dpms-timeout = 0;
         font-engine = "pango";
         font-size = 14;
         font-name = "monospace";
