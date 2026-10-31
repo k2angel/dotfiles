@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   username,
   ...
@@ -65,10 +64,6 @@
     openrazer = {
       enable = true;
       users = [ username ];
-      packages.kernel =
-        config.boot.kernelPackages.callPackage
-          "${inputs.nixpkgs-openrazer}/pkgs/os-specific/linux/openrazer/driver.nix"
-          { };
     };
   };
 
