@@ -33,7 +33,7 @@
         };
 
         ghq = {
-          root = "${config.home.homeDirectory}/src";
+          root = "${config.xdg.userDirs.documents}/src";
         };
       };
     };
