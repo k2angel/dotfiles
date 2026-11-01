@@ -19,8 +19,8 @@
         podman.user = username;
 
         volumes = [
-          "/home/${username}/Containers/volumes/watcher/config.json:/usr/src/app/config.json:ro"
-          "/home/${username}/Containers/volumes/watcher/attachments:/usr/src/app/attachments:rw"
+          "/home/${username}/Documents/Containers/volumes/watcher/config.json:/usr/src/app/config.json:ro"
+          "/home/${username}/Documents/Containers/volumes/watcher/attachments:/usr/src/app/attachments:rw"
         ];
       };
     };
