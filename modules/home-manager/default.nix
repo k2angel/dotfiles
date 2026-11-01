@@ -7,6 +7,7 @@
     ./nix.nix
     ./overrides.nix
     ./portal.nix
+    ./programs.nix
     ./services.nix
   ];
 }
