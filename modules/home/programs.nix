@@ -14,6 +14,7 @@
     jqp.enable = true;
     nix-index.enable = true;
     nix-index-database.comma.enable = true;
+    tmux.enable = true;
 
     aria2 = {
       enable = true;
