@@ -56,6 +56,7 @@
       xnviewmp
     ]
     ++ lib.optionals (!isNixOS) [
+      nix-serve-ng
       wireguard-tools
       yay
     ];

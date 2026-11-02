@@ -1,6 +1,5 @@
 {
   imports = [
-    ./atticd.nix
     ./fonts.nix
     ./home.nix
     ./nixgl.nix

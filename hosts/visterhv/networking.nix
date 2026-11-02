@@ -57,6 +57,13 @@
       enable = true;
       library = "/mnt/pirate/Music/Library";
     };
+
+    nix-serve = {
+      enable = true;
+      package = pkgs.nix-serve-ng;
+      openFirewall = true;
+      secretKeyFile = "/etc/nix-serve/nix-cache-priv-key";
+    };
   };
 
   systemd.services = {
