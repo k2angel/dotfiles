@@ -15,7 +15,13 @@
   };
 
   services = {
-    resolved.enable = true;
+    resolved = {
+      enable = true;
+
+      settings.Resolve = {
+        DNSOverTLS = true;
+      };
+    };
 
     openssh = {
       enable = true;
