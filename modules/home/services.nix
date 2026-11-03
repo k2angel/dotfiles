@@ -11,6 +11,7 @@
     playerctld.enable = true;
     polkit-gnome.enable = true;
     udiskie.enable = true;
+    sway-audio-idle.enable = true;
 
     autotiling = {
       enable = true;
