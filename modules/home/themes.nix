@@ -50,8 +50,7 @@ in
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk3";
-    style.name = "adwaita-dark";
+    style.name = "kvantum";
   };
 
   systemd.user.sessionVariables = {
