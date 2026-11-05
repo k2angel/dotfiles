@@ -16,8 +16,6 @@
       trusted-public-keys = [
         "visterhv.local-1:KqgJoa8u0ohKFtOf6QxI9z27e0ubRNlXtVdi0UJ0uuo="
       ];
-
-      trusted-users = [ "@wheel" ];
     };
 
     buildMachines = [

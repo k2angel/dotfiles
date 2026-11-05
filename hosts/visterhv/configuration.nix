@@ -25,7 +25,6 @@
 
     trusted-users = [
       "nixremote"
-      "@wheel"
     ];
   };
 
