@@ -19,7 +19,7 @@
       enable = true;
 
       settings.Resolve = {
-        DNSOverTLS = true;
+        DNSOverTLS = "opportunistic";
       };
     };
 

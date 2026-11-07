@@ -70,12 +70,5 @@
     jellyfin = {
       wantedBy = lib.mkForce [ ];
     };
-
-    wg-quick-wg0 = {
-      serviceConfig = {
-        ExecStartPost = "${pkgs.systemd}/bin/resolvectl dnsovertls wg0 no";
-        ExecStopPost = "${pkgs.systemd}/bin/resolvectl revert wg0";
-      };
-    };
   };
 }
