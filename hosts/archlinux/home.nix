@@ -40,7 +40,6 @@
       mcomix
       mkvtoolnix-cli
       n-m3u8dl-re
-      opencode
       opencommit
       payload-dumper-go
       pipe-rename
@@ -54,6 +53,20 @@
       unar
       xq-xml
       xnviewmp
+
+      (opencode.overrideAttrs (
+        final: prev: {
+          node_modules = prev.node_modules.overrideAttrs (_: {
+            outputHash =
+              if pkgs.stdenv.hostPlatform.isLinux then
+                "sha256-prx9dX7kUvs/E3zopkaPk5LXh3xJAy5sZeum/W8L7cA="
+              else if pkgs.stdenv.hostPlatform.isDarwin then
+                "sha256-dIveiaiPFGSItwLyeMuPDxTE9gpvvnlTCB/+nG24qCc="
+              else
+                throw "Unsupported platform";
+          });
+        }
+      ))
     ]
     ++ lib.optionals (!isNixOS) [
       nix-serve-ng
