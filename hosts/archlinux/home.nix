@@ -35,23 +35,14 @@
   home.packages =
     with pkgs;
     [
-      dos2unix
-      ipsw
       mcomix
-      mkvtoolnix-cli
-      n-m3u8dl-re
       opencommit
-      payload-dumper-go
       pipe-rename
       razer-cli
-      savepagenow
       seeker
-      sox
       slsk-batchdl
       tdl
-      twitch-dl
       unar
-      xq-xml
       xnviewmp
 
       (opencode.overrideAttrs (
