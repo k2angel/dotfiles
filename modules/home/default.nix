@@ -4,10 +4,8 @@
     ./nixvim
     ./zsh
 
-    ./btop.nix
     ./fcitx5.nix
     ./firefox.nix
-    ./foot.nix
     ./git.nix
     ./home.nix
     ./i3status.nix

@@ -10,6 +10,8 @@
 
   programs = {
     aria2p.enable = true;
+    bat.enable = true;
+    btop.enable = true;
     imv.enable = true;
     jqp.enable = true;
     nix-index.enable = true;
@@ -26,32 +28,23 @@
       };
     };
 
-    bat = {
-      enable = true;
-      config.theme = "OneHalfDark";
-    };
-
     bemenu = {
       enable = true;
       package = null;
-
-      settings = with config.scheme.withHashtag; {
-        tb = base01;
-        tf = base00;
-        ff = base05;
-        cb = base00;
-        nb = base00;
-        nf = base05;
-        hb = base01;
-        hf = base00;
-        ab = base00;
-        af = base05;
-      };
     };
 
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+    };
+
+    foot = {
+      enable = true;
+      server.enable = true;
+
+      settings = {
+        main.pad = "4x2";
+      };
     };
 
     nh = {

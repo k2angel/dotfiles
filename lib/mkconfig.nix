@@ -12,6 +12,7 @@ inputs: {
         inputs.disko.nixosModules.disko
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.home-manager.nixosModules.home-manager
+        inputs.stylix.nixosModules.stylix
         ../hosts/${host}
         ../modules/system
         {
@@ -42,6 +43,7 @@ inputs: {
       };
 
       modules = [
+        inputs.stylix.homeModules.stylix
         ../hosts/${host}
         ../modules/home-manager
       ];

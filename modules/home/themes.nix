@@ -20,7 +20,8 @@ in
 {
   imports = [ inputs.base16.homeManagerModule ];
 
-  scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
+  scheme = config.stylix.base16Scheme;
+  gtk.colorScheme = config.stylix.polarity;
 
   home.pointerCursor = {
     enable = true;
@@ -32,25 +33,24 @@ in
     x11.enable = true;
   };
 
-  gtk = {
-    enable = true;
-    colorScheme = "dark";
-    gtk4.theme = null;
+  stylix.targets = {
+    bat.enable = true;
+    bemenu.enable = true;
+    btop.enable = true;
+    foot.enable = true;
+    fzf.enable = true;
+    gtk.enable = true;
+    lazygit.enable = true;
+    qt.enable = true;
+    tmux.enable = true;
 
-    iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+    mako = {
+      enable = true;
+
+      fonts.override = {
+        sansSerif.name = "monospace";
+      };
     };
-
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-  };
-
-  qt = {
-    enable = true;
-    style.name = "kvantum";
   };
 
   systemd.user.sessionVariables = {
