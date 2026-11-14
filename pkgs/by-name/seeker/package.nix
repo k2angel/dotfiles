@@ -6,6 +6,8 @@
   pkg-config,
   sqlite,
   openssl,
+  zstd,
+  aws-lc,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -29,6 +31,8 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [
     sqlite
     openssl
+    zstd
+    aws-lc
   ];
 
   postInstall = ''
