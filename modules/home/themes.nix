@@ -38,7 +38,6 @@ in
     bemenu.enable = true;
     btop.enable = true;
     foot.enable = true;
-    fzf.enable = true;
     gtk.enable = true;
     lazygit.enable = true;
     qt.enable = true;
