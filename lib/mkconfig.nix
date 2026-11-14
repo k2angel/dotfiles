@@ -9,6 +9,7 @@ inputs: {
       specialArgs = args;
 
       modules = [
+        inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
         inputs.disko.nixosModules.disko
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.home-manager.nixosModules.home-manager

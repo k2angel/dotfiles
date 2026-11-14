@@ -90,7 +90,7 @@
 
       extraCompatPackages = with pkgs; [
         proton-ge-bin
-        inputs.nixpkgs-xr.packages.${pkgs.stdenv.hostPlatform.system}.proton-rtsp-bin
+        proton-rtsp-bin
       ];
     };
   };
