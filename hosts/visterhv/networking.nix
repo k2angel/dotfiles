@@ -13,6 +13,7 @@
 
     firewall = {
       allowedUDPPorts = [ 5353 ];
+      trustedInterfaces = [ "ve-+" ];
 
       extraInputRules =
         let
@@ -25,6 +26,11 @@
           tcp dport ${tcp} drop
           udp dport ${udp} drop
         '';
+    };
+
+    nat = {
+      enable = true;
+      internalInterfaces = [ "ve-+" ];
     };
 
     wg-quick.interfaces.wg0 = {
@@ -47,15 +53,50 @@
     };
   };
 
+  containers = {
+    lms = {
+      autoStart = true;
+      privateNetwork = true;
+      hostAddress = "192.168.100.20";
+      localAddress = "192.168.100.21";
+      forwardPorts = [ { hostPort = 5082; } ];
+
+      bindMounts = {
+        "/music" = {
+          hostPath = "/mnt/pirate/Music/Library";
+        };
+
+        "/var/lib/lms" = {
+          hostPath = "/var/lib/lms";
+          isReadOnly = false;
+        };
+      };
+
+      config =
+        { config, lib, ... }:
+        {
+          imports = [ ../../modules/features/system/lms.nix ];
+
+          services = {
+            resolved.enable = true;
+
+            lms = {
+              enable = true;
+              library = "/music";
+              openFirewall = true;
+            };
+          };
+
+          networking.useHostResolvConf = lib.mkForce false;
+          system.stateVersion = config.system.nixos.release;
+        };
+    };
+  };
+
   services = {
     jellyfin = {
       enable = true;
       user = username;
-    };
-
-    lms = {
-      enable = true;
-      library = "/mnt/pirate/Music/Library";
     };
 
     nix-serve = {
