@@ -91,19 +91,49 @@
           system.stateVersion = config.system.nixos.release;
         };
     };
+
+    nix-serve = {
+      autoStart = true;
+      privateNetwork = true;
+      hostAddress = "192.168.100.30";
+      localAddress = "192.168.100.31";
+      forwardPorts = [ { hostPort = 5000; } ];
+
+      bindMounts = {
+        "/etc/nix-serve" = {
+          hostPath = "/etc/nix-serve";
+        };
+      };
+
+      config =
+        {
+          config,
+          lib,
+          pkgs,
+          ...
+        }:
+        {
+          services = {
+            resolved.enable = true;
+
+            nix-serve = {
+              enable = true;
+              package = pkgs.nix-serve-ng;
+              secretKeyFile = "/etc/nix-serve/nix-cache-priv-key";
+              openFirewall = true;
+            };
+          };
+
+          networking.useHostResolvConf = lib.mkForce false;
+          system.stateVersion = config.system.nixos.release;
+        };
+    };
   };
 
   services = {
     jellyfin = {
       enable = true;
       user = username;
-    };
-
-    nix-serve = {
-      enable = true;
-      package = pkgs.nix-serve-ng;
-      openFirewall = true;
-      secretKeyFile = "/etc/nix-serve/nix-cache-priv-key";
     };
   };
 
