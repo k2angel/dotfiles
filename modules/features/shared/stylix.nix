@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  self,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   stylix = {
@@ -6,6 +11,7 @@
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
     polarity = config.lib.stylix.colors.variant;
+    image = "${self + /image/large_ev50.png}";
 
     # cursor = {
     #   name = "Adwaita";
