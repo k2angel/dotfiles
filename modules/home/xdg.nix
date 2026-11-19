@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   xdg = {
@@ -22,6 +22,9 @@
     };
   };
 
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+
   xdg.configFile."xdg-desktop-portal-termfilechooser/config".text = ''
     [filechooser]
     cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
@@ -32,7 +35,7 @@
     save_mode=last
   '';
 
-  systemd.user.sessionVariables = {
+  home.sessionVariables = {
     GTK_USE_PORTAL = 1;
   };
 }
