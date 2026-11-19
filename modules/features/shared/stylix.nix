@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   stylix = {
     enable = true;
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
-    polarity = "dark";
+    polarity = config.lib.stylix.colors.variant;
 
     # cursor = {
     #   name = "Adwaita";

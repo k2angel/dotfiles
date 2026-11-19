@@ -1,26 +1,6 @@
-{
-  inputs,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 
-let
-  wmenu_settings = with config.scheme.withHashtag; {
-    f = "monospace 11";
-    N = base00;
-    n = base05;
-    M = base0D;
-    m = base00;
-    S = base0D;
-    s = base00;
-  };
-in
 {
-  imports = [ inputs.base16.homeManagerModule ];
-
-  scheme = config.stylix.base16Scheme;
   gtk.colorScheme = config.stylix.polarity;
 
   home.pointerCursor = {
@@ -50,13 +30,5 @@ in
         sansSerif.name = "monospace";
       };
     };
-  };
-
-  systemd.user.sessionVariables = {
-    WMENU_OPTS = lib.cli.toCommandLineShell (optionName: {
-      option = "-${optionName}";
-      sep = null;
-      explicitBool = false;
-    }) wmenu_settings;
   };
 }

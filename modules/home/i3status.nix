@@ -57,7 +57,7 @@ in
           theme = {
             theme = "plain";
 
-            overrides = with config.scheme.withHashtag; {
+            overrides = with config.lib.stylix.colors.withHashtag; {
               idle_bg = base00;
               idle_fg = base05;
               info_bg = base09;

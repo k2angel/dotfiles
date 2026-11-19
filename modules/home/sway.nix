@@ -34,7 +34,7 @@ in
         "workspace number 3" = [ { app_id = "vesktop"; } ];
       };
 
-      colors = with config.scheme.withHashtag; {
+      colors = with config.lib.stylix.colors.withHashtag; {
         background = base07;
 
         focused = {
@@ -107,7 +107,7 @@ in
         "${modifier}+v" = ''
           exec ${terminal} \
             -o "main.pad=0x0" \
-            -o "colors-${config.scheme.variant}.alpha=1" \
+            -o "colors-${config.stylix.polarity}.alpha=1" \
             -a "bemenu_cliphist" \
             ${lib.getExe scripts.bemenu-cliphist}
         '';
@@ -175,7 +175,7 @@ in
           fonts.size = 11.0;
           extraConfig = "height 22";
 
-          colors = with config.scheme.withHashtag; {
+          colors = with config.lib.stylix.colors.withHashtag; {
             background = base00;
             separator = base01;
             statusline = base04;
