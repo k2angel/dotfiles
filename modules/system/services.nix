@@ -2,7 +2,6 @@
 
 {
   services = {
-    greetd.enable = true;
     udisks2.enable = true;
 
     kmscon = {
@@ -25,6 +24,24 @@
       # jack.enable = true;
       pulse.enable = true;
       wireplumber.enable = true;
+    };
+
+    displayManager.tuigreet = {
+      enable = true;
+
+      settings = {
+        # session.default_session = "sway-uwsm";
+
+        display = {
+          show_time = true;
+          time_format = "%Y-%m-%d %H:%M:%S";
+        };
+
+        remember = {
+          username = true;
+          user_session = true;
+        };
+      };
     };
 
     xserver.xkb = {

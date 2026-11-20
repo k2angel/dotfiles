@@ -8,11 +8,11 @@
 let
   inherit (lib) types;
 
-  cfg = config.programs.tuigreet;
+  cfg = config.services.displayManager.tuigreet;
   tomlFormat = pkgs.formats.toml { };
 in
 {
-  options.programs.tuigreet = {
+  options.services.displayManager.tuigreet = {
     enable = lib.mkEnableOption "Graphical console greeter for greetd";
     package = lib.mkPackageOption pkgs "tuigreet" { };
 
@@ -45,6 +45,7 @@ in
 
   config = lib.mkIf cfg.enable {
     services.greetd = {
+      enable = true;
       useTextGreeter = true;
       settings.default_session.command = "${lib.getExe cfg.package} --config ${tomlFormat.generate "tuigreet.toml" cfg.settings}";
     };
