@@ -1,5 +1,4 @@
 {
-  self,
   config,
   pkgs,
   lib,
@@ -13,6 +12,8 @@ let
   grimshot = lib.getExe pkgs.sway-contrib.grimshot;
   ifne = lib.getExe' pkgs.moreutils "ifne";
   screenshot-proc = lib.getExe scripts.screenshot-proc;
+  swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
+  swaymsg = if isNixOS then lib.getExe' pkgs.sway "swaymsg" else "/usr/bin/swaymsg";
   uwsm = if isNixOS then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
 in
 {
@@ -27,7 +28,7 @@ in
       startup = [ { command = "${uwsm} finalize"; } ];
       terminal = "${pkgs.foot}/bin/footclient";
       fonts.size = 11.0;
-      output."*".bg = "${self + /image/large_ev50.png} fill";
+      output."*".bg = "${config.stylix.image} fill";
 
       assigns = {
         "workspace number 2" = [ { app_id = "firefox"; } ];
@@ -210,6 +211,36 @@ in
               text = base00;
             };
           };
+        }
+      ];
+    };
+  };
+
+  services = {
+    sway-audio-idle.enable = true;
+
+    autotiling = {
+      enable = true;
+      package = pkgs.autotiling-rs;
+    };
+
+    swayidle = {
+      enable = true;
+
+      events = {
+        before-sleep = "${swaylock} -f";
+        lock = "lock";
+      };
+
+      timeouts = [
+        {
+          timeout = 300;
+          command = "${swaylock} -f";
+        }
+        {
+          timeout = 600;
+          command = "${swaymsg} \"output * power off\"";
+          resumeCommand = "${swaymsg} \"output * power on\"";
         }
       ];
     };
