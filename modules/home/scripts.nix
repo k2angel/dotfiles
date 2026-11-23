@@ -13,7 +13,6 @@ let
   wmenu = lib.getExe' pkgs.wmenu "wmenu";
 
   uwsm = if isNixOS then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
-  swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
   systemctl = if isNixOS then lib.getExe' pkgs.systemd "systemctl" else "/usr/bin/systemctl";
   loginctl = if isNixOS then lib.getExe' pkgs.systemd "loginctl" else "/usr/bin/loginctl";
 in
@@ -55,7 +54,7 @@ in
     chosen=$(echo -e "$options" | ${wmenu} -i -p "System" -l 6)
 
     case "$chosen" in
-      Lock) ${swaylock} -f ;;
+      Lock) ${loginctl} lock-session ;;
       Logout) ${uwsm} stop ;;
       Reboot) ${systemctl} reboot ;;
       Shutdown) ${systemctl} poweroff ;;
