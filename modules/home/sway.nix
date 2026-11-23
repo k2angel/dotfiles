@@ -15,6 +15,8 @@ let
   swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
   swaymsg = if isNixOS then lib.getExe' pkgs.sway "swaymsg" else "/usr/bin/swaymsg";
   uwsm = if isNixOS then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
+
+  lock = "${swaylock} -f";
 in
 {
   wayland.windowManager.sway = {
@@ -228,14 +230,14 @@ in
       enable = true;
 
       events = {
-        before-sleep = "${swaylock} -f";
-        lock = "lock";
+        before-sleep = lock;
+        lock = lock;
       };
 
       timeouts = [
         {
           timeout = 300;
-          command = "${swaylock} -f";
+          command = lock;
         }
         {
           timeout = 600;

@@ -15,6 +15,7 @@ let
   uwsm = if isNixOS then lib.getExe pkgs.uwsm else "/usr/bin/uwsm";
   swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
   systemctl = if isNixOS then lib.getExe' pkgs.systemd "systemctl" else "/usr/bin/systemctl";
+  loginctl = if isNixOS then lib.getExe' pkgs.systemd "loginctl" else "/usr/bin/loginctl";
 in
 {
   bemenu-cliphist = pkgs.writeShellScriptBin "bemenu-cliphist" ''
@@ -58,8 +59,8 @@ in
       Logout) ${uwsm} stop ;;
       Reboot) ${systemctl} reboot ;;
       Shutdown) ${systemctl} poweroff ;;
-      Suspend) ${swaylock} -f && ${systemctl} suspend ;;
-      Hibernate) ${swaylock} -f && ${systemctl} hibernate ;;
+      Suspend) ${loginctl} lock-session && ${systemctl} suspend ;;
+      Hibernate) ${loginctl} lock-session && ${systemctl} hibernate ;;
       *) exit 1 ;;
     esac
   '';
