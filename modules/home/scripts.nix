@@ -50,8 +50,8 @@ in
       exit 1
     fi
 
-    options="Lock\nLogout\nReboot\nShutdown\nSuspend"
-    chosen=$(echo -e "$options" | ${wmenu} -i -p "System" -l 5)
+    options="Lock\nLogout\nReboot\nShutdown\nSuspend\nHibernate"
+    chosen=$(echo -e "$options" | ${wmenu} -i -p "System" -l 6)
 
     case "$chosen" in
       Lock) ${swaylock} -f ;;
@@ -59,6 +59,7 @@ in
       Reboot) ${systemctl} reboot ;;
       Shutdown) ${systemctl} poweroff ;;
       Suspend) ${swaylock} -f && ${systemctl} suspend ;;
+      Hibernate) ${swaylock} -f && ${systemctl} hibernate ;;
       *) exit 1 ;;
     esac
   '';
