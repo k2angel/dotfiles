@@ -21,7 +21,6 @@
     gtk.enable = true;
     lazygit.enable = true;
     qt.enable = true;
-    tmux.enable = true;
 
     mako = {
       enable = true;
