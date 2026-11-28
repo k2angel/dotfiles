@@ -35,6 +35,30 @@
     lanzaboote.enable = true;
   };
 
+  fileSystems =
+    let
+      btrfsOption = [
+        "noatime"
+        "compress=zstd"
+      ];
+    in
+    {
+      "/".options = btrfsOption;
+      "/home".options = btrfsOption;
+      "/nix".options = btrfsOption;
+      "/.swap".options = [
+        "noatime"
+        "nodatacow"
+      ];
+    };
+
+  swapDevices = [
+    {
+      device = "/.swap/swapfile";
+      size = 32 * 1024;
+    }
+  ];
+
   hardware = {
     graphics.enable = true;
 

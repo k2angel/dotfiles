@@ -13,44 +13,36 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
-    fsType = "btrfs";
-    options = [
-      "noatime"
-      "compress=zstd"
-      "subvol=@"
-    ];
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
+      fsType = "btrfs";
+      options = [ "subvol=@" ];
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
-    fsType = "btrfs";
-    options = [
-      "noatime"
-      "compress=zstd"
-      "subvol=@home"
-    ];
-  };
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
+      fsType = "btrfs";
+      options = [ "subvol=@home" ];
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
-    fsType = "btrfs";
-    options = [
-      "noatime"
-      "compress=zstd"
-      "subvol=@nix"
-    ];
-  };
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
+      fsType = "btrfs";
+      options = [ "subvol=@nix" ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6496-9B32";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
+  fileSystems."/.swap" =
+    { device = "/dev/disk/by-uuid/8266a858-5614-4df9-92b8-7e4a5cd05ac6";
+      fsType = "btrfs";
+      options = [ "subvol=@swap" ];
+    };
+
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/6496-9B32";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
   fileSystems."/mnt/arcade" = {
     device = "/dev/disk/by-uuid/f0e67ebf-4af6-4a8e-9c08-196e26926db6";
@@ -82,8 +74,6 @@
       "x-systemd.automount"
     ];
   };
-
-  swapDevices = [ { device = "/dev/disk/by-uuid/b4490cdc-e05f-4f40-9c12-7d84da53dfe0"; } ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
